@@ -66,6 +66,7 @@ const dateN = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
 const dateK = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
 
 import { defineComponent, ref } from "vue";
+// const tg = window.Telegram.WebApp;
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -91,5 +92,9 @@ export default defineComponent({
       }
     }
   },
+  created() {
+    this.TWA.MainButton.show();
+    console.log('propertyComputed will update, as this.property is now reactive.')
+  }
 });
 </script>
