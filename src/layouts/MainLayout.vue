@@ -57,9 +57,7 @@
       </q-input>
 
     </div>
-    <div>
-      <q-btn label="Сохранить" type="submit" color="primary" />
-    </div>
+
   </q-form>
 </template>
 <script>
