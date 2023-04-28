@@ -92,8 +92,17 @@ export default defineComponent({
       }
     }
   },
+  methods: {
+    toggleMainButton() {
+      if (this.TWA.MainButton.isVisible) {
+        this.TWA.MainButton.hide();
+      } else {
+        this.TWA.MainButton.show();
+      }
+    },
+  },
   created() {
-    this.TWA.MainButton.show();
+    this.toggleMainButton
     console.log('propertyComputed will update, as this.property is now reactive.')
   }
 });
