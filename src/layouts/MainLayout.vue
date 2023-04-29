@@ -93,17 +93,20 @@ export default defineComponent({
     }
   },
   methods: {
-    toggleMainButton() {
-      if (this.TWA.MainButton.isVisible) {
-        this.TWA.MainButton.hide();
-      } else {
-        this.TWA.MainButton.show();
-      }
-    },
+    // toggleMainButton() {
+    //   if (this.TWA.MainButton.isVisible) {
+    //     this.TWA.MainButton.hide();
+    //   } else {
+    //     this.TWA.MainButton.show();
+    //   }
+    // },
   },
   created() {
-    this.toggleMainButton
-    console.log('propertyComputed will update, as this.property is now reactive.')
+    if (this.TWA.MainButton.isVisible) {
+      this.TWA.MainButton.hide();
+    } else {
+      this.TWA.MainButton.show();
+    }
   }
 });
 </script>
