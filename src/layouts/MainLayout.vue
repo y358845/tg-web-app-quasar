@@ -1,7 +1,15 @@
 <template>
-  <q-toolbar class="bg-primary text-white">
+  <q-bar class="bg-primary text-white q-pa-md">
+    <q-btn @click="TWA.close()" dense flat round icon="confirmation_number" size="8.5px" color="white" />
+    <div class="col text-center text-weight-bold">
+      Новый пропуск
+    </div>
+
+    <q-btn dense flat icon="close" />
+  </q-bar>
+  <!-- <q-toolbar class="bg-primary text-white">
     <q-toolbar-title class="absolute-center">Пропуск</q-toolbar-title>
-  </q-toolbar>
+  </q-toolbar> -->
 
   <q-toolbar class="q-mt-md">
     <q-toolbar-title class="absolute-center text-h8 q-pt-md"> Заполните данные гостя </q-toolbar-title>
@@ -100,20 +108,22 @@ export default defineComponent({
     }
   },
   methods: {
-    // toggleMainButton() {
-    //   if (this.TWA.MainButton.isVisible) {
-    //     this.TWA.MainButton.hide();
-    //   } else {
-    //     this.TWA.MainButton.show();
-    //   }
-    // },
-  },
+
+  }
+  // toggleMainButton() {
+  //   if (this.TWA.MainButton.isVisible) {
+  //     this.TWA.MainButton.hide();
+  //   } else {
+  //     this.TWA.MainButton.show();
+  //   }
+  // },
+},
   // created() {
   //   if (tg.MainButton.isVisible) {
   //     tg.MainButton.hide();
   //   } else {
   //     tg.MainButton.show();
   //   }
-}
+
 );
 </script>
