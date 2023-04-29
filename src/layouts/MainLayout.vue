@@ -66,7 +66,7 @@ const dateN = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
 const dateK = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
 
 import { defineComponent, ref } from "vue";
-// const tg = window.Telegram.WebApp;
+const tg = window?.Telegram?.WebApp;
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -92,6 +92,13 @@ export default defineComponent({
       }
     }
   },
+  onMounted() {
+    if (tg) {
+      tg.expand();
+      tg.enableClosingConfirmation();
+      tg.sendData('123')
+    }
+  },
   methods: {
     // toggleMainButton() {
     //   if (this.TWA.MainButton.isVisible) {
@@ -101,12 +108,12 @@ export default defineComponent({
     //   }
     // },
   },
-  created() {
-    if (this.TWA.MainButton.isVisible) {
-      this.TWA.MainButton.hide();
-    } else {
-      this.TWA.MainButton.show();
-    }
-  }
-});
+  // created() {
+  //   if (tg.MainButton.isVisible) {
+  //     tg.MainButton.hide();
+  //   } else {
+  //     tg.MainButton.show();
+  //   }
+}
+);
 </script>
