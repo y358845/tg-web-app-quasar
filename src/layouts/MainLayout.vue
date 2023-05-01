@@ -121,7 +121,8 @@ export default defineComponent({
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок'
     })
-    tg.onEvent('mainButtonClicked', this.onSendData)
+
+    tg.onEvent('mainButtonClicked', this.onSendData())
   },
 
   created() {
