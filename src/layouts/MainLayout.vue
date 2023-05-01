@@ -101,19 +101,19 @@ export default defineComponent({
         }
       },
       checkOfFilling(val) {
+
+        if (val) {
+          tg.MainButton.show();
+        }
+
+      },
+      onSendData() {
         const dataForm = {
           surname: this.surname,
           date: this.date,
           date2: this.date2
         }
-        if (val) {
-          tg.MainButton.show();
-        }
-        tg.onEvent('mainButtonClicked', this.onSendData(dataForm))
-      },
-      onSendData(val) {
-
-        tg.sendData(JSON.stringify(val))
+        tg.sendData(JSON.stringify(dataForm))
         // console.log(dataForm)
       }
     }
@@ -123,7 +123,7 @@ export default defineComponent({
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок'
     })
-
+    tg.onEvent('mainButtonClicked', this.onSendData)
 
   },
 
