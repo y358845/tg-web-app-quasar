@@ -101,11 +101,14 @@ export default defineComponent({
     }
   },
   mounted() {
-    if (tg.MainButton.isVisible) {
+    if (!this.surname) {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
     }
+    tg.MainButton.setParams({
+      text: 'Отправить данные'
+    })
     console.log(tg)
   },
   methods: {
