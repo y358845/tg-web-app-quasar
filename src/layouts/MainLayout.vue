@@ -124,8 +124,10 @@ export default defineComponent({
       textColor: "#F55353",//изменяем цвет текста кнопки
       color: "#F2C037", //изменяем цвет бэкграунда кнопки
     })
-    // tg.MainButton.onClick(callback)
-    tg.onEvent('mainButtonClicked', function () { tg.sendData("some string that we need to send") })
+    Telegram.WebApp.onEvent('mainButtonClicked', function () {
+      tg.sendData("some string that we need to send");
+      //при клике на основную кнопку отправляем данные в строковом виде
+    });
   },
 
   created() {
