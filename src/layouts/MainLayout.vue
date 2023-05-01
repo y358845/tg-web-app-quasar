@@ -63,12 +63,12 @@
           </q-icon>
         </template>
       </q-input>
-      <div>
-        <q-btn @click="onSendData()" label="Submit" type="submit" color="primary" />
 
-      </div>
     </div>
+    <div>
+      <q-btn @click="onSendData()" label="Отправить пропуск в стол справок" type="submit" color="primary" />
 
+    </div>
   </q-form>
 </template>
 <script>
@@ -109,13 +109,13 @@ export default defineComponent({
       onSendData() {
 
 
-        const dataForm = {
-          surname: this.surname,
-          date: this.date,
-          date2: this.date2
-        }
-        tg.sendData(JSON.stringify(dataForm));
-        console.log(dataForm)
+        // const dataForm = {
+        //   surname: this.surname,
+        //   date: this.date,
+        //   date2: this.date2
+        // }
+        tg.sendData(JSON.stringify(this.surname));
+        // console.log(dataForm)
         // console.log(dataForm)
       }
     }
