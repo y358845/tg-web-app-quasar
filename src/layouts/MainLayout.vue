@@ -64,7 +64,7 @@
         </template>
       </q-input>
       <div>
-        <q-btn @click="onSendData()" label="Submit" type="submit" color="primary" />
+        <q-btn @click="onSendData" label="Submit" type="submit" color="primary" />
 
       </div>
     </div>
@@ -112,7 +112,7 @@ export default defineComponent({
         //   date,
         //   date2
         // }
-        tg.sendData(JSON.stringify('Сообщение'));
+        tg.sendData('Сообщение');
       }
     }
   },
