@@ -121,11 +121,12 @@ export default defineComponent({
     }
   },
   mounted() {
-    tg.onEvent('mainButtonClicked', this.onSendData)
+
     tg.MainButton.hide();
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок'
     })
+    tg.onEvent('mainButtonClicked', this.onSendData)
   },
   methods: {
 
