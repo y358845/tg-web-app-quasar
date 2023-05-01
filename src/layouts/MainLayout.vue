@@ -105,15 +105,15 @@ export default defineComponent({
           tg.MainButton.show();
         }
       },
-      // onSendData() {
-      //   // const dataForm = {
-      //   //   surname: this.surname,
-      //   //   date: this.date,
-      //   //   date2: this.date2
-      //   // }
-      //   tg.sendData(JSON.stringify(this.surname))
-      //   // console.log(dataForm)
-      // }
+      onSendData() {
+        const dataForm = {
+          surname: this.surname,
+          date: this.date,
+          date2: this.date2
+        }
+        tg.sendData(JSON.stringify(dataForm))
+        // console.log(dataForm)
+      }
     }
   },
   mounted() {
@@ -125,7 +125,7 @@ export default defineComponent({
       color: "#F2C037", //изменяем цвет бэкграунда кнопки
     })
     tg.onEvent('mainButtonClicked', function () {
-      tg.sendData("some string that we need to send");
+      this.onSendData()
       //при клике на основную кнопку отправляем данные в строковом виде
     });
   },
