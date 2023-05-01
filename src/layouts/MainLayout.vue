@@ -115,7 +115,7 @@ export default defineComponent({
           date2: this.date2
         }
         tg.sendData(dataForm);
-        // console.log(dataForm)
+        return console.log(dataForm)
         // console.log(dataForm)
       }
     }
