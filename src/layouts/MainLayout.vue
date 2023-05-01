@@ -17,7 +17,7 @@
   <!-- <typography class="absolute-center">Заполните данные гостя</typography> -->
 
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-md">
-    <q-input @update:model-value="val => checkOfFilling(val)" dense outlined v-model="data.surname" label="ФИО"
+    <q-input @update:model-value="val => checkOfFilling(val)" dense outlined v-model="surname" label="ФИО"
       hint="Ведите ФИО гостя" lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
       <template v-slot:prepend>
         <q-icon name="badge" color="orange" />
@@ -36,11 +36,11 @@
 
     <div class="row">
 
-      <q-input dense outlined v-model="data.date" mask="date" hint="Дата с" class="col q-mr-md">
+      <q-input dense outlined v-model="date" mask="date" hint="Дата с" class="col q-mr-md">
         <template v-slot:append>
           <q-icon name="event" class="cursor-pointer" color="orange">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-              <q-date v-model="data.date">
+              <q-date v-model="date">
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Ок" color="primary" flat />
                 </div>
@@ -50,11 +50,11 @@
         </template>
       </q-input>
 
-      <q-input dense outlined v-model="data.date2" mask="date" hint="Дата по" class="col">
+      <q-input dense outlined v-model="date2" mask="date" hint="Дата по" class="col">
         <template v-slot:append>
           <q-icon name="event" class="cursor-pointer" color="orange">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-              <q-date v-model="data.date2">
+              <q-date v-model="date2">
                 <div class="row items-center justify-end">
                   <q-btn v-close-popup label="Ок" color="primary" flat />
                 </div>
@@ -83,25 +83,21 @@ export default defineComponent({
   components: {},
   setup() {
     return {
-      data: {
-        date: ref(dateN),
-        date2: ref(dateK),
-        surname: ref(''),
-      },
-      // date: ref(dateN),
-      // date2: ref(dateK),
-      // surname: ref(''),
+
+      date: ref(dateN),
+      date2: ref(dateK),
+      surname: ref(''),
       options: [
         'Сегодня', 'Завтра'],
       model: ref('Сегодня'),
       selectDate(val) {
         if (val === 'Завтра') {
-          this.data.date = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + (d.getDate() + 1);
-          this.data.date2 = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + (d.getDate() + 1);
+          this.date = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + (d.getDate() + 1);
+          this.date2 = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + (d.getDate() + 1);
         }
         else {
-          this.data.date = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
-          this.data.date2 = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
+          this.date = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
+          this.date2 = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
         }
       },
       checkOfFilling(val) {
@@ -111,9 +107,16 @@ export default defineComponent({
 
       },
       onSendData() {
-        console.log(this.data)
 
-        tg.sendData(JSON.stringify(this.data));
+
+        const dataForm = {
+          surname: this.surname,
+          date: this.date,
+          date2: this.date2
+        }
+        tg.sendData(JSON.stringify(dataForm));
+        console.log(dataForm)
+        // console.log(dataForm)
       }
     }
   },
