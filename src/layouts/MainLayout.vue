@@ -106,13 +106,13 @@ export default defineComponent({
         }
       },
       onSendData() {
-        // const dataForm = {
-        //   surname: this.surname,
-        //   date: this.date,
-        //   date2: this.date2
-        // }
-        tg.sendData(JSON.stringify(this.surname))
-        // console.log(dataForm)
+        const dataForm = {
+          surname: this.surname,
+          date: this.date,
+          date2: this.date2
+        }
+        tg.sendData(JSON.stringify(dataForm))
+        console.log(dataForm)
       }
     }
   },
