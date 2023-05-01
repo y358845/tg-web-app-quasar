@@ -106,13 +106,13 @@ export default defineComponent({
 
       },
       onSendData() {
-        // console.log('клик')
+        console.log('клик')
         // const data = {
         //   surname,
         //   date,
         //   date2
         // }
-        tg.sendData('Сообщение');
+        tg.sendData(JSON.stringify('Тестовое сообщение'));
       }
     }
   },
