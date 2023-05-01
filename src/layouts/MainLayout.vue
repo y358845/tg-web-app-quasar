@@ -123,8 +123,7 @@ export default defineComponent({
     })
     // tg.onEvent('mainButtonClicked', this.onSendData)
   },
-  methods: {
-  },
+
   created() {
     tg.onEvent('mainButtonClicked', this.onSendData)
   }
