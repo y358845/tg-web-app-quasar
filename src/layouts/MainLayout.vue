@@ -114,7 +114,7 @@ export default defineComponent({
         //   date: this.date,
         //   date2: this.date2
         // }
-        tg.sendData(JSON.stringify(this.surname));
+        tg.sendData(JSON.stringify("привет"));
         // console.log(dataForm)
         // console.log(dataForm)
       }
@@ -126,7 +126,7 @@ export default defineComponent({
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок'
     })
-    tg.onEvent('mainButtonClicked', tg.sendData(JSON.stringify("Привет")))
+    tg.onEvent('mainButtonClicked', this.onSendData)
   },
   methods: {
 
