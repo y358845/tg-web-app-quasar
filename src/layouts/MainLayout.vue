@@ -112,7 +112,7 @@ export default defineComponent({
           date,
           date2
         }
-        tg.sendData(JSON.stringify(data));
+        tg.sendData(JSON.stringify('Тестовое сообщение'));
       }
     }
   },
