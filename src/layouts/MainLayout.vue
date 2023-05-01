@@ -107,21 +107,18 @@ export default defineComponent({
 
       },
       onSendData() {
-
-
         const dataForm = {
           surname: this.surname,
           date: this.date,
           date2: this.date2
         }
-        tg.sendData(dataForm);
-        return console.log(dataForm)
+
+        return tg.sendData(dataForm)
         // console.log(dataForm)
       }
     }
   },
   mounted() {
-
     tg.MainButton.hide();
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок'
@@ -129,7 +126,6 @@ export default defineComponent({
     tg.onEvent('mainButtonClicked', this.onSendData)
   },
   methods: {
-
   }
   // toggleMainButton() {
   //   if (this.TWA.MainButton.isVisible) {
