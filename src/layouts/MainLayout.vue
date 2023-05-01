@@ -104,7 +104,6 @@ export default defineComponent({
         if (val) {
           tg.MainButton.show();
         }
-
       },
       onSendData() {
         const dataForm = {
@@ -112,8 +111,7 @@ export default defineComponent({
           date: this.date,
           date2: this.date2
         }
-
-        return tg.sendData(dataForm)
+        tg.sendData(dataForm)
         // console.log(dataForm)
       }
     }
