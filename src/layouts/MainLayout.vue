@@ -105,15 +105,15 @@ export default defineComponent({
           tg.MainButton.show();
         }
       },
-      onSendData() {
-        // const dataForm = {
-        //   surname: this.surname,
-        //   date: this.date,
-        //   date2: this.date2
-        // }
-        tg.sendData(JSON.stringify(this.surname))
-        // console.log(dataForm)
-      }
+      // onSendData() {
+      //   // const dataForm = {
+      //   //   surname: this.surname,
+      //   //   date: this.date,
+      //   //   date2: this.date2
+      //   // }
+      //   tg.sendData(JSON.stringify(this.surname))
+      //   // console.log(dataForm)
+      // }
     }
   },
   mounted() {
