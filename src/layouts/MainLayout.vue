@@ -101,18 +101,19 @@ export default defineComponent({
         }
       },
       checkOfFilling(val) {
-        if (val) {
-          tg.MainButton.show();
-        }
-        tg.onEvent('mainButtonClicked', this.onSendData)
-      },
-      onSendData() {
         const dataForm = {
           surname: this.surname,
           date: this.date,
           date2: this.date2
         }
-        tg.sendData(JSON.stringify(dataForm))
+        if (val) {
+          tg.MainButton.show();
+        }
+        tg.onEvent('mainButtonClicked', this.onSendData(dataForm))
+      },
+      onSendData(val) {
+
+        tg.sendData(JSON.stringify(val))
         // console.log(dataForm)
       }
     }
