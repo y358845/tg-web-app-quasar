@@ -106,28 +106,22 @@ export default defineComponent({
         }
       },
       onSendData() {
-        const dataForm = {
-          surname: this.surname,
-          date: this.date,
-          date2: this.date2
-        }
-        tg.sendData(JSON.stringify(dataForm))
-        console.log(dataForm)
+        // const dataForm = {
+        //   surname: this.surname,
+        //   date: this.date,
+        //   date2: this.date2
+        // }
+        tg.sendData(JSON.stringify(this.surname))
+        // console.log(dataForm)
       }
     }
   },
   mounted() {
     tg.MainButton.hide();
-    tg.expand();
     tg.MainButton.setParams({
-      text: 'Отправить пропуск в стол справок',
-      textColor: "#F55353",//изменяем цвет текста кнопки
-      color: "#F2C037", //изменяем цвет бэкграунда кнопки
+      text: 'Отправить пропуск в стол справок'
     })
-    tg.onEvent('mainButtonClicked', function () {
-      this.onSendData()
-      //при клике на основную кнопку отправляем данные в строковом виде
-    });
+    tg.onEvent('mainButtonClicked', this.onSendData)
   },
 
   created() {
