@@ -17,8 +17,8 @@
   <!-- <typography class="absolute-center">Заполните данные гостя</typography> -->
 
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-md">
-    <q-input dense outlined v-model="surname" label="ФИО" hint="Ведите ФИО гостя" lazy-rules
-      :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
+    <q-input @update:model-value="val => checkOfFilling(val)" dense outlined v-model="surname" label="ФИО"
+      hint="Ведите ФИО гостя" lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
       <template v-slot:prepend>
         <q-icon name="badge" color="orange" />
       </template>
@@ -97,14 +97,20 @@ export default defineComponent({
           this.date2 = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
         }
 
+      },
+      checkOfFilling(val) {
+        if (val) {
+          tg.MainButton.show();
+        }
+
       }
     }
   },
   mounted() {
 
-    tg.MainButton.show();
+    tg.MainButton.hide();
     tg.MainButton.setParams({
-      text: 'Отправить данные'
+      text: 'Отправить пропуск в стол справок'
     })
   },
   methods: {
