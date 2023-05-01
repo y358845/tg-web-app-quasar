@@ -118,10 +118,14 @@ export default defineComponent({
   },
   mounted() {
     tg.MainButton.hide();
+    tg.expand();
     tg.MainButton.setParams({
-      text: 'Отправить пропуск в стол справок'
+      text: 'Отправить пропуск в стол справок',
+      textColor: "#F55353",//изменяем цвет текста кнопки
+      color: "#F2C037", //изменяем цвет бэкграунда кнопки
     })
-    tg.onEvent('mainButtonClicked', tg.sendData(this.surname))
+    // tg.MainButton.onClick(callback)
+    tg.onEvent('mainButtonClicked', function () { tg.sendData("some string that we need to send") })
   },
 
   created() {
