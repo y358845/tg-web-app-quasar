@@ -109,12 +109,12 @@ export default defineComponent({
       onSendData() {
 
 
-        // const dataForm = {
-        //   surname: this.surname,
-        //   date: this.date,
-        //   date2: this.date2
-        // }
-        tg.sendData(this.surname);
+        const dataForm = {
+          surname: this.surname,
+          date: this.date,
+          date2: this.date2
+        }
+        tg.sendData(dataForm);
         // console.log(dataForm)
         // console.log(dataForm)
       }
