@@ -107,11 +107,11 @@ export default defineComponent({
       },
       onSendData() {
         console.log('клик')
-        const data = {
-          surname,
-          date,
-          date2
-        }
+        // const data = {
+        //   surname,
+        //   date,
+        //   date2
+        // }
         tg.sendData(JSON.stringify('Тестовое сообщение'));
       }
     }
