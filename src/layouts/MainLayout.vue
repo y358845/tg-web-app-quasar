@@ -121,9 +121,12 @@ export default defineComponent({
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок'
     })
-    tg.onEvent('mainButtonClicked', this.onSendData)
+    // tg.onEvent('mainButtonClicked', this.onSendData)
   },
   methods: {
+  },
+  created() {
+    tg.onEvent('mainButtonClicked', this.onSendData)
   }
   // toggleMainButton() {
   //   if (this.TWA.MainButton.isVisible) {
@@ -133,12 +136,7 @@ export default defineComponent({
   //   }
   // },
 },
-  // created() {
-  //   if (tg.MainButton.isVisible) {
-  //     tg.MainButton.hide();
-  //   } else {
-  //     tg.MainButton.show();
-  //   }
+
 
 );
 </script>
