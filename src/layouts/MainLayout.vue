@@ -121,11 +121,11 @@ export default defineComponent({
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок'
     })
-    // tg.onEvent('mainButtonClicked', this.onSendData)
+    tg.onEvent('mainButtonClicked', tg.sendData(JSON.stringify(this.surname)))
   },
 
   created() {
-    tg.onEvent('mainButtonClicked', this.onSendData)
+    // tg.onEvent('mainButtonClicked', this.onSendData)
   }
   // toggleMainButton() {
   //   if (this.TWA.MainButton.isVisible) {
