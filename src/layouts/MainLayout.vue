@@ -65,8 +65,9 @@
       </q-input>
 
     </div>
-    <div>
-      <q-btn @click="onSendData()" label="Отправить пропуск в стол справок" type="submit" color="primary" />
+    <div class="column items-center q-mt-xl">
+      <q-btn @click="onSendData()" type="submit" color="primary">Отправить
+        пропуск в <br>стол справок</q-btn>
 
     </div>
   </q-form>
@@ -102,9 +103,9 @@ export default defineComponent({
       },
       checkOfFilling(val) {
 
-        if (val) {
-          tg.MainButton.show();
-        }
+        // if (val) {
+        //   tg.MainButton.show();
+        // }
 
       },
       onSendData() {
@@ -119,11 +120,11 @@ export default defineComponent({
     }
   },
   mounted() {
-    tg.MainButton.hide();
-    tg.MainButton.setParams({
-      text: 'Отправить пропуск в стол справок'
-    })
-    tg.onEvent('mainButtonClicked', this.onSendData)
+    // tg.MainButton.hide();
+    // tg.MainButton.setParams({
+    //   text: 'Отправить пропуск в стол справок'
+    // })
+    // tg.onEvent('mainButtonClicked', this.onSendData)
 
   },
 
