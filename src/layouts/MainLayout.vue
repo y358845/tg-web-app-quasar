@@ -90,24 +90,30 @@ export default defineComponent({
         if (val === 'Завтра') {
           this.date = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + (d.getDate() + 1);
           this.date2 = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + (d.getDate() + 1);
-
         }
         else {
           this.date = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
           this.date2 = d.getFullYear() + "/0" + (d.getMonth() + 1) + "/" + d.getDate();
         }
-
       },
       checkOfFilling(val) {
         if (val) {
           tg.MainButton.show();
         }
 
+      },
+      onSendData() {
+        const data = {
+          surname,
+          date,
+          date2
+        }
+        tg.sendData(JSON.stringify(data));
       }
     }
   },
   mounted() {
-
+    tg.onEvent('mainButtonClicked', this.onSendData)
     tg.MainButton.hide();
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок'
