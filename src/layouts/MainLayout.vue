@@ -1,6 +1,6 @@
 <template>
   <q-bar class="bg-primary text-white q-pa-md">
-    <q-btn @click="tg.close()" dense flat round icon="confirmation_number" size="8.5px" color="white" />
+    <q-btn dense flat round icon="confirmation_number" size="8.5px" color="white" />
     <div class="col text-center text-weight-bold">
       Новый пропуск
     </div>
@@ -100,12 +100,13 @@ export default defineComponent({
       }
     }
   },
-  onMounted() {
-    if (tg) {
-      tg.expand();
-      tg.enableClosingConfirmation();
-      tg.sendData('123')
+  mounted() {
+    if (tg.MainButton.isVisible) {
+      tg.MainButton.hide();
+    } else {
+      tg.MainButton.show();
     }
+    console.log(tg)
   },
   methods: {
 
