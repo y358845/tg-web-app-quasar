@@ -111,7 +111,7 @@ export default defineComponent({
         //   date: this.date,
         //   date2: this.date2
         // }
-        tg.sendData(JSON.stringify(this.surname))
+        tg.sendData('ghbdtn')
         // console.log(dataForm)
       }
     }
