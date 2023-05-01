@@ -36,7 +36,7 @@
 
     <div class="row">
 
-      <q-input dense outlined v-model="date" mask="date" :rules="['date']" hint="Дата с" class="col q-mr-md">
+      <q-input dense outlined v-model="date" mask="date" hint="Дата с" class="col q-mr-md">
         <template v-slot:append>
           <q-icon name="event" class="cursor-pointer" color="orange">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -50,7 +50,7 @@
         </template>
       </q-input>
 
-      <q-input dense outlined v-model="date2" mask="date" :rules="['date']" hint="Дата по" class="col">
+      <q-input dense outlined v-model="date2" mask="date" hint="Дата по" class="col">
         <template v-slot:append>
           <q-icon name="event" class="cursor-pointer" color="orange">
             <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -63,7 +63,10 @@
           </q-icon>
         </template>
       </q-input>
+      <div>
+        <q-btn @click="onSendData()" label="Submit" type="submit" color="primary" />
 
+      </div>
     </div>
 
   </q-form>
@@ -103,6 +106,7 @@ export default defineComponent({
 
       },
       onSendData() {
+        console.log('клик')
         const data = {
           surname,
           date,
