@@ -108,7 +108,7 @@ export default defineComponent({
       },
       onSendData() {
         const dataForm = {
-          surname: 'Любимый я',
+          surname: this.surname,
           date: this.date,
           date2: this.date2
         }
