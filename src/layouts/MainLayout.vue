@@ -152,7 +152,7 @@ export default defineComponent({
 }
 
 body {
-  background: var(--tg-theme-bg-color);
+  background: white;
   color: var(--tg-theme-text-color);
 }
 </style>
