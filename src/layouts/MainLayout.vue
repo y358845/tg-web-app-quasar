@@ -153,6 +153,6 @@ export default defineComponent({
 
 body {
   background: white;
-  color: var(--tg-theme-text-color);
+  color: black;
 }
 </style>
