@@ -1,21 +1,12 @@
 <template>
   <q-bar class="bg-primary text-white q-pa-md">
-    <q-btn
-      dense
-      flat
-      round
-      icon="confirmation_number"
-      size="8.5px"
-      color="white"
-    />
+    <q-btn dense flat round icon="confirmation_number" size="8.5px" color="white" />
     <div class="col text-center text-weight-bold">Новый пропуск</div>
 
     <q-btn dense flat icon="close" />
   </q-bar>
 
-  <typography class="row items-center justify-center q-mt-md"
-    >Заполните данные гостя</typography
-  >
+  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя</typography>
 
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
     <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
@@ -25,24 +16,14 @@
         </div>
       </q-card-section> -->
 
-      <q-input
-        @update:model-value="(val) => checkOfFilling(val)"
-        dense
-        outlined
-        v-model="surname"
-        label="ФИО"
-        hint="Введите ФИО гостя"
-        lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']"
-      >
+      <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" label="ФИО"
+        hint="Введите ФИО гостя" lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
         <template v-slot:prepend>
           <q-icon name="badge" color="orange" />
         </template>
       </q-input>
     </q-card>
-    <typography class="row items-center justify-center q-mt-md"
-      >Заполните даты пропуска</typography
-    >
+    <typography class="row items-center justify-center q-mt-md">Заполните даты пропуска</typography>
     <q-card class="my-card q-pl-sm q-pr-sm q-pb-md" flat bordered>
       <!-- <q-card-section>
         <div class="text-subtitle2 row items-center justify-center">
@@ -51,41 +32,18 @@
       </q-card-section> -->
 
       <div class="row items-center justify-center toggle1">
-        <q-toggle
-          v-model="value1"
-          @update:model-value="(value, evt) => checkTogl1(value, evt)"
-          color="primary"
-          keep-color
-          icon="alarm"
-          label="Сегодня"
-        />
+        <q-toggle v-model="value1" @update:model-value="(value, evt) => checkTogl1(value, evt)" color="primary" keep-color
+          icon="alarm" label="Сегодня" />
 
-        <q-toggle
-          v-model="value2"
-          @update:model-value="(value, evt) => checkTogl2(value, evt)"
-          color="green"
-          keep-color
-          icon="alarm"
-          label="Завтра"
-        />
+        <q-toggle v-model="value2" @update:model-value="(value, evt) => checkTogl2(value, evt)" color="green" keep-color
+          icon="alarm" label="Завтра" />
       </div>
 
       <div class="row q-mt-md">
-        <q-input
-          dense
-          outlined
-          v-model="date"
-          mask="date"
-          hint="Дата с"
-          class="col q-mr-md"
-        >
+        <q-input dense outlined v-model="date" mask="date" hint="Дата с" class="col q-mr-md">
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer" color="orange">
-              <q-popup-proxy
-                cover
-                transition-show="scale"
-                transition-hide="scale"
-              >
+              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                 <q-date v-model="date">
                   <div class="row items-center justify-end">
                     <q-btn v-close-popup label="Ок" color="primary" flat />
@@ -96,21 +54,10 @@
           </template>
         </q-input>
 
-        <q-input
-          dense
-          outlined
-          v-model="date2"
-          mask="date"
-          hint="Дата по"
-          class="col"
-        >
+        <q-input dense outlined v-model="date2" mask="date" hint="Дата по" class="col">
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer" color="orange">
-              <q-popup-proxy
-                cover
-                transition-show="scale"
-                transition-hide="scale"
-              >
+              <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                 <q-date v-model="date2">
                   <div class="row items-center justify-end">
                     <q-btn v-close-popup label="Ок" color="primary" flat />
@@ -135,17 +82,8 @@
       label="Когда"
     /> -->
 
-<<<<<<< HEAD
-=======
-    </div>
-
-    <q-date v-model="modelDate" range></q-date>
-
->>>>>>> a649435763909db85ac2462cacf024242e3ba255
     <div class="column items-center q-mt-xl">
-      <q-btn @click="onSendData()" type="submit" color="primary"
-        >Отправить пропуск в <br />стол справок</q-btn
-      >
+      <q-btn @click="onSendData()" type="submit" color="primary">Отправить пропуск в <br />стол справок</q-btn>
     </div>
   </q-form>
   <!-- <div class="q-pa-md">
@@ -167,10 +105,6 @@ export default defineComponent({
   components: {},
   setup() {
     return {
-<<<<<<< HEAD
-=======
-      modelDate: ref({ from: '2020/07/08', to: '2020/07/09' }),
->>>>>>> a649435763909db85ac2462cacf024242e3ba255
       date: ref(dateN),
       date2: ref(dateK),
       surname: ref(""),
@@ -237,15 +171,14 @@ export default defineComponent({
       },
     };
   },
-  mounted() {
-    tg.expand()
-    // tg.MainButton.hide();
-    // tg.MainButton.setParams({
-    //   text: 'Отправить пропуск в стол справок'
-    // })
-    // tg.onEvent('mainButtonClicked', this.onSendData)
+  //mounted() {
+  // tg.MainButton.hide();
+  // tg.MainButton.setParams({
+  //   text: 'Отправить пропуск в стол справок'
+  // })
+  // tg.onEvent('mainButtonClicked', this.onSendData)
 
-  },
+  //},
 
   created() {
     // tg.onEvent('mainButtonClicked', this.onSendData)
