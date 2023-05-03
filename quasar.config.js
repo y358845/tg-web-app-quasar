@@ -28,6 +28,7 @@ module.exports = configure(function (ctx) {
     boot: [
 
       'axios',
+
       // 'RegisterGlobalComponents'
     ],
 
@@ -97,6 +98,7 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-framework
     framework: {
       config: {},
+      lang: 'ru',
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
