@@ -171,14 +171,14 @@ export default defineComponent({
       },
     };
   },
-  //mounted() {
-  // tg.MainButton.hide();
-  // tg.MainButton.setParams({
-  //   text: 'Отправить пропуск в стол справок'
-  // })
-  // tg.onEvent('mainButtonClicked', this.onSendData)
+  mounted() {
+    tg.expand();
+    // tg.MainButton.setParams({
+    //   text: 'Отправить пропуск в стол справок'
+    // })
+    // tg.onEvent('mainButtonClicked', this.onSendData)
 
-  //},
+  },
 
   created() {
     // tg.onEvent('mainButtonClicked', this.onSendData)
