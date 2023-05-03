@@ -135,6 +135,13 @@
       label="Когда"
     /> -->
 
+<<<<<<< HEAD
+=======
+    </div>
+
+    <q-date v-model="modelDate" range></q-date>
+
+>>>>>>> a649435763909db85ac2462cacf024242e3ba255
     <div class="column items-center q-mt-xl">
       <q-btn @click="onSendData()" type="submit" color="primary"
         >Отправить пропуск в <br />стол справок</q-btn
@@ -160,6 +167,10 @@ export default defineComponent({
   components: {},
   setup() {
     return {
+<<<<<<< HEAD
+=======
+      modelDate: ref({ from: '2020/07/08', to: '2020/07/09' }),
+>>>>>>> a649435763909db85ac2462cacf024242e3ba255
       date: ref(dateN),
       date2: ref(dateK),
       surname: ref(""),
@@ -226,14 +237,15 @@ export default defineComponent({
       },
     };
   },
-  //mounted() {
-  // tg.MainButton.hide();
-  // tg.MainButton.setParams({
-  //   text: 'Отправить пропуск в стол справок'
-  // })
-  // tg.onEvent('mainButtonClicked', this.onSendData)
+  mounted() {
+    tg.expand()
+    // tg.MainButton.hide();
+    // tg.MainButton.setParams({
+    //   text: 'Отправить пропуск в стол справок'
+    // })
+    // tg.onEvent('mainButtonClicked', this.onSendData)
 
-  //},
+  },
 
   created() {
     // tg.onEvent('mainButtonClicked', this.onSendData)
