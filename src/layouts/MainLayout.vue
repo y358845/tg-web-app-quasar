@@ -3,7 +3,7 @@
     <q-btn dense flat round icon="confirmation_number" size="8.5px" color="white" />
     <div class="col text-center text-weight-bold">Новый пропуск</div>
 
-    <q-btn dense flat icon="close" />
+    <!-- <q-btn dense flat icon="close" /> -->
   </q-bar>
 
   <typography class="row items-center justify-center q-mt-md">Заполните данные гостя</typography>
@@ -146,7 +146,6 @@ export default defineComponent({
           date2: this.date2,
         };
         tg.sendData(JSON.stringify(dataForm));
-        // console.log(dataForm)
       },
       checkTogl1(val, evt) {
         console.log(evt);
