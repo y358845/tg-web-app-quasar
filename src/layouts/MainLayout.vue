@@ -181,6 +181,7 @@ export default defineComponent({
   },
 
   created() {
+    tg.expand();
     // tg.onEvent('mainButtonClicked', this.onSendData)
   },
   // toggleMainButton() {
