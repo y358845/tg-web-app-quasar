@@ -169,7 +169,7 @@ export default defineComponent({
         }
       },
       mainButtonClicked() {
-        tg.showAlert('Main button was pressed');
+        // tg.showAlert('Main button was pressed');
         // window.Telegram.WebApp.showAlert('Main button was pressed version2');
         this.onSendData()
       },
