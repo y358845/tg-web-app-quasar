@@ -27,7 +27,8 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli-webpack/boot-files
     boot: [
 
-      'axios',
+      'axios'
+
 
       // 'RegisterGlobalComponents'
     ],
@@ -55,7 +56,7 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: 'hash',
 
-      testApp: '777', // available values: 'hash', 'history'
+
 
       // transpile: false,
       // publicPath: '/',
