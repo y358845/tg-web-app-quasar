@@ -111,6 +111,7 @@ export default defineComponent({
       value1: ref(true),
       value2: ref(false),
       model: ref("2020/07/09"),
+      testData: 'хуета',
       // options: ["Сегодня", "Завтра"],
       // model: ref("Сегодня"),
       selectDate(val) {
@@ -169,7 +170,7 @@ export default defineComponent({
         }
       },
       mainButtonClicked() {
-        tg.showAlert(this.data);
+        tg.showAlert(this.testData);
         // window.Telegram.WebApp.showAlert('Main button was pressed version2');
         // const dataForm = {
         //   surname: this.surname,
