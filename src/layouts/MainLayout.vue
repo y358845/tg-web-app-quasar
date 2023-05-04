@@ -82,9 +82,9 @@
       label="Когда"
     /> -->
 
-    <div class="column items-center q-mt-xl">
+    <!-- <div class="column items-center q-mt-xl">
       <q-btn @click="onSendData()" type="submit" color="primary">Отправить пропуск в <br />стол справок</q-btn>
-    </div>
+    </div> -->
   </q-form>
   <!-- <div class="q-pa-md">
     <q-date v-model="model" range />
@@ -136,9 +136,9 @@ export default defineComponent({
         // }
       },
       checkOfFilling(val) {
-        // if (val) {
-        //   tg.MainButton.show();
-        // }
+        if (val) {
+          tg.MainButton.show();
+        }
       },
       onSendData() {
         const dataForm = {
@@ -196,12 +196,15 @@ export default defineComponent({
     }
   },
   created() {
+    tg.MainButton.setParams({
+      text: 'Отправить пропуск в стол справок'
+    })
     tg.onEvent('mainButtonClicked', this.mainButtonClicked);
     //   tg.expand();
     //   // tg.onEvent('mainButtonClicked', this.onSendData)
     // },
     // toggleMainButton() {
-    tg.MainButton.show()
+    tg.MainButton.hide()
     //     this.TWA.MainButton.hide();
     //   } else {
     //     this.TWA.MainButton.show();
