@@ -174,7 +174,7 @@ export default defineComponent({
   },
   mounted() {
     tg.ready();
-    tg.onEvent('mainButtonClicked', this.mainButtonClicked);
+
 
   },
   methods() {
@@ -190,7 +190,7 @@ export default defineComponent({
     },
   },
   created() {
-
+    tg.onEvent('mainButtonClicked', this.mainButtonClicked);
     //   tg.expand();
     //   // tg.onEvent('mainButtonClicked', this.onSendData)
     // },
