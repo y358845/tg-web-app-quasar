@@ -177,9 +177,9 @@ export default defineComponent({
 
 
   },
-  methods() {
+  methods: {
     mainButtonClicked() {
-      this.tg.showAlert(this.testData)
+      this.tg.showAlert('6666')
       // window.Telegram.WebApp.showAlert('Main button was pressed version2');
       // const dataForm = {
       //   surname: this.surname,
