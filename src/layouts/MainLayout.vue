@@ -169,14 +169,14 @@ export default defineComponent({
         }
       },
       mainButtonClicked() {
-        // tg.showAlert('Main button was pressed');
+        tg.showAlert('Main button was pressed');
         // window.Telegram.WebApp.showAlert('Main button was pressed version2');
         // const dataForm = {
         //   surname: this.surname,
         //   date: this.date,
         //   date2: this.date2,
         // };
-        tg.sendData(JSON.stringify(this.date2));
+        // tg.sendData(JSON.stringify(this.date2));
       },
     };
   },
