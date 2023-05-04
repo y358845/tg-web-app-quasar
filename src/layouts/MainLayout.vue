@@ -174,25 +174,16 @@ export default defineComponent({
   },
   mounted() {
     tg.ready();
-
-
+    tg.expand();
   },
   methods: {
     mainButtonClicked() {
-      // tg.showAlert(this.testData)
       const dataForm = {
         surname: this.surname,
         date: this.date,
         date2: this.date2,
       };
       tg.sendData(JSON.stringify(dataForm));
-      // window.Telegram.WebApp.showAlert('Main button was pressed version2');
-      // const dataForm = {
-      //   surname: this.surname,
-      //   date: this.date,
-      //   date2: this.date2,
-      // };
-      // tg.sendData(JSON.stringify(this.date2));
     }
   },
   created() {
@@ -201,15 +192,7 @@ export default defineComponent({
       color: '#1976D2',
     })
     tg.onEvent('mainButtonClicked', this.mainButtonClicked);
-    //   tg.expand();
-    //   // tg.onEvent('mainButtonClicked', this.onSendData)
-    // },
-    // toggleMainButton() {
     tg.MainButton.hide()
-    //     this.TWA.MainButton.hide();
-    //   } else {
-    //     this.TWA.MainButton.show();
-    //   }
   },
 });
 </script>
