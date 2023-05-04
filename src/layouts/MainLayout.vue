@@ -168,28 +168,30 @@ export default defineComponent({
           );
         }
       },
+      mainButtonClicked() {
+        tg.showAlert('Main button was pressed');
+        window.Telegram.WebApp.showAlert('Main button was pressed version2');
+      },
     };
   },
   mounted() {
-    tg.expand();
-    // tg.MainButton.setParams({
-    //   text: 'Отправить пропуск в стол справок'
-    // })
-    // tg.onEvent('mainButtonClicked', this.onSendData)
+    tg.ready();
+
 
   },
 
   created() {
-    tg.expand();
-    // tg.onEvent('mainButtonClicked', this.onSendData)
+    tg.onEvent('mainButtonClicked', this.mainButtonClicked);
+    //   tg.expand();
+    //   // tg.onEvent('mainButtonClicked', this.onSendData)
+    // },
+    // toggleMainButton() {
+    tg.MainButton.show()
+    //     this.TWA.MainButton.hide();
+    //   } else {
+    //     this.TWA.MainButton.show();
+    //   }
   },
-  // toggleMainButton() {
-  //   if (this.TWA.MainButton.isVisible) {
-  //     this.TWA.MainButton.hide();
-  //   } else {
-  //     this.TWA.MainButton.show();
-  //   }
-  // },
 });
 </script>
 
