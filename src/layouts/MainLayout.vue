@@ -174,7 +174,6 @@ export default defineComponent({
   },
   mounted() {
     tg.ready();
-    tg.expand();
   },
   methods: {
     mainButtonClicked() {
@@ -187,6 +186,7 @@ export default defineComponent({
     }
   },
   created() {
+    tg.expand();
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок',
       color: '#1976D2',
