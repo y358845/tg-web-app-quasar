@@ -176,7 +176,7 @@ export default defineComponent({
           date: this.date,
           date2: this.date2,
         };
-        tg.sendData(JSON.stringify(dataForm));
+        tg.sendData(JSON.stringify(this.date));
       },
     };
   },
