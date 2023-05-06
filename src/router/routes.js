@@ -2,13 +2,13 @@ const routes = [{
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [{
-        path: '',
-        component: () => import('pages/Pass.vue')
+        path: '/one',
+        component: () => import('pages/PassOneDate.vue')
       },
       {
-        path: '/pass',
-        component: () => import('pages/Pass.vue')
-      }
+        path: '/two',
+        component: () => import('pages/PassTwoDate.vue')
+      },
     ]
   },
 
