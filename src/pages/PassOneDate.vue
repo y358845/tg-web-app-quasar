@@ -147,7 +147,7 @@ export default defineComponent({
       const dataForm = {
         surname: this.surname,
         date: this.date,
-        date2: this.date2,
+        date2: this.date,
       };
       tg.sendData(JSON.stringify(dataForm));
     }
