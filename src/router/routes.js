@@ -7,7 +7,7 @@ const routes = [{
   // but you can also remove it
   {
     path: '/:catchAll(.*)*',
-    component: () => import('layouts/MainLayout.vue')
+    component: () => import('pages/PassOneDate.vue')
   }
 ]
 
