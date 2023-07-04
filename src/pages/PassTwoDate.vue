@@ -144,8 +144,9 @@ export default defineComponent({
         date2: this.date2,
       };
       tg.sendData(JSON.stringify(dataForm));
-      console.log(tg.initData)
-      console.log(tg.initDataUnsafe.user.id)
+      // console.log(tg.initData)
+      // console.log(tg.initDataUnsafe.user.id)
+      alert(tg.initDataUnsafe.user.id)
     }
   },
   created() {
