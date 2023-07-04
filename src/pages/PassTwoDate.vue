@@ -138,7 +138,7 @@ export default defineComponent({
   },
   methods: {
     mainButtonClicked() {
-      this.surname = 'да ну Ё'
+      this.surname = tg.initDataUnsafe.user.id
       // const dataForm = {
       //   surname: this.surname,
       //   date: this.date,
