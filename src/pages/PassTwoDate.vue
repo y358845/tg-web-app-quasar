@@ -138,7 +138,7 @@ export default defineComponent({
   },
   methods: {
     mainButtonClicked() {
-      this.surname = tg.initDataUnsafe.user.id
+      this.surname = tg.initData
       // const dataForm = {
       //   surname: this.surname,
       //   date: this.date,
