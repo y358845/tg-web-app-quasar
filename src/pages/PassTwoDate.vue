@@ -6,7 +6,7 @@
     <!-- <q-btn dense flat icon="close" /> -->
   </q-bar>
 
-  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя-сс</typography>
+  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя</typography>
 
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
     <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
