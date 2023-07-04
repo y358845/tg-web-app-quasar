@@ -137,12 +137,23 @@ export default defineComponent({
     tg.ready();
   },
   methods: {
+    //метод для обычной кнопки клавиатуры
+    // mainButtonClicked() {
+    //   this.surname = tg.initDataUnsafe.user.id
+    //   const dataForm = {
+    //     surname: this.surname,
+    //     date: this.date,
+    //     date2: this.date2,
+    //   };
+    // }
+    //метод для inline кнопки клавиатуры
     mainButtonClicked() {
-      this.surname = tg.initDataUnsafe.user.id
+      this.surname = tg.initDataUnsafe?.query_id,
       // const dataForm = {
       //   surname: this.surname,
       //   date: this.date,
       //   date2: this.date2,
+      //   operator_tg_id: tg.initDataUnsafe.user.id
       // };
       // tg.sendData(JSON.stringify(dataForm));
 
