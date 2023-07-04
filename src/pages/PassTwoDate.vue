@@ -6,7 +6,7 @@
     <!-- <q-btn dense flat icon="close" /> -->
   </q-bar>
 
-  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя</typography>
+  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя-new</typography>
 
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
     <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
@@ -145,7 +145,7 @@ export default defineComponent({
       };
       tg.sendData(JSON.stringify(dataForm));
       // console.log(tg.initData)
-      // console.log(tg.initDataUnsafe.user.id)
+      console.log(tg.initDataUnsafe.user.id)
       alert(tg.initDataUnsafe.user.id)
     }
   },
@@ -157,6 +157,7 @@ export default defineComponent({
     })
     tg.onEvent('mainButtonClicked', this.mainButtonClicked);
     tg.MainButton.hide()
+    alert(tg.initDataUnsafe.user.id)
   },
 });
 </script>
