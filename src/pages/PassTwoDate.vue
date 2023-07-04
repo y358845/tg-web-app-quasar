@@ -150,7 +150,7 @@ export default defineComponent({
     }
   },
   created() {
-    this.surname = tg.initDataUnsafe.user.id
+    this.surname = 'хмммм'
     tg.expand();
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок',
