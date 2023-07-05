@@ -14,7 +14,7 @@
         <div class="text-subtitle2 row items-center justify-center">
           Заполните данные гостя
         </div>
-      </q-card-section> -->
+      </q-card-section>-->
 
       <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" label="ФИО"
         hint="Введите ФИО гостя" lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
@@ -29,7 +29,7 @@
         <div class="text-subtitle2 row items-center justify-center">
           Заполните даты пропуска
         </div>
-      </q-card-section> -->
+      </q-card-section>-->
 
       <div class="row items-center justify-center toggle1">
         <q-toggle v-model="value1" @update:model-value="(value, evt) => checkTogl1(value, evt)" color="primary" keep-color
@@ -68,7 +68,6 @@
           </template>
         </q-input>
       </div>
-
     </q-card>
   </q-form>
 </template>
@@ -81,6 +80,7 @@ const dateK = date.formatDate(today, "YYYY/MM/DD");
 
 import { defineComponent, ref } from "vue";
 import { date } from "quasar";
+import { uni_rersponse } from "src/functions/1с_response";
 const tg = window?.Telegram?.WebApp;
 export default defineComponent({
   name: "MainLayout",
@@ -93,7 +93,7 @@ export default defineComponent({
       value1: ref(true),
       value2: ref(false),
       model: ref("2020/07/09"),
-      testData: 'хуета',
+      testData: "хуета",
 
       checkOfFilling(val) {
         if (val) {
@@ -104,7 +104,7 @@ export default defineComponent({
         const dataForm = {
           surname: this.surname,
           date: this.date,
-          date2: this.date2,
+          date2: this.date2
         };
         tg.sendData(JSON.stringify(dataForm));
       },
@@ -128,9 +128,7 @@ export default defineComponent({
             "YYYY/MM/DD"
           );
         }
-      },
-
-
+      }
     };
   },
   mounted() {
@@ -148,31 +146,51 @@ export default defineComponent({
     // }
     //метод для inline кнопки клавиатуры
     mainButtonClicked() {
-      this.surname = tg.initDataUnsafe?.query_id
+      this.sendInquiry()
+      // this.surname = tg.initDataUnsafe?.query_id
       // const dataForm = {
       //   surname: this.surname,
       //   date: this.date,
       //   date2: this.date2,
-      //   operator_tg_id: tg.initDataUnsafe.user.id
+      //   operator_tg_id: tg.initDataUnsafe.user.id,
+      //   query_id: tg.initDataUnsafe?.query_id
       // };
-      // tg.sendData(JSON.stringify(dataForm));
+    },
+    async sendInquiry() {
+      const dataForm = {
+        surname: this.surname,
+        date: this.date,
+        date2: this.date2,
+        operator_tg_id: tg.initDataUnsafe.user.id,
+        query_id: tg.initDataUnsafe?.query_id,
+        nameMethod: 'pass'
+      };
+      Loading.show();
+      try {
+        await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
 
+          console.log(res.data);
 
-      // console.log(tg.initData)
-      // console.log(tg.initDataUnsafe.user.id)
-      // alert(tg.initDataUnsafe.user.id)
+        });
+      } catch (error) {
+        console.log(error);
+        return error;
+      } finally {
+        Loading.hide();
+      }
+
     }
   },
   created() {
-    this.surname = 'хмммм'
+    // this.surname = "хмммм";
     tg.expand();
     tg.MainButton.setParams({
-      text: 'Отправить пропуск в стол справок',
-      color: '#1976D2',
-    })
-    tg.onEvent('mainButtonClicked', this.mainButtonClicked);
-    tg.MainButton.hide()
-  },
+      text: "Отправить пропуск в стол справок",
+      color: "#1976D2"
+    });
+    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    tg.MainButton.hide();
+  }
 });
 </script>
 
