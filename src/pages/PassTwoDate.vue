@@ -69,6 +69,7 @@
         </q-input>
       </div>
     </q-card>
+    <!-- <q-btn color="white" text-color="black" label="Standard" @click="mainButtonClicked" /> -->
   </q-form>
 </template>
 <script>
@@ -81,6 +82,7 @@ const dateK = date.formatDate(today, "YYYY/MM/DD");
 import { defineComponent, ref } from "vue";
 import { date } from "quasar";
 import { uni_rersponse } from "src/functions/1с_response";
+import { Loading } from 'quasar'
 const tg = window?.Telegram?.WebApp;
 export default defineComponent({
   name: "MainLayout",
@@ -147,7 +149,8 @@ export default defineComponent({
     //метод для inline кнопки клавиатуры
     mainButtonClicked() {
       this.sendInquiry()
-      this.surname = tg.initDataUnsafe?.query_id
+      console.log('ckick')
+      // this.surname = tg.initDataUnsafe?.query_id
       // const dataForm = {
       //   surname: this.surname,
       //   date: this.date,
@@ -156,7 +159,7 @@ export default defineComponent({
       //   query_id: tg.initDataUnsafe?.query_id
       // };
     },
-    async sendInquiry() {
+    sendInquiry() {
       const dataForm = {
         surname: this.surname,
         date: this.date,
@@ -167,9 +170,9 @@ export default defineComponent({
       };
       Loading.show();
       try {
-        await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
+        uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
 
-          console.log(res.data);
+          console.log(res);
 
         });
       } catch (error) {
