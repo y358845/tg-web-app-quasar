@@ -147,7 +147,7 @@ export default defineComponent({
     //метод для inline кнопки клавиатуры
     mainButtonClicked() {
       this.sendInquiry()
-      // this.surname = tg.initDataUnsafe?.query_id
+      this.surname = tg.initDataUnsafe?.query_id
       // const dataForm = {
       //   surname: this.surname,
       //   date: this.date,
