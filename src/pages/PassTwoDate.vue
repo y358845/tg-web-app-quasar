@@ -164,8 +164,8 @@ export default defineComponent({
         surname: this.surname,
         date: this.date,
         date2: this.date2,
-        id: tg.initDataUnsafe.user.id,
-        // query_id: tg.initDataUnsafe?.query_id,
+        tgid: tg.initDataUnsafe.user.idtoString(),
+        query_id: tg.initDataUnsafe?.query_id,
         nameMethod: 'pass'
       };
       Loading.show();
