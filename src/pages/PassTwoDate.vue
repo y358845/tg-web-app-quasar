@@ -165,7 +165,7 @@ export default defineComponent({
         date: this.date,
         date2: this.date2,
         operator_tg_id: tg.initDataUnsafe.user.id,
-        query_id: tg.initDataUnsafe?.query_id,
+        // query_id: tg.initDataUnsafe?.query_id,
         nameMethod: 'pass'
       };
       Loading.show();
