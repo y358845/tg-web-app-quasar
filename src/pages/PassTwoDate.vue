@@ -150,7 +150,7 @@ export default defineComponent({
     mainButtonClicked() {
       this.sendInquiry()
 
-      this.surname = tg.initDataUnsafe?.user.id
+      // this.surname = tg.initDataUnsafe?.user.id
       // const dataForm = {
       //   surname: this.surname,
       //   date: this.date,
