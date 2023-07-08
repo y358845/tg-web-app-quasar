@@ -149,7 +149,7 @@ export default defineComponent({
     //метод для inline кнопки клавиатуры
     mainButtonClicked() {
       this.sendInquiry()
-      console.log('ckick')
+
       this.surname = tg.initDataUnsafe?.user.id
       // const dataForm = {
       //   surname: this.surname,
@@ -164,7 +164,7 @@ export default defineComponent({
         surname: this.surname,
         date: this.date,
         date2: this.date2,
-        operator_tg_id: tg.initDataUnsafe.user.id,
+        id: tg.initDataUnsafe.user.id,
         // query_id: tg.initDataUnsafe?.query_id,
         nameMethod: 'pass'
       };
