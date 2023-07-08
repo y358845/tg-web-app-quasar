@@ -84,6 +84,7 @@ import { date } from "quasar";
 import { uni_rersponse } from "src/functions/1с_response";
 import { Loading } from 'quasar'
 const tg = window?.Telegram?.WebApp;
+const tdid = tg.initDataUnsafe.user.id
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -164,7 +165,7 @@ export default defineComponent({
         surname: this.surname,
         date: this.date,
         date2: this.date2,
-        tgid: tg.initDataUnsafe.user.idtoString(),
+        tgid: tdid.toString(),
         query_id: tg.initDataUnsafe?.query_id,
         nameMethod: 'pass'
       };
