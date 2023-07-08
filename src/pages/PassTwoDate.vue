@@ -154,7 +154,7 @@ export default defineComponent({
         return error;
       } finally {
         Loading.hide();
-        tg.close()
+        // tg.close()
       }
 
     }
