@@ -6,7 +6,7 @@
     <!-- <q-btn dense flat icon="close" /> -->
   </q-bar>
 
-  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя-2</typography>
+  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя</typography>
 
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
     <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
@@ -84,7 +84,7 @@ import { date } from "quasar";
 import { uni_rersponse } from "src/functions/1с_response";
 import { Loading } from 'quasar'
 const tg = window?.Telegram?.WebApp;
-const tdid = tg.initDataUnsafe.user.id
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -138,34 +138,16 @@ export default defineComponent({
     tg.ready();
   },
   methods: {
-    //метод для обычной кнопки клавиатуры
-    // mainButtonClicked() {
-    //   this.surname = tg.initDataUnsafe.user.id
-    //   const dataForm = {
-    //     surname: this.surname,
-    //     date: this.date,
-    //     date2: this.date2,
-    //   };
-    // }
-    //метод для inline кнопки клавиатуры
+
     mainButtonClicked() {
       this.sendInquiry()
-
-      // this.surname = tg.initDataUnsafe?.user.id
-      // const dataForm = {
-      //   surname: this.surname,
-      //   date: this.date,
-      //   date2: this.date2,
-      //   operator_tg_id: tg.initDataUnsafe.user.id,
-      //   query_id: tg.initDataUnsafe?.query_id
-      // };
     },
     sendInquiry() {
       const dataForm = {
         surname: this.surname,
         date: this.date,
         date2: this.date2,
-        tgid: tdid.toString(),
+        tgid: tgid.toString(),
         query_id: tg.initDataUnsafe?.query_id,
         nameMethod: 'pass'
       };
