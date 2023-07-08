@@ -10,11 +10,7 @@
 
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
     <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
-      <!-- <q-card-section>
-        <div class="text-subtitle2 row items-center justify-center">
-          Заполните данные гостя
-        </div>
-      </q-card-section>-->
+
 
       <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" label="ФИО"
         hint="Введите ФИО гостя" lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
@@ -25,11 +21,6 @@
     </q-card>
     <typography class="row items-center justify-center q-mt-md">Заполните даты пропуска</typography>
     <q-card class="my-card q-pl-sm q-pr-sm q-pb-md" flat bordered>
-      <!-- <q-card-section>
-        <div class="text-subtitle2 row items-center justify-center">
-          Заполните даты пропуска
-        </div>
-      </q-card-section>-->
 
       <div class="row items-center justify-center toggle1">
         <q-toggle v-model="value1" @update:model-value="(value, evt) => checkTogl1(value, evt)" color="primary" keep-color
@@ -69,11 +60,11 @@
         </q-input>
       </div>
     </q-card>
-    <!-- <q-btn color="white" text-color="black" label="Standard" @click="mainButtonClicked" /> -->
+
   </q-form>
 </template>
 <script>
-// const d = new Date();
+
 var today = new Date();
 var tomorrow = new Date();
 const dateN = date.formatDate(today, "YYYY/MM/DD");
@@ -95,8 +86,8 @@ export default defineComponent({
       surname: ref(""),
       value1: ref(true),
       value2: ref(false),
-      model: ref("2020/07/09"),
-      testData: "хуета",
+
+
 
       checkOfFilling(val) {
         if (val) {
@@ -163,6 +154,7 @@ export default defineComponent({
         return error;
       } finally {
         Loading.hide();
+        tg.close()
       }
 
     }
