@@ -133,6 +133,18 @@ export default defineComponent({
     mainButtonClicked() {
       this.sendInquiry()
     },
+    sendMessageBot() {
+      const data = {
+        text: 'Привет',
+      }
+      fetch('http://localhost:8000/web-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+    },
     sendInquiry() {
       const dataForm = {
         surname: this.surname,
@@ -156,6 +168,7 @@ export default defineComponent({
         Loading.hide();
         // tg.close()
       }
+
 
     }
   },
