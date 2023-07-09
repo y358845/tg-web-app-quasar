@@ -131,11 +131,13 @@ export default defineComponent({
   methods: {
 
     mainButtonClicked() {
+      this.sendMessageBot()
       this.sendInquiry()
     },
     sendMessageBot() {
       const data = {
-        text: 'Привет',
+        text: 'Привет, все будет  офигенно!',
+        query_id: tg.initDataUnsafe?.query_id
       }
       fetch('http://localhost:8000/web-data', {
         method: 'POST',
