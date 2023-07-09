@@ -139,7 +139,7 @@ export default defineComponent({
         text: 'Привет, все будет  офигенно!',
         query_id: tg.initDataUnsafe?.query_id
       }
-      fetch('http://localhost:8000/web-data', {
+      fetch('http://45.12.230.13:8000/web-data', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
