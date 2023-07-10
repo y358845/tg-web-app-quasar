@@ -60,7 +60,7 @@
         </q-input>
       </div>
     </q-card>
-
+    <q-btn color="white" text-color="black" label="Standard" @click="sendMessageBot()" />
   </q-form>
 </template>
 <script>
@@ -74,6 +74,7 @@ import { defineComponent, ref } from "vue";
 import { date } from "quasar";
 import { uni_rersponse } from "src/functions/1с_response";
 import { Loading } from 'quasar'
+import axios from "axios";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 export default defineComponent({
@@ -132,20 +133,35 @@ export default defineComponent({
 
     mainButtonClicked() {
       this.sendMessageBot()
-      this.sendInquiry()
+      // this.sendInquiry()
     },
-    sendMessageBot() {
-      const data = {
+    async sendMessageBot() {
+
+      const dataForm = {
         text: 'Привет, все будет  офигенно!',
-        query_id: tg.initDataUnsafe?.query_id
-      }
-      fetch('http://45.12.230.13:8000/web-data', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      })
+        queryId: tg.initDataUnsafe?.query_id
+      };
+
+      await axios.post('http://45.12.230.13:8000/web-data', dataForm
+      ).then(res => console.log(res))
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
+
+      // const data = {
+      //   text: 'Привет, все будет  офигенно!',
+      //   query_id: 'frgre6tyrftu'
+      //   // query_id: tg.initDataUnsafe?.query_id
+      // }
+      // let r = fetch('http://45.12.230.13:8000/web-data', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(data)
+      // })
+
     },
     sendInquiry() {
       const dataForm = {
@@ -159,9 +175,7 @@ export default defineComponent({
       Loading.show();
       try {
         uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
-
           console.log(res);
-
         });
       } catch (error) {
         console.log(error);
@@ -170,8 +184,6 @@ export default defineComponent({
         Loading.hide();
         // tg.close()
       }
-
-
     }
   },
   created() {
