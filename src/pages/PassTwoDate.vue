@@ -136,19 +136,20 @@ export default defineComponent({
       this.sendMessageBot()
       // this.sendInquiry()
     },
-    sendMessageBot() {
+    async sendMessageBot() {
       // this.surname = tg.initDataUnsafe?.query_id.toString()
       const dataForm = {
         // queryId: tg.initDataUnsafe?.query_id.toString()
         queryId: "тестовый ай ди"
       }
 
-      axios.post('http://45.12.230.13:8000/web-data', dataForm
+      await axios.post('http://45.12.230.13:8000/web-data', dataForm
 
       ).then(res => this.surname = JSON.stringify(res.data))
         .catch(error => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
+          this.surname = error
         });
 
       // const data = {
