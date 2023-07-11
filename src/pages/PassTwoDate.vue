@@ -132,17 +132,18 @@ export default defineComponent({
   methods: {
 
     mainButtonClicked() {
+      this.surname = tg.initDataUnsafe?.query_id
       this.sendMessageBot()
       // this.sendInquiry()
     },
-    async sendMessageBot() {
+    sendMessageBot() {
 
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id
         // queryId: "тестовый ай ди"
       }
 
-      await axios.post('http://45.12.230.13:8000/web-data', dataForm
+      axios.post('http://45.12.230.13:8000/web-data', dataForm
 
       ).then(res => this.surname = JSON.stringify(res.data))
         .catch(error => {
