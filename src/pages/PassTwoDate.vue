@@ -1,7 +1,7 @@
 <template>
   <q-bar class="bg-primary text-white q-pa-md">
     <q-btn dense flat round icon="confirmation_number" size="8.5px" color="white" />
-    <div class="col text-center text-weight-bold">Новый пропуск!!</div>
+    <div class="col text-center text-weight-bold">Новый пропуск</div>
 
     <!-- <q-btn dense flat icon="close" /> -->
   </q-bar>
@@ -188,7 +188,6 @@ export default defineComponent({
     }
   },
   created() {
-    this.surname = "хмммм";
     tg.expand();
     tg.MainButton.setParams({
       text: "Отправить пропуск в стол справок",
