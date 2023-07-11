@@ -138,12 +138,11 @@ export default defineComponent({
     async sendMessageBot() {
 
       const dataForm = {
-        text: 'Привет, все будет  офигенно!',
         queryId: tg.initDataUnsafe?.query_id
-      };
+      }
 
       await axios.post('http://45.12.230.13:8000/web-data', dataForm
-      ).then(res => console.log(res))
+      ).then(res => this.surname = res)
         .catch(error => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
