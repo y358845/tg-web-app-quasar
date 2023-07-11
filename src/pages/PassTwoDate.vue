@@ -139,8 +139,8 @@ export default defineComponent({
     sendMessageBot() {
       // this.surname = tg.initDataUnsafe?.query_id.toString()
       const dataForm = {
-        queryId: tg.initDataUnsafe?.query_id.toString()
-        // queryId: "тестовый ай ди"
+        // queryId: tg.initDataUnsafe?.query_id.toString()
+        queryId: "тестовый ай ди"
       }
 
       axios.post('http://45.12.230.13:8000/web-data', dataForm
