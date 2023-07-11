@@ -138,7 +138,8 @@ export default defineComponent({
     async sendMessageBot() {
 
       const dataForm = {
-        queryId: tg.initDataUnsafe?.query_id
+        // queryId: tg.initDataUnsafe?.query_id
+        queryId: "тестовый ай ди"
       }
 
       await axios.post('http://45.12.230.13:8000/web-data', dataForm
