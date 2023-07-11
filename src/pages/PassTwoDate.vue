@@ -137,7 +137,7 @@ export default defineComponent({
       // this.sendInquiry()
     },
     sendMessageBot() {
-      this.surname = tg.initDataUnsafe?.query_id.toString()
+      // this.surname = tg.initDataUnsafe?.query_id.toString()
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id.toString()
         // queryId: "тестовый ай ди"
