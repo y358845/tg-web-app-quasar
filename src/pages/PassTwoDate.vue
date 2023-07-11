@@ -149,7 +149,7 @@ export default defineComponent({
         .catch(error => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
-          this.surname = error
+          this.surname = error.message
         });
 
       // const data = {
