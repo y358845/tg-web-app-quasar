@@ -132,12 +132,12 @@ export default defineComponent({
   methods: {
 
     mainButtonClicked() {
-      this.surname = tg.initDataUnsafe?.query_id
+
       this.sendMessageBot()
       // this.sendInquiry()
     },
     sendMessageBot() {
-
+      this.surname = tg.initDataUnsafe?.query_id
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id
         // queryId: "тестовый ай ди"
