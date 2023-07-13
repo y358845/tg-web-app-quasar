@@ -143,7 +143,7 @@ export default defineComponent({
         queryId: "тестовый ай ди"
       }
 
-      await axios.post('http://45.12.230.13:8000/web-data', dataForm
+      await axios.post('https://1c.rostgmu-uit.ru:8000/web-data', dataForm
 
       ).then(res => this.surname = JSON.stringify(res.data))
         .catch(error => {
