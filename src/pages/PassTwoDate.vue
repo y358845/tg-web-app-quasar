@@ -140,7 +140,7 @@ export default defineComponent({
       // this.surname = tg.initDataUnsafe?.query_id.toString()
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id.toString(),
-        text: message
+        text: 'проба пера'
       }
 
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
