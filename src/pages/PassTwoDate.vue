@@ -60,7 +60,7 @@
         </q-input>
       </div>
     </q-card>
-    <q-btn color="white" text-color="black" label="Standard" @click="sendMessageBot()" />
+    <!-- <q-btn color="white" text-color="black" label="Standard" @click="sendMessageBot()" /> -->
   </q-form>
 </template>
 <script>
