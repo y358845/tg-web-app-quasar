@@ -170,8 +170,8 @@ export default defineComponent({
       Loading.show();
       try {
         uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
-          this.sendMessageBot(res.data)
-          console.log(res);
+          this.sendMessageBot('епта!!')
+          // console.log(res);
         });
       } catch (error) {
         console.log(error);
