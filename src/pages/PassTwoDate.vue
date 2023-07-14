@@ -75,8 +75,8 @@ import { date } from "quasar";
 import { uni_rersponse } from "src/functions/1с_response";
 import { Loading } from 'quasar'
 import axios from "axios";
-// const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -127,7 +127,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    // tg.ready();
+    tg.ready();
   },
   methods: {
 
@@ -139,8 +139,8 @@ export default defineComponent({
     async sendMessageBot() {
       // this.surname = tg.initDataUnsafe?.query_id.toString()
       const dataForm = {
-        // queryId: tg.initDataUnsafe?.query_id.toString()
-        queryId: "тестовый ай ди"
+        queryId: tg.initDataUnsafe?.query_id.toString()
+        // queryId: "тестовый ай ди"
       }
 
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
@@ -152,18 +152,7 @@ export default defineComponent({
           this.surname = error.message
         });
 
-      // const data = {
-      //   text: 'Привет, все будет  офигенно!',
-      //   query_id: 'frgre6tyrftu'
-      //   // query_id: tg.initDataUnsafe?.query_id
-      // }
-      // let r = fetch('http://45.12.230.13:8000/web-data', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(data)
-      // })
+
 
     },
     sendInquiry() {
@@ -190,13 +179,13 @@ export default defineComponent({
     }
   },
   created() {
-    // tg.expand();
-    // tg.MainButton.setParams({
-    //   text: "Отправить пропуск в стол справок",
-    //   color: "#1976D2"
-    // });
-    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    // tg.MainButton.hide();
+    tg.expand();
+    tg.MainButton.setParams({
+      text: "Отправить пропуск в стол справок",
+      color: "#1976D2"
+    });
+    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    tg.MainButton.hide();
   }
 });
 </script>
