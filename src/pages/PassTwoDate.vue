@@ -6,7 +6,7 @@
     <!-- <q-btn dense flat icon="close" /> -->
   </q-bar>
 
-  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя-vkby</typography>
+  <typography class="row items-center justify-center q-mt-md">Заполните данные гостя-vk</typography>
 
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
     <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
@@ -139,11 +139,11 @@ export default defineComponent({
     async sendMessageBot() {
       // this.surname = tg.initDataUnsafe?.query_id.toString()
       const dataForm = {
-        // queryId: tg.initDataUnsafe?.query_id.toString()
-        queryId: "тестовый ай ди"
+        queryId: tg.initDataUnsafe?.query_id.toString()
+        // queryId: "тестовый ай ди"
       }
 
-      await axios.post('https://1c.rostgmu-uit.ru:8000/web-data', dataForm
+      await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res => this.surname = JSON.stringify(res.data))
         .catch(error => {
