@@ -140,14 +140,14 @@ export default defineComponent({
       // this.surname = tg.initDataUnsafe?.query_id.toString()
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id.toString(),
-        message: msg
+        message: JSON.stringify(msg)
       }
 
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
         // this.surname = JSON.stringify(res.data)
-        console.log(res)
+        console.log(JSON.stringify(res.data))
       )
         .catch(error => {
           this.errorMessage = error.message;
@@ -170,7 +170,7 @@ export default defineComponent({
       Loading.show();
       try {
         uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
-          this.sendMessageBot('епта!!')
+          this.sendMessageBot(JSON.stringify(res.data))
           // console.log(res);
         });
       } catch (error) {
