@@ -147,7 +147,7 @@ export default defineComponent({
 
       ).then(res =>
         // this.surname = JSON.stringify(res.data)
-        console.error("There was an error!", res)
+        console.log(res)
       )
         .catch(error => {
           this.errorMessage = error.message;
