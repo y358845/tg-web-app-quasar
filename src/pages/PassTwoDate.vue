@@ -170,7 +170,7 @@ export default defineComponent({
       Loading.show();
       try {
         uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
-          this.sendMessageBot(JSON.stringify(res.data))
+          this.sendMessageBot(res.data)
           // console.log(res);
         });
       } catch (error) {
