@@ -145,7 +145,10 @@ export default defineComponent({
 
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
-      ).then(res => this.surname = JSON.stringify(res.data))
+      ).then(res =>
+        // this.surname = JSON.stringify(res.data)
+        console.error("There was an error!", res)
+      )
         .catch(error => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
