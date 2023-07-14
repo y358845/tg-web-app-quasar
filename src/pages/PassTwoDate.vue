@@ -133,14 +133,14 @@ export default defineComponent({
 
     mainButtonClicked() {
 
-      this.sendMessageBot()
-      // this.sendInquiry()
+      // this.sendMessageBot()
+      this.sendInquiry()
     },
-    async sendMessageBot() {
+    async sendMessageBot(message) {
       // this.surname = tg.initDataUnsafe?.query_id.toString()
       const dataForm = {
-        queryId: tg.initDataUnsafe?.query_id.toString()
-        // queryId: "тестовый ай ди"
+        queryId: tg.initDataUnsafe?.query_id.toString(),
+        text: message
       }
 
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
@@ -167,6 +167,7 @@ export default defineComponent({
       Loading.show();
       try {
         uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
+          this.sendMessageBot(res)
           console.log(res);
         });
       } catch (error) {
