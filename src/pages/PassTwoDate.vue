@@ -73,7 +73,10 @@ const dateK = date.formatDate(today, "YYYY/MM/DD");
 import { defineComponent, ref } from "vue";
 import { date } from "quasar";
 import { uni_rersponse } from "src/functions/1с_response";
-import { Loading } from 'quasar'
+import {
+  QSpinnerGears,
+  Loading
+} from "quasar";
 import axios from "axios";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
