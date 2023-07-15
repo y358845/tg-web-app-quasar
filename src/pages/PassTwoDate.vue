@@ -167,7 +167,11 @@ export default defineComponent({
         query_id: tg.initDataUnsafe?.query_id,
         nameMethod: 'pass'
       };
-      Loading.show();
+      Loading.show({
+        spinner: QSpinnerGears,
+        backgroundColor: "bg",
+        message: "Создание пропуска...",
+      })
       try {
         return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
           // this.sendMessageBot(res.data)
