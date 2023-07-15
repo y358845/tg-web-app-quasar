@@ -172,13 +172,14 @@ export default defineComponent({
         uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
           // this.sendMessageBot(res.data)
           // console.log(res);
+          tg.close()
         });
       } catch (error) {
         console.log(error);
         return error;
       } finally {
         Loading.hide();
-        // tg.close()
+
       }
     }
   },
