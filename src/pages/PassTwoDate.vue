@@ -60,7 +60,7 @@
         </q-input>
       </div>
     </q-card>
-    <!-- <q-btn color="white" text-color="black" label="Standard" @click="sendMessageBot()" /> -->
+    <q-btn color="white" text-color="black" label="Standard" @click="tgMessageBot()" />
   </q-form>
 </template>
 <script>
@@ -134,10 +134,10 @@ export default defineComponent({
     tg.ready();
   },
   methods: {
-
+    tgMessageBot() {
+      this.surname = window?.Telegram?.WebApp.initDataUnsafe.start_param
+    },
     mainButtonClicked() {
-
-      // this.sendMessageBot()
       this.sendInquiry()
     },
     async sendMessageBot(msg) {
@@ -146,7 +146,6 @@ export default defineComponent({
         queryId: tg.initDataUnsafe?.query_id.toString(),
         message: JSON.stringify(msg)
       }
-
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
@@ -158,9 +157,6 @@ export default defineComponent({
           console.error("There was an error!", error);
           this.surname = error.message
         });
-
-
-
     },
     async sendInquiry() {
       const dataForm = {
@@ -199,7 +195,7 @@ export default defineComponent({
     });
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     tg.MainButton.hide();
-    this.surname = start_param
+
   }
 });
 </script>
