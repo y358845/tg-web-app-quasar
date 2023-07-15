@@ -158,7 +158,7 @@ export default defineComponent({
 
 
     },
-    sendInquiry() {
+    async sendInquiry() {
       const dataForm = {
         surname: this.surname,
         date: this.date,
@@ -169,11 +169,11 @@ export default defineComponent({
       };
       Loading.show();
       try {
-        uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
+        return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
           // this.sendMessageBot(res.data)
           // console.log(res);
-          tg.close()
-        });
+
+        }).then(() => { tg.close() })
       } catch (error) {
         console.log(error);
         return error;

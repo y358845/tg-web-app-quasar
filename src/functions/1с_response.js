@@ -1,8 +1,6 @@
 import axios from "axios";
 const url_dev = "https://1c.rostgmu-uit.ru:4443/help_desk/hs/";
-// const home = "http://localhost/science/hs/PersonalAPI/";
-// const url_work =  `http://85.21.63.177/nauka/hs/PersonalAPI/`
-// https://1c.rostgmu-uit.ru:4443/help_desk/hs/pass/
+
 
 export function uni_rersponse(payload, method, responseType = 'text') {
 
