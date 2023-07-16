@@ -78,9 +78,9 @@ import {
   Loading
 } from "quasar";
 import axios from "axios";
-const tg = window?.Telegram?.WebApp;
-const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
-const start_param = window?.Telegram?.WebApp.initDataUnsafe.start_param
+// const tg = window?.Telegram?.WebApp;
+// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
+// const start_param = window?.Telegram?.WebApp.initDataUnsafe.start_param
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -91,6 +91,8 @@ export default defineComponent({
       surname: ref(""),
       value1: ref(true),
       value2: ref(false),
+
+
 
       checkOfFilling(val) {
         if (val) {
@@ -103,7 +105,7 @@ export default defineComponent({
           date: this.date,
           date2: this.date2
         };
-        tg.sendData(JSON.stringify(dataForm));
+        // tg.sendData(JSON.stringify(dataForm));
       },
       checkTogl1(val, evt) {
         console.log(evt);
@@ -186,13 +188,13 @@ export default defineComponent({
     }
   },
   created() {
-    tg.expand();
-    tg.MainButton.setParams({
-      text: "Отправить пропуск в стол справок",
-      color: "#1976D2"
-    });
-    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    tg.MainButton.hide();
+    // tg.expand();
+    // tg.MainButton.setParams({
+    //   text: "Отправить пропуск в стол справок",
+    //   color: "#1976D2"
+    // });
+    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    // tg.MainButton.hide();
 
   }
 });
