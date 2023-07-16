@@ -1,5 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
+    <typography class="row items-center justify-center q-mt-md">Заполните данные гостя-vk</typography>
     <q-page-container>
       <keep-alive></keep-alive>
       <router-view />

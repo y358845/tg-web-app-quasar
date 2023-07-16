@@ -92,8 +92,6 @@ export default defineComponent({
       value1: ref(true),
       value2: ref(false),
 
-
-
       checkOfFilling(val) {
         if (val) {
           tg.MainButton.show();

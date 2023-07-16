@@ -1,14 +1,19 @@
 const routes = [{
     path: '/',
-    component: () => import('pages/PassTwoDate.vue'),
+    component: () => import('layouts/MainLayout.vue'),
   },
 
   // Always leave this as last one,
   // but you can also remove it
   {
-    path: '/:catchAll(.*)*',
+    path: '/two',
     component: () => import('pages/PassTwoDate.vue')
-  }
+  },
+  {
+    path: '/one',
+    component: () => import('pages/PassOneDate.vue')
+  },
+
 ]
 
 export default routes
