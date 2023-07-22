@@ -84,7 +84,7 @@ export default defineComponent({
       deskription: ref(""),
       phone: ref(""),
       files: [],
-      test: '',
+      test: ref(""),
 
       checkOfFilling(val) {
         if (val) {
