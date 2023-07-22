@@ -34,7 +34,8 @@
       </q-card>
 
 
-      <q-uploader dense flat color="primary" @added="addFile" multiple max-files="3" hide-upload-btn no-thumbnails>
+      <q-uploader style="width: 96%" dense flat color="primary" @added="addFile" multiple max-files="3" hide-upload-btn
+        no-thumbnails>
         <template v-slot:header="scope">
           <div class="row items-center q-pa-sm">
             <q-btn icon="attach_file" round dense flat> </q-btn>
@@ -188,9 +189,5 @@ body {
 
 .q-date {
   box-shadow: none;
-}
-
-.q-uploader {
-  width: 100%;
 }
 </style>
