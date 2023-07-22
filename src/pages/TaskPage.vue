@@ -34,8 +34,7 @@
       </q-card>
 
 
-      <q-uploader class=" q-pr-md" dense flat color="primary" @added="addFile" multiple max-files="3" hide-upload-btn
-        no-thumbnails>
+      <q-uploader dense flat color="primary" @added="addFile" multiple max-files="3" hide-upload-btn no-thumbnails>
         <template v-slot:header="scope">
           <div class="row items-center q-pa-sm">
             <q-btn icon="attach_file" round dense flat> </q-btn>
@@ -71,7 +70,7 @@ import {
 } from "quasar";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
-// const start_param = window?.Telegram?.WebApp.initDataUnsafe.start_param
+const start_param = window?.Telegram?.WebApp.initDataUnsafe.start_param
 export default defineComponent({
   name: "MainLayout",
   components: {},
