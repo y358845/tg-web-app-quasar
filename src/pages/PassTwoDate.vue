@@ -60,7 +60,7 @@
         </q-input>
       </div>
     </q-card>
-    <q-btn color="white" text-color="black" label="Standard" @click="tgMessageBot()" />
+    <!-- <q-btn color="white" text-color="black" label="Standard" @click="tgMessageBot()" /> -->
   </q-form>
 </template>
 <script>
@@ -78,8 +78,8 @@ import {
   Loading
 } from "quasar";
 import axios from "axios";
-// const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 // const start_param = window?.Telegram?.WebApp.initDataUnsafe.start_param
 export default defineComponent({
   name: "MainLayout",
@@ -105,7 +105,7 @@ export default defineComponent({
           date: this.date,
           date2: this.date2
         };
-        // tg.sendData(JSON.stringify(dataForm));
+        tg.sendData(JSON.stringify(dataForm));
       },
       checkTogl1(val, evt) {
         console.log(evt);
@@ -134,30 +134,30 @@ export default defineComponent({
     tg.ready();
   },
   methods: {
-    tgMessageBot() {
-      this.surname = window?.Telegram?.WebApp.initDataUnsafe.start_param
-    },
+    // tgMessageBot() {
+    //   this.surname = window?.Telegram?.WebApp.initDataUnsafe.start_param
+    // },
     mainButtonClicked() {
       this.sendInquiry()
     },
-    async sendMessageBot(msg) {
-      // this.surname = tg.initDataUnsafe?.query_id.toString()
-      const dataForm = {
-        queryId: tg.initDataUnsafe?.query_id.toString(),
-        message: JSON.stringify(msg)
-      }
-      await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
+    // async sendMessageBot(msg) {
+    //   // this.surname = tg.initDataUnsafe?.query_id.toString()
+    //   const dataForm = {
+    //     queryId: tg.initDataUnsafe?.query_id.toString(),
+    //     message: JSON.stringify(msg)
+    //   }
+    //   await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
-      ).then(res =>
-        // this.surname = JSON.stringify(res.data)
-        console.log(JSON.stringify(res.data))
-      )
-        .catch(error => {
-          this.errorMessage = error.message;
-          console.error("There was an error!", error);
-          this.surname = error.message
-        });
-    },
+    //   ).then(res =>
+    //     // this.surname = JSON.stringify(res.data)
+    //     console.log(JSON.stringify(res.data))
+    //   )
+    //     .catch(error => {
+    //       this.errorMessage = error.message;
+    //       console.error("There was an error!", error);
+    //       this.surname = error.message
+    //     });
+    // },
     async sendInquiry() {
       const dataForm = {
         surname: this.surname,
@@ -188,13 +188,13 @@ export default defineComponent({
     }
   },
   created() {
-    // tg.expand();
-    // tg.MainButton.setParams({
-    //   text: "Отправить пропуск в стол справок",
-    //   color: "#1976D2"
-    // });
-    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    // tg.MainButton.hide();
+    tg.expand();
+    tg.MainButton.setParams({
+      text: "Отправить пропуск в стол справок",
+      color: "#1976D2"
+    });
+    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    tg.MainButton.hide();
 
   }
 });
