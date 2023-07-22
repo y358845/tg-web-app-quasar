@@ -54,7 +54,7 @@
         </template>
       </q-uploader>
 
-      <q-btn color="white" text-color="black" label="Standard" @click="sendInquiry()" />
+      <q-btn color="white" text-color="black" label="Standard" @click="startParam()" />
     </q-form>
   </div>
 </template>
@@ -99,6 +99,10 @@ export default defineComponent({
     mainButtonClicked() {
       this.sendInquiry()
     },
+    startParam() {
+      this.deskription = start_param
+    }
+    ,
     async sendMessageBot(msg) {
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id.toString(),
@@ -189,5 +193,9 @@ body {
 
 .q-date {
   box-shadow: none;
+}
+
+.q-uploader__file-header .q-uploader__title {
+  color: rgba(0, 0, 0, 0.6);
 }
 </style>
