@@ -77,7 +77,6 @@ import {
   QSpinnerGears,
   Loading
 } from "quasar";
-import axios from "axios";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 // const start_param = window?.Telegram?.WebApp.initDataUnsafe.start_param
