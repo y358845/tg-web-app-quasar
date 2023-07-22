@@ -12,7 +12,8 @@
       <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
 
 
-        <q-input dense outlined v-model="deskription" label="Описание проблемы" hint="Опишите проблему" lazy-rules
+        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="deskription"
+          label="Описание проблемы" hint="Опишите проблему" lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
           <template v-slot:prepend>
             <q-icon name="description" color="orange" />
@@ -20,10 +21,10 @@
         </q-input>
       </q-card>
 
-      <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
+      <q-card class="my-card q-pa-sm q-pr-sm q-pb-md" flat bordered>
 
 
-        <q-input dense outlined v-model="phone" label="Телефон"
+        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="phone" label="Телефон"
           hint="Проверьте контактный номер телефона/при отсутствии введите новый" lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Введите контактный телефонный номер']">
           <template v-slot:prepend>
@@ -33,7 +34,8 @@
       </q-card>
 
 
-      <q-uploader dense flat color="primary" @added="addFile" multiple max-files="3" hide-upload-btn no-thumbnails>
+      <q-uploader class=" q-pr-md" dense flat color="primary" @added="addFile" multiple max-files="3" hide-upload-btn
+        no-thumbnails>
         <template v-slot:header="scope">
           <div class="row items-center q-pa-sm">
             <q-btn icon="attach_file" round dense flat> </q-btn>
@@ -67,8 +69,8 @@ import {
   QSpinnerGears,
   Loading
 } from "quasar";
-const tg = window?.Telegram?.WebApp;
-const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
+// const tg = window?.Telegram?.WebApp;
+// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 // const start_param = window?.Telegram?.WebApp.initDataUnsafe.start_param
 export default defineComponent({
   name: "MainLayout",
@@ -90,7 +92,7 @@ export default defineComponent({
     };
   },
   mounted() {
-    tg.ready();
+    // tg.ready();
   },
   methods: {
 
@@ -133,7 +135,7 @@ export default defineComponent({
       })
       try {
         return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
-          // this.sendMessageBot(res.data)
+          this.sendMessageBot(res.data)
           // console.log(res);
 
         }).then(() => { tg.close() })
@@ -162,7 +164,7 @@ export default defineComponent({
   created() {
     tg.expand();
     tg.MainButton.setParams({
-      text: "Отправить пропуск в стол справок",
+      text: "Создать заявку",
       color: "#1976D2"
     });
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
@@ -187,5 +189,9 @@ body {
 
 .q-date {
   box-shadow: none;
+}
+
+.q-uploader {
+  width: 100%;
 }
 </style>
