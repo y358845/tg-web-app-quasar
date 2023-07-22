@@ -117,7 +117,7 @@ export default defineComponent({
     async sendInquiry() {
       let dataForm = {
         problem: this.deskription,
-        idsotr: "",
+        idsotr: "000002966",
         tgid: tgid,
         tel: this.phone,
         nameMethod: 'tasks/task'
@@ -133,7 +133,7 @@ export default defineComponent({
       })
       try {
         return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
-          this.sendMessageBot(res.data)
+          // this.sendMessageBot(res.data)
           // console.log(res);
 
         }).then(() => { tg.close() })
