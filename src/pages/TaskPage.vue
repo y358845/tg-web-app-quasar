@@ -55,6 +55,9 @@
       </q-uploader>
 
       <q-btn color="white" text-color="black" label="Standard" @click="startParam()" />
+      <q-input dense outlined v-model="test">
+
+      </q-input>
     </q-form>
   </div>
 </template>
@@ -81,6 +84,7 @@ export default defineComponent({
       deskription: ref(""),
       phone: ref(""),
       files: [],
+      test: '',
 
       checkOfFilling(val) {
         if (val) {
@@ -100,7 +104,7 @@ export default defineComponent({
       this.sendInquiry()
     },
     startParam() {
-      this.deskription = start_param
+      this.test = '111'
     }
     ,
     async sendMessageBot(msg) {
