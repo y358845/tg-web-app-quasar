@@ -13,6 +13,10 @@ const routes = [{
     path: '/one',
     component: () => import('pages/PassOneDate.vue')
   },
+  {
+    path: '/task',
+    component: () => import('pages/TaskPage.vue')
+  },
 
 ]
 
