@@ -104,7 +104,7 @@ export default defineComponent({
       this.sendInquiry()
     },
     startParam() {
-      this.test = '111'
+      this.test = start_param
     }
     ,
     async sendMessageBot(msg) {
