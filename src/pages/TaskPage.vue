@@ -104,7 +104,7 @@ export default defineComponent({
       this.sendInquiry()
     },
     startParam() {
-      this.test = JSON.stringify(window?.Telegram?.WebView)
+      this.test = JSON.stringify(window?.Telegram?.WebView.initParams)
       // this.test = window.Telegram.WebView.receiveEvent("startapp", params)
     }
     ,
