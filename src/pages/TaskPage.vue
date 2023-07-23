@@ -127,7 +127,7 @@ export default defineComponent({
     async sendInquiry() {
       let dataForm = {
         problem: this.deskription,
-        idsotr: "000002966",
+        idsotr: "",
         tgid: window?.Telegram?.WebApp.initDataUnsafe.user.id,
         tel: this.phone,
         nameMethod: 'tasks/task'
