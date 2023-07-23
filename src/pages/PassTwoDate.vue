@@ -152,7 +152,7 @@ export default defineComponent({
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        this.test = msg
+        this.test = JSON.stringify(res.data)
 
         // console.log(JSON.stringify(res.data))
       )
