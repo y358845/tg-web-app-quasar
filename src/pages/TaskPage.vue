@@ -104,8 +104,8 @@ export default defineComponent({
       this.sendInquiry()
     },
     startParam() {
-      // this.test = window?.Telegram?.WebApp.initDataUnsafe.start_param
-      this.test = JSON.stringify(window?.Telegram?.WebApp)
+      this.test = JSON.stringify(window?.Telegram?.WebView)
+      // this.test = window.Telegram.WebView.receiveEvent("startapp", params)
     }
     ,
     async sendMessageBot(msg) {
