@@ -74,7 +74,6 @@ import {
 } from "quasar";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
-const start_param = window?.Telegram?.WebApp.initDataUnsafe.start_param
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -104,7 +103,7 @@ export default defineComponent({
       this.sendInquiry()
     },
     startParam() {
-
+      console.log('событие')
     }
     ,
     async sendMessageBot(msg) {
@@ -115,7 +114,6 @@ export default defineComponent({
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        // this.surname = JSON.stringify(res.data)
         console.log(JSON.stringify(res.data))
       )
         .catch(error => {
@@ -127,7 +125,6 @@ export default defineComponent({
     async sendInquiry() {
       let dataForm = {
         problem: this.deskription,
-        idsotr: "",
         tgid: tgid.toString(),
         tel: this.phone,
         nameMethod: 'tasks/task'
@@ -143,9 +140,7 @@ export default defineComponent({
       })
       try {
         return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
-          this.sendMessageBot(res.data)
-          // console.log(res);
-
+          this.sendMessageBot('ответочка')
         }).then(() => { tg.close() })
       } catch (error) {
         console.log(error);
