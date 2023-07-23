@@ -55,9 +55,7 @@
       </q-uploader>
 
       <q-btn color="white" text-color="black" label="Standard" @click="startParam()" />
-      <q-input dense outlined v-model="test">
-
-      </q-input>
+      <q-input dense outlined v-model="test"></q-input>
     </q-form>
   </div>
 </template>

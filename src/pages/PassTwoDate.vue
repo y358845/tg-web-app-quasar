@@ -60,6 +60,7 @@
           </q-input>
         </div>
       </q-card>
+      <q-input dense outlined v-model="test"></q-input>
       <!-- <q-btn color="white" text-color="black" label="Standard" @click="tgMessageBot()" /> -->
     </q-form>
   </div>
@@ -91,6 +92,7 @@ export default defineComponent({
       surname: ref(""),
       value1: ref(true),
       value2: ref(false),
+      test: ref(""),
 
 
 
