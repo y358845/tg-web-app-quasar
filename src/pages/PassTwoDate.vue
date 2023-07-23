@@ -151,8 +151,8 @@ export default defineComponent({
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        this.test = JSON.stringify(res.data)
-        // console.log(JSON.stringify(res.data))
+        // this.test = JSON.stringify(res.data)
+        console.log(JSON.stringify(res.data))
       )
         .catch(error => {
           this.errorMessage = error.message;
@@ -166,7 +166,7 @@ export default defineComponent({
         date: this.date,
         date2: this.date2,
         tgid: tgid.toString(),
-        query_id: tg.initDataUnsafe?.query_id,
+        // query_id: tg.initDataUnsafe?.query_id,
         nameMethod: 'pass'
       };
       Loading.show({
@@ -176,9 +176,9 @@ export default defineComponent({
       })
       try {
         return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
-          this.sendMessageBot(res.data)
+          this.test = JSON.stringify(res.data)
+          // this.sendMessageBot(res.data)
           // console.log(res);
-
         }).then(() => { })
       } catch (error) {
         console.log(error);
