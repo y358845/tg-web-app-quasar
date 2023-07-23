@@ -128,7 +128,7 @@ export default defineComponent({
       let dataForm = {
         problem: this.deskription,
         idsotr: "",
-        tgid: window?.Telegram?.WebApp.initDataUnsafe.user.id,
+        tgid: tgid.toString(),
         tel: this.phone,
         nameMethod: 'tasks/task'
       };
