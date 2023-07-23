@@ -159,7 +159,7 @@ export default defineComponent({
         .catch(error => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
-          this.test = msg = error.message
+          this.test = error.message
         });
     },
     async sendInquiry() {
