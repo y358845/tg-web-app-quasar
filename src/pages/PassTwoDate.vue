@@ -151,8 +151,8 @@ export default defineComponent({
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        // this.test = JSON.stringify(res.data)
-        console.log(JSON.stringify(res.data))
+        this.test = msg
+        // console.log(JSON.stringify(res.data))
       )
         .catch(error => {
           this.errorMessage = error.message;
@@ -176,8 +176,8 @@ export default defineComponent({
       })
       try {
         return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
-          this.test = JSON.stringify(res.data)
-          // this.sendMessageBot(res.data)
+          // this.test = JSON.stringify(res.data)
+          this.sendMessageBot(res.data)
           // console.log(res);
         }).then(() => { })
       } catch (error) {
@@ -185,7 +185,6 @@ export default defineComponent({
         return error;
       } finally {
         Loading.hide();
-
       }
     }
   },
