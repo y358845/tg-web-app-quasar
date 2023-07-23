@@ -153,7 +153,7 @@ export default defineComponent({
 
       ).then(res =>
 
-        // console.log(JSON.stringify(res.data))
+        console.log(JSON.stringify(res.data))
       )
         .catch(error => {
           this.errorMessage = error.message;
