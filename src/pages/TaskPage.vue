@@ -173,7 +173,7 @@ export default defineComponent({
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     tg.MainButton.hide();
     this.phone = window?.Telegram?.WebView.initParams.startapp
-    this.deskription = window?.Telegram?.WebView.initParams.startapp
+    this.test = tg.initDataUnsafe?.query_id.toString()
 
   }
 
