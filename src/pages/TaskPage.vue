@@ -54,8 +54,8 @@
         </template>
       </q-uploader>
 
-      <q-btn color="white" text-color="black" label="Standard" @click="startParam()" />
-      <q-input dense outlined v-model="test">
+      <!-- <q-btn color="white" text-color="black" label="Standard" @click="startParam()" />
+      <q-input dense outlined v-model="test"> -->
 
       </q-input>
     </q-form>
@@ -128,7 +128,7 @@ export default defineComponent({
     async sendInquiry() {
       let dataForm = {
         problem: this.deskription,
-        idsotr: "000002966",
+        idsotr: "",
         tgid: tgid,
         tel: this.phone,
         nameMethod: 'tasks/task'
