@@ -54,10 +54,10 @@
         </template>
       </q-uploader>
 
-      <!-- <q-btn color="white" text-color="black" label="Standard" @click="startParam()" />
+      <q-btn color="white" text-color="black" label="Standard" @click="startParam()" />
       <q-input dense outlined v-model="test">
 
-      </q-input> -->
+      </q-input>
     </q-form>
   </div>
 </template>
@@ -140,7 +140,7 @@ export default defineComponent({
       })
       try {
         return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
-          this.sendMessageBot('ответочка')
+          this.sendMessageBot(res.data)
         }).then(() => { tg.close() })
       } catch (error) {
         console.log(error);
@@ -173,6 +173,7 @@ export default defineComponent({
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     tg.MainButton.hide();
     this.phone = window?.Telegram?.WebView.initParams.startapp
+    this.deskription = window?.Telegram?.WebView.initParams.startapp
 
   }
 
