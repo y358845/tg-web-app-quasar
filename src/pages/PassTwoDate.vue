@@ -140,24 +140,24 @@ export default defineComponent({
     mainButtonClicked() {
       this.sendInquiry()
     },
-    // async sendMessageBot(msg) {
-    //   // this.surname = tg.initDataUnsafe?.query_id.toString()
-    //   const dataForm = {
-    //     queryId: tg.initDataUnsafe?.query_id.toString(),
-    //     message: JSON.stringify(msg)
-    //   }
-    //   await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
+    async sendMessageBot(msg) {
+      // this.surname = tg.initDataUnsafe?.query_id.toString()
+      const dataForm = {
+        queryId: tg.initDataUnsafe?.query_id.toString(),
+        message: JSON.stringify(msg)
+      }
+      await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
-    //   ).then(res =>
-    //     // this.surname = JSON.stringify(res.data)
-    //     console.log(JSON.stringify(res.data))
-    //   )
-    //     .catch(error => {
-    //       this.errorMessage = error.message;
-    //       console.error("There was an error!", error);
-    //       this.surname = error.message
-    //     });
-    // },
+      ).then(res =>
+        // this.surname = JSON.stringify(res.data)
+        console.log(JSON.stringify(res.data))
+      )
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+          this.surname = error.message
+        });
+    },
     async sendInquiry() {
       const dataForm = {
         surname: this.surname,
@@ -174,7 +174,7 @@ export default defineComponent({
       })
       try {
         return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
-          // this.sendMessageBot(res.data)
+          this.sendMessageBot(res.data)
           // console.log(res);
 
         }).then(() => { tg.close() })
