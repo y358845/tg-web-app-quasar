@@ -104,8 +104,7 @@ export default defineComponent({
       this.sendInquiry()
     },
     startParam() {
-      this.test = JSON.stringify(window?.Telegram?.WebView.initParams.startapp)
-      // this.test = window.Telegram.WebView.receiveEvent("startapp", params)
+
     }
     ,
     async sendMessageBot(msg) {
@@ -128,8 +127,8 @@ export default defineComponent({
     async sendInquiry() {
       let dataForm = {
         problem: this.deskription,
-        idsotr: "",
-        tgid: tgid,
+        idsotr: "000002966",
+        tgid: window?.Telegram?.WebApp.initDataUnsafe.user.id,
         tel: this.phone,
         nameMethod: 'tasks/task'
       };
