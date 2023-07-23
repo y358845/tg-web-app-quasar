@@ -149,8 +149,8 @@ export default defineComponent({
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        // this.surname = JSON.stringify(res.data)
-        console.log(JSON.stringify(res.data))
+        this.test = JSON.stringify(res.data)
+        // console.log(JSON.stringify(res.data))
       )
         .catch(error => {
           this.errorMessage = error.message;
@@ -177,7 +177,7 @@ export default defineComponent({
           this.sendMessageBot(res.data)
           // console.log(res);
 
-        }).then(() => { tg.close() })
+        }).then(() => { })
       } catch (error) {
         console.log(error);
         return error;
