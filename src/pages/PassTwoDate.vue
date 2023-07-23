@@ -101,16 +101,16 @@ export default defineComponent({
           tg.MainButton.show();
         }
       },
-      onSendData() {
-        const dataForm = {
-          surname: this.surname,
-          date: this.date,
-          date2: this.date2
-        };
-        tg.sendData(JSON.stringify(dataForm));
-      },
+      // onSendData() {
+      //   const dataForm = {
+      //     surname: this.surname,
+      //     date: this.date,
+      //     date2: this.date2
+      //   };
+      //   tg.sendData(JSON.stringify(dataForm));
+      // },
       checkTogl1(val, evt) {
-        console.log(evt);
+        // console.log(evt);
         if (val) {
           this.value2 = false;
           this.date = date.formatDate(today, "YYYY/MM/DD");
@@ -144,6 +144,7 @@ export default defineComponent({
     },
     async sendMessageBot(msg) {
       // this.surname = tg.initDataUnsafe?.query_id.toString()
+      this.test = msg
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id.toString(),
         message: JSON.stringify(msg)
@@ -151,7 +152,7 @@ export default defineComponent({
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        this.test = msg
+
         // console.log(JSON.stringify(res.data))
       )
         .catch(error => {
@@ -177,7 +178,7 @@ export default defineComponent({
       try {
         return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
           // this.test = JSON.stringify(res.data)
-          this.sendMessageBot(res.data)
+          this.sendMessageBot(JSON.stringify(res.data))
           // console.log(res);
         }).then(() => { })
       } catch (error) {
