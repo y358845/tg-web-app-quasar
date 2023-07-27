@@ -66,6 +66,7 @@
 
 import { defineComponent, ref } from "vue";
 import { uni_rersponse2 } from "src/functions/1с_response";
+import axios from "axios";
 import {
   QSpinnerGears,
   Loading
