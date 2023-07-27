@@ -66,7 +66,6 @@
 
 import { defineComponent, ref } from "vue";
 import { uni_rersponse2 } from "src/functions/1с_response";
-import axios from "axios";
 import {
   QSpinnerGears,
   Loading
@@ -172,7 +171,7 @@ export default defineComponent({
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     tg.MainButton.hide();
     this.phone = window?.Telegram?.WebView.initParams.startapp
-    // this.test = tg.initDataUnsafe?.query_id.toString()
+    this.test = tg.initDataUnsafe?.query_id.toString()
 
   }
 
