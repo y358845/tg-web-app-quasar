@@ -143,65 +143,65 @@ export default defineComponent({
     mainButtonClicked() {
       this.sendInquiry()
     },
-    // async sendMessageBot(msg) {
-    //   // this.surname = tg.initDataUnsafe?.query_id.toString()
+    async sendMessageBot(msg) {
+      // this.surname = tg.initDataUnsafe?.query_id.toString()
 
-    //   const dataForm = {
-    //     queryId: tg.initDataUnsafe?.query_id.toString(),
-    //     message: JSON.stringify(msg)
-    //   }
-    //   await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
+      const dataForm = {
+        queryId: tg.initDataUnsafe?.query_id.toString(),
+        message: JSON.stringify(msg)
+      }
+      await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
-    //   ).then(res =>
-    //     this.test = JSON.stringify(res.data)
+      ).then(res =>
+        this.test = JSON.stringify(res.data)
 
-    //     // console.log(JSON.stringify(res.data))
-    //   )
-    //     .catch(error => {
-    //       this.errorMessage = error.message;
-    //       console.error("There was an error!", error);
-    //       this.test = error.message
-    //     });
-  },
-  async sendInquiry() {
-    const dataForm = {
-      surname: this.surname,
-      date: this.date,
-      date2: this.date2,
-      tgid: tgid.toString(),
-      // query_id: tg.initDataUnsafe?.query_id,
-      nameMethod: 'pass'
-    };
-    Loading.show({
-      spinner: QSpinnerGears,
-      backgroundColor: "bg",
-      message: "Создание пропуска...",
-    })
-    try {
-      return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
-        // this.test = JSON.stringify(res.data)
-        // this.sendMessageBot(JSON.stringify(res.data))
-        console.log(res);
-      }).then(() => { })
-    } catch (error) {
-      console.log(error);
-      return error;
-    } finally {
-      Loading.hide();
+        // console.log(JSON.stringify(res.data))
+      )
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+          this.test = error.message
+        });
+    },
+    async sendInquiry() {
+      const dataForm = {
+        surname: this.surname,
+        date: this.date,
+        date2: this.date2,
+        tgid: tgid.toString(),
+        // query_id: tg.initDataUnsafe?.query_id,
+        nameMethod: 'pass'
+      };
+      Loading.show({
+        spinner: QSpinnerGears,
+        backgroundColor: "bg",
+        message: "Создание пропуска...",
+      })
+      try {
+        return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
+          // this.test = JSON.stringify(res.data)
+          // this.sendMessageBot(JSON.stringify(res.data))
+          // console.log(res);
+        }).then(() => { })
+      } catch (error) {
+        console.log(error);
+        return error;
+      } finally {
+        Loading.hide();
+      }
     }
-  }
-},
+  },
   created() {
-  tg.expand();
-  tg.MainButton.setParams({
-    text: "Отправить пропуск в стол справок",
-    color: "#1976D2"
-  });
-  tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-  tg.MainButton.hide();
-  this.test = tg.initDataUnsafe?.query_id.toString()
+    tg.expand();
+    tg.MainButton.setParams({
+      text: "Отправить пропуск в стол справок",
+      color: "#1976D2"
+    });
+    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    tg.MainButton.hide();
+    this.test = tg.initDataUnsafe?.query_id.toString()
 
-}
+  }
 });
 </script>
 
