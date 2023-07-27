@@ -75,7 +75,7 @@ const dateK = date.formatDate(today, "YYYY/MM/DD");
 import { defineComponent, ref } from "vue";
 import { date } from "quasar";
 import { uni_rersponse } from "src/functions/1с_response";
-// import axios from "axios";
+import axios from "axios";
 import {
   QSpinnerGears,
   Loading
