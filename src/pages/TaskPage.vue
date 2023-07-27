@@ -106,6 +106,8 @@ export default defineComponent({
     }
     ,
     async sendMessageBot(msg) {
+      // this.surname = tg.initDataUnsafe?.query_id.toString()
+
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id.toString(),
         message: JSON.stringify(msg)
@@ -113,12 +115,14 @@ export default defineComponent({
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        console.log(JSON.stringify(res.data))
+        this.test = JSON.stringify(res.data)
+
+        // console.log(JSON.stringify(res.data))
       )
         .catch(error => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
-          this.surname = error.message
+          this.test = error.message
         });
     },
     async sendInquiry() {
