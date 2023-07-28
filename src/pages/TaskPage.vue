@@ -54,7 +54,7 @@
         </template>
       </q-uploader>
 
-      <q-btn color="white" text-color="black" label="Standard" @click="sendMessageBot('ntcn')" />
+      <q-btn color="white" text-color="black" label="Standard" @click="sendInquiry()" />
       <q-input v-model="test"></q-input>
 
     </q-form>
@@ -110,8 +110,8 @@ export default defineComponent({
       // this.surname = tg.initDataUnsafe?.query_id.toString()
 
       const dataForm = {
-        // queryId: tg.initDataUnsafe?.query_id.toString(),
-        queryId: '111',
+        queryId: tg.initDataUnsafe?.query_id.toString(),
+        // queryId: '111',
         message: JSON.stringify(msg)
       }
       console.log(dataForm);
