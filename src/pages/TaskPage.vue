@@ -149,7 +149,7 @@ export default defineComponent({
         return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
           this.sendMessageBot(res.data)
           this.test = res.data
-        }).then(() => { tg.close() })
+        }).then(() => { })
       } catch (error) {
         console.log(error);
         return error;
