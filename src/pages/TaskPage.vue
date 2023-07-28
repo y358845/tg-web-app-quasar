@@ -54,8 +54,9 @@
         </template>
       </q-uploader>
 
-      <!-- <q-btn color="white" text-color="black" label="Standard" @click="startParam()" />
-      <q-input dense outlined v-model="test"></q-input> -->
+      <q-btn color="white" text-color="black" label="Standard" @click="sendMessageBot('ntcn')" />
+      <q-input v-model="test"></q-input>
+
     </q-form>
   </div>
 </template>
@@ -109,13 +110,16 @@ export default defineComponent({
       // this.surname = tg.initDataUnsafe?.query_id.toString()
 
       const dataForm = {
-        queryId: tg.initDataUnsafe?.query_id.toString(),
+        // queryId: tg.initDataUnsafe?.query_id.toString(),
+        queryId: '111',
         message: JSON.stringify(msg)
       }
+      console.log(dataForm);
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        this.test = JSON.stringify(res.data)
+        // this.test = JSON.stringify(res.data)
+        console.log(res.data)
 
         // console.log(JSON.stringify(res.data))
       )
@@ -144,6 +148,7 @@ export default defineComponent({
       try {
         return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
           this.sendMessageBot(res.data)
+          this.test = res.data
         }).then(() => { tg.close() })
       } catch (error) {
         console.log(error);
@@ -176,7 +181,7 @@ export default defineComponent({
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     tg.MainButton.hide();
     this.phone = window?.Telegram?.WebView.initParams.startapp
-    this.test = tg.initDataUnsafe?.query_id.toString()
+
 
   }
 
