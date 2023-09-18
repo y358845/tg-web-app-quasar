@@ -31,7 +31,7 @@
         </div>
 
         <div class="row q-mt-md">
-          <q-input dense outlined v-model="date" mask="date" hint="Дата с" class="col q-mr-md">
+          <q-input dense outlined v-model="date" mask="date" hint="Дата начала действия" class="col q-mr-md">
             <template v-slot:append>
               <q-icon name="event" class="cursor-pointer" color="orange">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -45,7 +45,7 @@
             </template>
           </q-input>
 
-          <q-input dense outlined v-model="date2" mask="date" hint="Дата по" class="col">
+          <q-input dense outlined v-model="date2" mask="date" hint="Дата окончания действия" class="col">
             <template v-slot:append>
               <q-icon name="event" class="cursor-pointer" color="orange">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
