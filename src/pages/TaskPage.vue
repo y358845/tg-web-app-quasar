@@ -54,8 +54,8 @@
         </template>
       </q-uploader>
 
-      <q-btn color="white" text-color="black" label="Standard" @click="sendInquiry()" />
-      <q-input v-model="test"></q-input>
+      <!-- <q-btn color="white" text-color="black" label="Standard" @click="sendInquiry()" />
+      <q-input v-model="test"></q-input> -->
 
     </q-form>
   </div>
@@ -118,8 +118,8 @@ export default defineComponent({
       await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
 
       ).then(res =>
-        this.test = JSON.stringify(res.data)
-        // console.log(res.data)
+        // this.test = JSON.stringify(res.data)
+        console.log(res.data)
 
         // console.log(JSON.stringify(res.data))
       )
