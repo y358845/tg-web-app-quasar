@@ -147,7 +147,7 @@ export default defineComponent({
       })
       try {
         return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
-          this.sendMessageBot(res.data)
+          // this.sendMessageBot(res.data)
           this.test = res.data
         }).then(() => { })
       } catch (error) {
