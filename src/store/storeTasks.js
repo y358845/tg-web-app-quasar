@@ -33,7 +33,9 @@ const actions = {
     })
     try {
       await uni_rersponse2(payload, payload.nameMethod).then((res) => {
-        commit(payload.nameState, res.data)
+        if (payload.nameState != "") {
+          commit(payload.nameState, res.data)
+        }
         console.log(res.data);
         return res.data
       });

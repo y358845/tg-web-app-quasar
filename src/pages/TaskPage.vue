@@ -129,7 +129,7 @@ export default defineComponent({
         tgid: tgid.toString(),
         tel: this.phone,
         nameMethod: 'tasks/task',
-        nameState: "setTest"
+        nameState: ""
       };
       this.files.map((f, i) => {
         dataForm[`fileName${i}`] = f.fileName;
