@@ -123,7 +123,7 @@ export default defineComponent({
     //       this.test = error.message
     //     });
     // },
-    async sendRequest() {
+    sendRequest() {
       let dataForm = {
         problem: this.deskription,
         tgid: tgid.toString(),
