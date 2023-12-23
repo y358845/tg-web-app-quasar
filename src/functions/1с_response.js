@@ -3,7 +3,7 @@ const url_dev = "https://1c.rostgmu-uit.ru:4443/help_desk/hs/";
 const url_dev2 = "https://1c.rostgmu-uit.ru:4443/uit/hs/";
 
 
-export function uni_rersponse(payload, method, responseType = 'text') {
+export function uni_rersponse(payload, method) {
 
   return axios.post(`${url_dev}${method}`, payload, {
     credential: true,
@@ -11,10 +11,10 @@ export function uni_rersponse(payload, method, responseType = 'text') {
       username: unescape(encodeURIComponent("service_usr")),
       password: unescape(encodeURIComponent("P@ssw0rds2023")),
     },
-    responseType: responseType,
+
   });
 }
-export function uni_rersponse2(payload, method, responseType = 'text') {
+export function uni_rersponse2(payload, method) {
 
   return axios.post(`${url_dev2}${method}`, payload, {
     credential: true,
@@ -22,7 +22,7 @@ export function uni_rersponse2(payload, method, responseType = 'text') {
       username: unescape(encodeURIComponent("service_usr")),
       password: unescape(encodeURIComponent("P@ssw0rds2023")),
     },
-    responseType: responseType,
+
   });
 }
 

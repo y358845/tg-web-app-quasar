@@ -1,5 +1,10 @@
-import { store } from 'quasar/wrappers'
-import { createStore } from 'vuex'
+import {
+  store
+} from 'quasar/wrappers'
+import {
+  createStore
+} from 'vuex'
+import tasks from './storeTasks'
 
 // import example from './module-example'
 
@@ -12,9 +17,10 @@ import { createStore } from 'vuex'
  * with the Store instance.
  */
 
-export default store(function (/* { ssrContext } */) {
+export default store(function ( /* { ssrContext } */ ) {
   const Store = createStore({
     modules: {
+      tasks
       // example
     },
 
