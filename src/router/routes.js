@@ -17,6 +17,10 @@ const routes = [{
     path: '/task',
     component: () => import('pages/TaskPage.vue')
   },
+  {
+    path: '/admintask',
+    component: () => import('pages/AdminTaskPage.vue')
+  },
 
 ]
 
