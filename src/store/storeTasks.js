@@ -9,15 +9,20 @@ import {
 
 const state = {
   userList: [], //список сотрудников
+  test: ''
 }
 const mutations = {
 
   setUserList(state, userList) {
     state.userList = userList;
   },
+  setTest(state, test) {
+    state.test = test;
+  },
 }
 
 const actions = {
+
   async postQuery({
     commit
   }, payload) {

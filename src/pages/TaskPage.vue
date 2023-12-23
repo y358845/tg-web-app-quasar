@@ -56,11 +56,8 @@
     </q-form>
   </div>
 </template>
+
 <script>
-
-
-
-
 import { defineComponent, ref } from "vue";
 import { uni_rersponse2 } from "src/functions/1с_response";
 import { mapActions, mapState } from "vuex";
@@ -131,29 +128,31 @@ export default defineComponent({
         problem: this.deskription,
         tgid: tgid.toString(),
         tel: this.phone,
-        nameMethod: 'tasks/task'
+        nameMethod: 'tasks/task',
+        nameState: "setTest"
       };
       this.files.map((f, i) => {
         dataForm[`fileName${i}`] = f.fileName;
         dataForm[`file${i}`] = f.file;
       });
-      Loading.show({
-        spinner: QSpinnerGears,
-        backgroundColor: "bg",
-        message: "Создание заявки...",
-      })
-      try {
-        return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
-          // this.sendMessageBot(res.data)
-          this.test = res.data
-        }).then(() => { })
-      } catch (error) {
-        console.log(error);
-        return error;
-      } finally {
-        Loading.hide();
+      this.postQuery(this.dataForm);
+      // Loading.show({
+      //   spinner: QSpinnerGears,
+      //   backgroundColor: "bg",
+      //   message: "Создание заявки...",
+      // })
+      // try {
+      //   return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
+      //     // this.sendMessageBot(res.data)
+      //     this.test = res.data
+      //   }).then(() => { })
+      // } catch (error) {
+      //   console.log(error);
+      //   return error;
+      // } finally {
+      //   Loading.hide();
 
-      }
+      // }
     },
     addFile(file) {
       const arrFiles = this.files;
