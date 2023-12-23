@@ -62,7 +62,12 @@
 
 
 import { defineComponent, ref } from "vue";
+import { uni_rersponse2 } from "src/functions/1с_response";
 import { mapActions, mapState } from "vuex";
+import {
+  QSpinnerGears,
+  Loading
+} from "quasar";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 export default defineComponent({
@@ -94,10 +99,10 @@ export default defineComponent({
     mainButtonClicked() {
       this.sendRequest()
     },
-    startParam() {
-      console.log('событие')
-    }
-    ,
+    // startParam() {
+    //   console.log('событие')
+    // }
+    // ,
     // async sendMessageBot(msg) {
     //   // this.surname = tg.initDataUnsafe?.query_id.toString()
 
@@ -122,18 +127,33 @@ export default defineComponent({
     //     });
     // },
     async sendRequest() {
-      let formDataPostTask = {
+      let dataForm = {
         problem: this.deskription,
         tgid: tgid.toString(),
         tel: this.phone,
         nameMethod: 'tasks/task'
       };
       this.files.map((f, i) => {
-        formDataPostTask[`fileName${i}`] = f.fileName;
-        formDataPostTask[`file${i}`] = f.file;
+        dataForm[`fileName${i}`] = f.fileName;
+        dataForm[`file${i}`] = f.file;
       });
-      this.postQuery(this.formDataPostTask);
+      Loading.show({
+        spinner: QSpinnerGears,
+        backgroundColor: "bg",
+        message: "Создание заявки...",
+      })
+      try {
+        return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
+          // this.sendMessageBot(res.data)
+          this.test = res.data
+        }).then(() => { })
+      } catch (error) {
+        console.log(error);
+        return error;
+      } finally {
+        Loading.hide();
 
+      }
     },
     addFile(file) {
       const arrFiles = this.files;
