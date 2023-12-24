@@ -97,6 +97,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { mapActions, mapState } from "vuex";
+import { addFileInTask } from "src/functions/1с_response";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default defineComponent({
@@ -158,22 +159,12 @@ export default defineComponent({
         formDataPostTask[`file${i}`] = f.file;
       });
       console.log(formDataPostTask);
-      this.postQuery(this.formDataPostTask);
+      this.postQuery(formDataPostTask);
     },
 
     addFile(file) {
-      const arrFiles = this.files;
-      const reader = new FileReader();
-      reader.readAsDataURL(file[0]);
-      reader.onload = function () {
-        let file64 = reader.result;
-        fetch(file64).then(res => {
-          res.arrayBuffer().then(buf => {
-            arrFiles.push({ fileName: file[0].name, file: file64 });
-          });
-        });
-      };
-    }
+      addFileInTask(file, this.files)
+    },
   },
   computed: {
     ...mapState("tasks", ["userList"])
