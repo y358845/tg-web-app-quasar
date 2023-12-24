@@ -89,16 +89,16 @@
         </template>
       </q-uploader>
 
-      <q-btn color="white" text-color="black" label="Standard" @click="sendRequest()" />
-      <q-input v-model="test"></q-input>
+      <!-- <q-btn color="white" text-color="black" label="Standard" @click="sendRequest()" />
+      <q-input v-model="test"></q-input> -->
     </q-form>
   </div>
 </template>
 <script>
 import { defineComponent, ref } from "vue";
 import { mapActions, mapState } from "vuex";
-// const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -123,7 +123,7 @@ export default defineComponent({
   },
 
   mounted() {
-    // tg.ready();
+    tg.ready();
     this.postQuery(this.formDataUserList);
   },
   methods: {
@@ -149,8 +149,7 @@ export default defineComponent({
       let formDataPostTask = {
         idsotr: this.employer.number,
         problem: this.deskription,
-        // tgid: tgid.toString(),
-        tgid: '123',
+        tgid: tgid.toString(),
         tel: this.phone,
         nameMethod: "tasks/task"
       };
@@ -159,7 +158,7 @@ export default defineComponent({
         formDataPostTask[`file${i}`] = f.file;
       });
       console.log(formDataPostTask);
-      // this.postQuery(this.formDataPostTask);
+      this.postQuery(this.formDataPostTask);
     },
 
     addFile(file) {
@@ -181,14 +180,14 @@ export default defineComponent({
   },
   created() {
 
-    // tg.expand();
-    // tg.MainButton.setParams({
-    //   text: "Создать заявку",
-    //   color: "#1976D2",
-    // });
-    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    // tg.MainButton.hide();
-    // this.phone = window?.Telegram?.WebView.initParams.startapp;
+    tg.expand();
+    tg.MainButton.setParams({
+      text: "Создать заявку",
+      color: "#1976D2",
+    });
+    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    tg.MainButton.hide();
+    this.phone = window?.Telegram?.WebView.initParams.startapp;
   }
 });
 </script>
