@@ -39,3 +39,20 @@ export function b64EncodeUnicode(str) {
     )
   );
 }
+//метод добавления файлов где  нужно добавлять вложения
+export function addFile(file, files) {
+  const arrFiles = files;
+  const reader = new FileReader();
+  reader.readAsDataURL(file[0]);
+  reader.onload = function () {
+    let file64 = reader.result;
+    fetch(file64).then((res) => {
+      res.arrayBuffer().then((buf) => {
+        arrFiles.push({
+          fileName: file[0].name,
+          file: file64
+        });
+      });
+    });
+  };
+},
