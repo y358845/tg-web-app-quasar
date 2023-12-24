@@ -91,33 +91,6 @@ export default defineComponent({
     mainButtonClicked() {
       this.sendRequest()
     },
-    // startParam() {
-    //   console.log('событие')
-    // }
-    // ,
-    // async sendMessageBot(msg) {
-    //   // this.surname = tg.initDataUnsafe?.query_id.toString()
-
-    //   const dataForm = {
-    //     queryId: tg.initDataUnsafe?.query_id.toString(),
-    //     // queryId: '111',
-    //     message: JSON.stringify(msg)
-    //   }
-    //   console.log(dataForm);
-    //   await axios.post('https://1c.rostgmu.ru:8000/web-data', dataForm
-
-    //   ).then(res =>
-    //     // this.test = JSON.stringify(res.data)
-    //     console.log(res.data)
-
-    //     // console.log(JSON.stringify(res.data))
-    //   )
-    //     .catch(error => {
-    //       this.errorMessage = error.message;
-    //       console.error("There was an error!", error);
-    //       this.test = error.message
-    //     });
-    // },
     sendRequest() {
       let dataForm = {
         problem: this.deskription,
@@ -132,14 +105,14 @@ export default defineComponent({
       this.postQuery(dataForm);
     },
     addFile(file) {
-      const arrFiles = this.files;
+      // const arrFiles = this.files;
       const reader = new FileReader();
       reader.readAsDataURL(file[0]);
       reader.onload = function () {
         let file64 = reader.result;
         fetch(file64).then((res) => {
           res.arrayBuffer().then((buf) => {
-            arrFiles.push({ fileName: file[0].name, file: file64 });
+            this.files.push({ fileName: file[0].name, file: file64 });
           });
         });
       };
