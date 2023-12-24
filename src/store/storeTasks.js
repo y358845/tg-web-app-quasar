@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   QSpinnerGears,
   Loading
@@ -23,19 +24,19 @@ const mutations = {
 const actions = {
 
   async postQuery({
-    commmit
+    commit
   }, payload) {
     Loading.show({
       spinner: QSpinnerGears,
       backgroundColor: "bg",
       message: "Подождите идет загрузка данных...",
     })
-    console.log("жмяк стор");
     try {
       await uni_rersponse2(payload, payload.nameMethod).then((res) => {
         if (payload.nameState != "") {
           commit(payload.nameState, res.data)
         }
+
         console.log(res.data);
         return res.data
       });

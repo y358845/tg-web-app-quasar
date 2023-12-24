@@ -120,7 +120,6 @@ export default defineComponent({
     tg.MainButton.hide();
     this.phone = window?.Telegram?.WebView.initParams.startapp
   }
-
 });
 </script>
 
@@ -142,5 +141,4 @@ body {
 
 .q-uploader__file-header .q-uploader__title {
   color: rgba(0, 0, 0, 0.6);
-}
-</style>
+}</style>

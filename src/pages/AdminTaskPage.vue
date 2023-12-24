@@ -89,8 +89,8 @@
         </template>
       </q-uploader>
 
-      <!-- <q-btn color="white" text-color="black" label="Standard" @click="sendInquiry()" />
-      <q-input v-model="test"></q-input>-->
+      <q-btn color="white" text-color="black" label="Standard" @click="sendRequest()" />
+      <q-input v-model="test"></q-input>
     </q-form>
   </div>
 </template>
@@ -147,8 +147,10 @@ export default defineComponent({
 
     async sendRequest() {
       let formDataPostTask = {
+        idsotr: this.employer.number,
         problem: this.deskription,
-        tgid: tgid.toString(),
+        // tgid: tgid.toString(),
+        tgid: '123',
         tel: this.phone,
         nameMethod: "tasks/task"
       };
@@ -156,7 +158,8 @@ export default defineComponent({
         formDataPostTask[`fileName${i}`] = f.fileName;
         formDataPostTask[`file${i}`] = f.file;
       });
-      this.postQuery(this.formDataPostTask);
+      console.log(formDataPostTask);
+      // this.postQuery(this.formDataPostTask);
     },
 
     addFile(file) {
