@@ -40,7 +40,7 @@ export function b64EncodeUnicode(str) {
   );
 }
 //метод добавления файлов где  нужно добавлять вложения
-export function addFile(file, files) {
+export function addFileInTask(file, files) {
   const arrFiles = files;
   const reader = new FileReader();
   reader.readAsDataURL(file[0]);
@@ -55,4 +55,4 @@ export function addFile(file, files) {
       });
     });
   };
-},
+}

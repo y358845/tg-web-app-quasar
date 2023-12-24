@@ -61,7 +61,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { mapActions, mapState } from "vuex";
-import { addFiles } from "src/functions/addFile";
+import { addFileInTask } from "src/functions/1с_response";
 
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
@@ -103,21 +103,11 @@ export default defineComponent({
         dataForm[`fileName${i}`] = f.fileName;
         dataForm[`file${i}`] = f.file;
       });
+      console.log(dataForm);
       this.postQuery(dataForm);
     },
     addFile(file) {
-      addFiles(file, this.files)
-      // const arrFiles = this.files;
-      // const reader = new FileReader();
-      // reader.readAsDataURL(file[0]);
-      // reader.onload = function () {
-      //   let file64 = reader.result;
-      //   fetch(file64).then((res) => {
-      //     res.arrayBuffer().then((buf) => {
-      //       arrFiles.push({ fileName: file[0].name, file: file64 });
-      //     });
-      //   });
-      // };
+      addFileInTask(file, this.files)
     },
   },
   created() {
