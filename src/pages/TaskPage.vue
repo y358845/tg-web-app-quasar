@@ -13,7 +13,7 @@
       <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
 
 
-        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="deskription"
+        <q-input v-model="deskription" @update:model-value="(val) => checkOfFilling(val)" dense outlined
           label="Описание проблемы" hint="Опишите проблему" lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
           <template v-slot:prepend>
@@ -24,7 +24,7 @@
 
       <q-card class="my-card q-pa-sm q-pr-sm q-pb-md" flat bordered>
 
-        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="phone" label="Телефон"
+        <q-input v-model="phone" @update:model-value="(val) => checkOfFilling(val)" dense outlined label="Телефон"
           hint="Проверьте контактный номер телефона/при отсутствии введите новый" lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Введите контактный телефонный номер']">
           <template v-slot:prepend>
@@ -33,7 +33,7 @@
         </q-input>
       </q-card>
 
-      <q-uploader style="width: 96%" dense flat color="primary" @added="addFile" multiple max-files="3" hide-upload-btn
+      <q-uploader @added="addFile" style="width: 96%" dense flat color="primary" multiple max-files="3" hide-upload-btn
         no-thumbnails>
         <template v-slot:header="scope">
           <div class="row items-center q-pa-sm">
@@ -52,20 +52,16 @@
           </div>
         </template>
       </q-uploader>
-      <q-btn color="white" text-color="black" label="Standard" @click="sendRequest()" />
-      <q-input v-model="test"></q-input>
+      <!-- <q-btn color="white" text-color="black" label="Standard" @click="sendRequest()" />
+      <q-input v-model="test"></q-input> -->
     </q-form>
   </div>
 </template>
 
 <script>
 import { defineComponent, ref } from "vue";
-import { uni_rersponse2 } from "src/functions/1с_response";
 import { mapActions, mapState } from "vuex";
-import {
-  QSpinnerGears,
-  Loading
-} from "quasar";
+
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 export default defineComponent({
@@ -82,8 +78,6 @@ export default defineComponent({
           tg.MainButton.show();
         }
       },
-
-
     };
   },
   mounted() {
@@ -128,7 +122,6 @@ export default defineComponent({
       let dataForm = {
         problem: this.deskription,
         tgid: tgid.toString(),
-        // tgid: '453522',
         tel: this.phone,
         nameMethod: 'tasks/task',
       };
@@ -137,23 +130,6 @@ export default defineComponent({
         dataForm[`file${i}`] = f.file;
       });
       this.postQuery(dataForm);
-      // Loading.show({
-      //   spinner: QSpinnerGears,
-      //   backgroundColor: "bg",
-      //   message: "Создание заявки...",
-      // })
-      // try {
-      //   return await uni_rersponse2(dataForm, dataForm.nameMethod).then((res) => {
-      //     // this.sendMessageBot(res.data)
-      //     this.test = res.data
-      //   }).then(() => { })
-      // } catch (error) {
-      //   console.log(error);
-      //   return error;
-      // } finally {
-      //   Loading.hide();
-
-      // }
     },
     addFile(file) {
       const arrFiles = this.files;
