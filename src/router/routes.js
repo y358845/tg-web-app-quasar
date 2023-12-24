@@ -14,13 +14,17 @@ const routes = [{
     component: () => import('pages/PassOneDate.vue')
   },
   {
-    path: '/task',
+    path: '/task2',
     component: () => import('pages/TaskPage.vue')
   },
   {
-    path: '/admintask',
+    path: '/task',
     component: () => import('pages/AdminTaskPage.vue')
   },
+
+  //   path: '/admintask',
+  //   component: () => import('pages/AdminTaskPage.vue')
+  // },
 
 ]
 
