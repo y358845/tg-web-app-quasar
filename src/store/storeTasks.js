@@ -24,13 +24,14 @@ const mutations = {
 const actions = {
 
   async postQuery({
-    commit
+    commmit
   }, payload) {
     Loading.show({
       spinner: QSpinnerGears,
       backgroundColor: "bg",
       message: "Подождите идет загрузка данных...",
     })
+    console.log("жмяк стор");
     try {
       await uni_rersponse2(payload, payload.nameMethod).then((res) => {
         if (payload.nameState != "") {
@@ -41,31 +42,11 @@ const actions = {
       });
     } catch (error) {
       console.log(error);
-      return error.request.status;
+      return error;
     } finally {
       Loading.hide();
     }
   },
-  // async getListUsers({
-  //   commit
-  // }) {
-  //   Loading.show({
-  //     message: 'Подождите идет загрузка данных...'
-  //   })
-  //   try {
-  //     const res = await axios.post(`https://1c.rostgmu-uit.ru:4443/uit/hs/allworkers/allworkers`, {
-  //       credential: true,
-  //       auth: {
-  //         username: unescape(encodeURIComponent('service_usr')),
-  //         password: unescape(encodeURIComponent('P@ssw0rds2023'))
-  //       }
-  //     })
-  //     commit('setStringOptions', res.data)
-  //     console.log(res.data);
-  //   } catch (e) {} finally {
-  //     Loading.hide()
-  //   }
-  // },
 
 
 

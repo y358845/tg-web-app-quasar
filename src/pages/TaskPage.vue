@@ -52,7 +52,8 @@
           </div>
         </template>
       </q-uploader>
-
+      <q-btn color="white" text-color="black" label="Standard" @click="sendRequest()" />
+      <q-input v-model="test"></q-input>
     </q-form>
   </div>
 </template>
@@ -127,15 +128,15 @@ export default defineComponent({
       let dataForm = {
         problem: this.deskription,
         tgid: tgid.toString(),
+        // tgid: '453522',
         tel: this.phone,
         nameMethod: 'tasks/task',
-        nameState: ""
       };
       this.files.map((f, i) => {
         dataForm[`fileName${i}`] = f.fileName;
         dataForm[`file${i}`] = f.file;
       });
-      this.postQuery(this.dataForm);
+      this.postQuery(dataForm);
       // Loading.show({
       //   spinner: QSpinnerGears,
       //   backgroundColor: "bg",
@@ -177,8 +178,6 @@ export default defineComponent({
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     tg.MainButton.hide();
     this.phone = window?.Telegram?.WebView.initParams.startapp
-
-
   }
 
 });
