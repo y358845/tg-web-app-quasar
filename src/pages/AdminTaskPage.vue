@@ -60,12 +60,12 @@
       </q-card>
 
       <q-card class="my-card q-pa-sm q-pr-sm q-pb-md" flat bordered>
-        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="employer.tel" type="textarea"
-          autogrow label="Телефон" hint="Проверьте контактный номер телефона/при отсутствии введите новый" lazy-rules
-          :rules="[
-            (val) =>
-              (val && val.length > 0) || 'Введите контактный телефонный номер',
-          ]">
+        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="employer.tel"
+          type="textarea" autogrow label="Телефон"
+          hint="Проверьте контактный номер телефона/при отсутствии введите новый" lazy-rules :rules="[
+      (val) =>
+        (val && val.length > 0) || 'Введите контактный телефонный номер',
+    ]">
           <template v-slot:prepend>
             <q-icon name="call" color="orange" />
           </template>
@@ -151,7 +151,7 @@ export default defineComponent({
         idsotr: this.employer.number,
         problem: this.deskription,
         tgid: tgid.toString(),
-        tel: this.phone,
+        tel: this.employer.tel,
         nameMethod: "tasks/task"
       };
       this.files.map((f, i) => {
