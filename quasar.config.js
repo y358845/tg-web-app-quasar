@@ -56,7 +56,6 @@ module.exports = configure(function (ctx) {
     build: {
       env: {
         API_URL: 'http://192.168.0.103:5000/',
-        // API_URL_PG: 'http://192.168.0.103:5000/api/website',
       },
 
       vueRouterMode: 'hash',
@@ -64,7 +63,7 @@ module.exports = configure(function (ctx) {
 
 
       // transpile: false,
-      distDir: './dist/spa',
+      // distDir: './dist/spa',
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
