@@ -95,6 +95,26 @@ export default defineComponent({
     tg.ready();
   },
   methods: {
+    async sendMessageBot(msg) {
+      // this.surname = tg.initDataUnsafe?.query_id.toString()
+
+      const dataForm = {
+        queryId: tg.initDataUnsafe?.query_id.toString(),
+        message: JSON.stringify(msg)
+      }
+      await axios.post('http://192.168.0.103:5000/api/tg/web-data', dataForm
+
+      ).then(res =>
+        this.test = JSON.stringify(res.data)
+
+        // console.log(JSON.stringify(res.data))
+      )
+        .catch(error => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+          this.test = error.message
+        });
+    },
     async getReport() {
       Loading.show({
         spinner: QSpinnerGears,
@@ -111,6 +131,7 @@ export default defineComponent({
           )
           .then((res) => {
             saveAs(new Blob([res.data], { type: "application/pdf" }), "newReport.pdf");
+            this.sendMessageBot(JSON.stringify('ответ'))
           });
       } catch (error) {
         console.log(error);
@@ -120,46 +141,21 @@ export default defineComponent({
       }
     },
 
-    mainButtonClicked() {
-      this.sendInquiry();
-    },
+    // mainButtonClicked() {
+    //   this.sendInquiry();
+    // },
 
-    async sendInquiry() {
-      const dataForm = {
-        surname: this.surname,
-        date: this.date,
-        date2: this.date2,
-        tgid: tgid.toString(),
-        // query_id: tg.initDataUnsafe?.query_id,
-        nameMethod: "pass",
-      };
-      Loading.show({
-        spinner: QSpinnerGears,
-        backgroundColor: "bg",
-        message: "Создание пропуска...",
-      });
-      try {
-        return await uni_rersponse(dataForm, dataForm.nameMethod)
-          .then((res) => {
-          })
-          .then(() => { });
-      } catch (error) {
-        console.log(error);
-        return error;
-      } finally {
-        Loading.hide();
-      }
-    },
+
   },
   created() {
     // this.getReport();
     tg.expand();
-    tg.MainButton.setParams({
-      text: "Сформировать",
-      color: "#D7A310"
-    });
-    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    tg.MainButton.hide();
+    // tg.MainButton.setParams({
+    //   text: "Сформировать",
+    //   color: "#D7A310"
+    // });
+    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    // tg.MainButton.hide();
     // this.test = tg.initDataUnsafe?.query_id.toString()
   },
 });
