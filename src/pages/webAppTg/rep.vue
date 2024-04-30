@@ -19,6 +19,9 @@
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
 
+        <!-- <q-btn color="primary" label="Скачать: Отчет колл-центр(количество записей)" @click="getReport()" /> -->
+
+
 
         <q-list>
 
@@ -45,72 +48,93 @@
 
           </q-card>
 
-          <q-card class="q-mb-sm">
 
-            <q-item class="bg-dark text-white" clickable v-ripple>
-              <q-item-section>Колл-центр количество записей</q-item-section>
-              <q-btn flat color="warning" icon="download" @click="getReport()" />
-              <q-card-actions class="bg-dark text-white q-mb-sm">
-                <q-space />
-                <q-btn color="warning" round flat dense :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-                  @click="expanded = !expanded" />
-              </q-card-actions>
-            </q-item>
 
-            <q-slide-transition>
-              <div v-show="expanded">
-                <q-separator />
-                <q-card-section class="text-subtitle2">
-                  {{ text }}
-                </q-card-section>
-              </div>
-            </q-slide-transition>
 
-          </q-card>
+
+
+
+
 
 
         </q-list>
 
+
       </q-form>
 
     </q-card>
+    <div>Adobe Embedded API</div>
+    <button @click="openPDF">Click to view file</button>
+    <div id="adobe-dc-view"></div>
 
-    <iframe :src="pdfsrc" style="width: 100%;height: 1000px; border: none;">
-      Oops! an error has occurred.
+    <iframe :src="pdfsrc" style="width: 100%; height: 300px; border: none">
     </iframe>
   </div>
 </template>
 <script>
 
 
-
-
-
 import { defineComponent, ref } from "vue";
 import axios from "axios";
 import { QSpinnerGears, Loading } from "quasar";
-import { saveAs } from 'file-saver';
-const pdfSource = 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf'
+
 export default defineComponent({
   name: "MainLayout",
+  name: "SimpleInvoiceTabFiles",
+  mixins: [],
   components: {},
   setup() {
-    return {
-      expanded: ref(false),
-      pdfBlob: ref(null),
-      text: 'Отчет демонсттирует количество звонков и записаннных по звонку услуг за две недели по текущую дату.',
+    // return {
+    //   pdfsrc: null,
+    //   expanded: ref(false),
+    //   text: 'Отчет демонсттирует количество звонков и записаннных по звонку услуг за две недели по текущую дату.',
 
-      checkOfFilling(val) {
-        if (val) {
-          tg.MainButton.show();
-        }
-      },
-    };
+    //   checkOfFilling(val) {
+    //     if (val) {
+    //       tg.MainButton.show();
+    //     }
+    //   },
+    // };
   },
   mounted() {
-    // tg.ready();
+    document.addEventListener("adobe_dc_view_sdk.ready", () => {
+      this.adobeApiPDFReady = true;
+      console.log("Adobe created with adobe_dc_view_sdk.ready");
+    });
+
+    // Dynamically load Adobe SDK Viewer for this page
+    const plugin = document.createElement("script");
+    plugin.setAttribute(
+      "src",
+      "https://documentservices.adobe.com/view-sdk/viewer.js"
+    );
+    plugin.async = true;
+    document.head.appendChild(plugin);
+  },
+  data() {
+    return {
+      adobeApiPDFReady: false,
+      adobeDCView: null,
+    };
   },
   methods: {
+    openPDF() {
+      console.log("Trying to open PDF");
+      // Opening preview with default settings from https://developer.adobe.com/document-services/docs/overview/pdf-embed-api/#live-demo
+      this.adobeDCView.previewFile(
+        {
+          content: {
+            location: {
+              url:
+                "https://documentcloud.adobe.com/view-sdk-demo/PDFs/Bodea Brochure.pdf",
+            },
+          },
+          metaData: { fileName: "Bodea Brochure.pdf" },
+        },
+        {}
+      );
+    },
+
     async getReport() {
       Loading.show({
         spinner: QSpinnerGears,
@@ -126,18 +150,15 @@ export default defineComponent({
             }
           )
           .then((res) => {
-            // window.open(
-            //   window.URL.createObjectURL(
-            //     new Blob([res.data], { type: "application/pdf" })
-            //   )
-            // );
-            // this.pdfBlob = new Blob([res.data], { type: "application/pdf" })
-            saveAs(new Blob([res.data], { type: "application/pdf" }), "newReport.pdf");
-            // console.log("Success", res);
-            // const blob = new Blob([res.data], { type: `application/pdf` });
-            // const objectUrl = URL.createObjectURL(blob);
-            // this.pdfsrc = objectUrl;
-
+            console.log(URL.createObjectURL(
+              new Blob([res.data], { type: "application/pdf" })
+            ));
+            window.open(
+              URL.createObjectURL(
+                new Blob([res.data], { type: "application/pdf" })
+              )
+            );
+            // saveAs(pdfBlob, "newPdf.pdf");
           });
       } catch (error) {
         console.log(error);
@@ -181,8 +202,20 @@ export default defineComponent({
       }
     },
   },
+  watch: {
+    adobeApiPDFReady(val) {
+      if (val) {
+        // val == true ; Adobe is loaded on page
+        let view = new window.AdobeDC.View({
+          clientId: "f016760c38f842eb8d0ce5ee456949b0",
+          divId: "adobe-dc-view",
+        });
+        this.adobeDCView = Object.freeze(view);
+      }
+      console.log("Adobe is mounted with Client ID");
+    },
+  },
   created() {
-    // this.getReport();
     // tg.expand();
     // tg.MainButton.setParams({
     //   text: "Отправить пропуск в стол справок",
@@ -190,7 +223,7 @@ export default defineComponent({
     // });
     // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     // tg.MainButton.hide();
-    // this.test = tg.initDataUnsafe?.query_id.toString()
+    // this.test = tg.initDataUnsafe?.query_id.toString()}
   },
 });
 </script>
@@ -213,5 +246,10 @@ body {
 
 .q-date {
   box-shadow: none;
+}
+
+#adobe-dc-view {
+  width: 500px;
+  height: 500px;
 }
 </style>
