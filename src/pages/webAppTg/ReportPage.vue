@@ -17,32 +17,35 @@
 
       </q-item>
 
+
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
+
 
         <q-list>
 
-          <q-card class="my-card  q-mb-md">
+          <q-expansion-item expand-icon-class='text-warning' expand-separator icon="menu_book"
+            class="bg-dark text-white" clickable v-ripple>
 
-            <q-item class="bg-dark text-white" clickable v-ripple>
-              <q-item-section>Колл-центр количество записей</q-item-section>
-              <q-btn flat color="warning" icon="download" @click="getReport()" />
-              <q-card-actions class="bg-dark text-white q-mb-sm">
-                <q-space />
-                <q-btn color="warning" round flat dense :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-                  @click="expanded = !expanded" />
+            <q-card>
+
+              <q-card-section class=" text-dark text-subtitle2">
+                <div class="text-subtitle2">{{ text }}</div>
+              </q-card-section>
+              <q-separator dark color="warning"></q-separator>
+
+              <q-card-actions class="text-dark ">
+                <q-btn color="dark" @click="getReport()">Сформировать</q-btn>
               </q-card-actions>
-            </q-item>
 
-            <q-slide-transition>
-              <div v-show="expanded">
-                <q-separator />
-                <q-card-section class="text-subtitle2">
-                  {{ text }}
-                </q-card-section>
-              </div>
-            </q-slide-transition>
+            </q-card>
 
-          </q-card>
+            <template v-slot:header>
+              <q-item-section>
+                <div class="text-h8">Колл-центр количество записей</div>
+              </q-item-section>
+            </template>
+
+          </q-expansion-item>
 
         </q-list>
 
@@ -73,7 +76,7 @@ export default defineComponent({
     return {
       expanded: ref(false),
       pdfBlob: ref(null),
-      text: 'Отчет демонсттирует количество звонков и записаннных по звонку услуг за две недели по текущую дату.',
+      text: 'Описание:  количество звонков и записаннных по звонку услуг за две недели на текущую дату.',
 
       checkOfFilling(val) {
         if (val) {
