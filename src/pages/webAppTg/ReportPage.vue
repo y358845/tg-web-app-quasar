@@ -45,28 +45,7 @@
 
           </q-card>
 
-          <q-card class="q-mb-sm">
 
-            <q-item class="bg-dark text-white" clickable v-ripple>
-              <q-item-section>Колл-центр количество записей</q-item-section>
-              <q-btn flat color="warning" icon="download" @click="getReport()" />
-              <q-card-actions class="bg-dark text-white q-mb-sm">
-                <q-space />
-                <q-btn color="warning" round flat dense :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-                  @click="expanded = !expanded" />
-              </q-card-actions>
-            </q-item>
-
-            <q-slide-transition>
-              <div v-show="expanded">
-                <q-separator />
-                <q-card-section class="text-subtitle2">
-                  {{ text }}
-                </q-card-section>
-              </div>
-            </q-slide-transition>
-
-          </q-card>
 
 
         </q-list>
