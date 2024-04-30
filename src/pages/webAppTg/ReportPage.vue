@@ -23,8 +23,9 @@
 
         <q-list>
 
-          <q-expansion-item expand-icon-class='text-warning' expand-separator icon="menu_book"
-            class="bg-dark text-white" clickable v-ripple>
+          <q-expansion-item v-model="expanded" @show="checkOfFilling(expanded)" expand-icon-class='text-warning'
+            expand-separator icon="menu_book" class="bg-dark text-white" clickable v-ripple>
+
 
             <q-card>
 
@@ -40,11 +41,12 @@
             </q-card>
 
             <template v-slot:header>
+
               <q-item-section>
                 <div class="text-h8">Колл-центр количество записей</div>
               </q-item-section>
-            </template>
 
+            </template>
           </q-expansion-item>
 
         </q-list>
@@ -68,7 +70,8 @@ import { defineComponent, ref } from "vue";
 import axios from "axios";
 import { QSpinnerGears, Loading } from "quasar";
 import { saveAs } from 'file-saver';
-const pdfSource = 'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20210101201653/PDF.pdf'
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -82,11 +85,12 @@ export default defineComponent({
         if (val) {
           tg.MainButton.show();
         }
+
       },
     };
   },
   mounted() {
-    // tg.ready();
+    tg.ready();
   },
   methods: {
     async getReport() {
@@ -104,18 +108,7 @@ export default defineComponent({
             }
           )
           .then((res) => {
-            // window.open(
-            //   window.URL.createObjectURL(
-            //     new Blob([res.data], { type: "application/pdf" })
-            //   )
-            // );
-            // this.pdfBlob = new Blob([res.data], { type: "application/pdf" })
             saveAs(new Blob([res.data], { type: "application/pdf" }), "newReport.pdf");
-            // console.log("Success", res);
-            // const blob = new Blob([res.data], { type: `application/pdf` });
-            // const objectUrl = URL.createObjectURL(blob);
-            // this.pdfsrc = objectUrl;
-
           });
       } catch (error) {
         console.log(error);
@@ -146,9 +139,6 @@ export default defineComponent({
       try {
         return await uni_rersponse(dataForm, dataForm.nameMethod)
           .then((res) => {
-            // this.test = JSON.stringify(res.data)
-            // this.sendMessageBot(JSON.stringify(res.data))
-            // console.log(res);
           })
           .then(() => { });
       } catch (error) {
@@ -161,13 +151,13 @@ export default defineComponent({
   },
   created() {
     // this.getReport();
-    // tg.expand();
-    // tg.MainButton.setParams({
-    //   text: "Отправить пропуск в стол справок",
-    //   color: "#1976D2"
-    // });
-    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    // tg.MainButton.hide();
+    tg.expand();
+    tg.MainButton.setParams({
+      text: "Сформировать",
+      color: "#1976D2"
+    });
+    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    tg.MainButton.hide();
     // this.test = tg.initDataUnsafe?.query_id.toString()
   },
 });
