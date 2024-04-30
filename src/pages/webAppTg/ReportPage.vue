@@ -29,7 +29,7 @@
 
             <q-card>
 
-              <q-card-section class=" text-dark text-subtitle2">
+              <q-card-section class=" text-dark text-subtitle2" q-pb-md>
                 <div class="text-subtitle2">{{ text }}</div>
               </q-card-section>
               <q-separator dark color="warning"></q-separator>
@@ -48,6 +48,7 @@
 
             </template>
           </q-expansion-item>
+
           <q-expansion-item v-model="expanded" @show="checkOfFilling(expanded)" expand-icon-class='text-warning'
             expand-separator icon="menu_book" class="bg-dark text-white" clickable v-ripple>
 
