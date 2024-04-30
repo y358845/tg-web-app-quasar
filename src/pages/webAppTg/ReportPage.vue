@@ -49,31 +49,7 @@
             </template>
           </q-expansion-item>
 
-          <q-expansion-item v-model="expanded" @show="checkOfFilling(expanded)" expand-icon-class='text-warning'
-            expand-separator icon="menu_book" class="bg-dark text-white" clickable v-ripple>
 
-
-            <q-card>
-
-              <q-card-section class=" text-dark text-subtitle2">
-                <div class="text-subtitle2">{{ text }}</div>
-              </q-card-section>
-              <q-separator dark color="warning"></q-separator>
-
-              <q-card-actions class="text-dark ">
-                <q-btn color="dark" @click="getReport()">Сформировать</q-btn>
-              </q-card-actions>
-
-            </q-card>
-
-            <template v-slot:header>
-
-              <q-item-section>
-                <div class="text-h8">Колл-центр количество записей</div>
-              </q-item-section>
-
-            </template>
-          </q-expansion-item>
 
         </q-list>
 
