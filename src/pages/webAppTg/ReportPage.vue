@@ -19,7 +19,6 @@
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
 
-
         <q-list>
 
           <q-card class="my-card  q-mb-md">
@@ -44,9 +43,6 @@
             </q-slide-transition>
 
           </q-card>
-
-
-
 
         </q-list>
 
