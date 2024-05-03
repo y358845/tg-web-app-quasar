@@ -86,34 +86,6 @@ const actions = {
     }
   },
 
-
-  async postQuery({
-    commit
-  }, payload) {
-    Loading.show({
-      spinner: QSpinnerGears,
-      backgroundColor: "bg",
-      message: "Подождите идет загрузка данных...",
-    })
-    try {
-      await uni_rersponse2(payload, payload.nameMethod).then((res) => {
-        if (payload.nameState != "") {
-          commit(payload.nameState, res.data)
-        }
-
-        console.log(res.data);
-        return res.data
-      });
-    } catch (error) {
-      console.log(error);
-      return error;
-    } finally {
-      Loading.hide();
-    }
-  },
-
-
-
   async loginUser({
     commit
   }, payload) {

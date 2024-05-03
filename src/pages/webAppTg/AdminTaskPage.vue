@@ -64,7 +64,7 @@
         </template>
       </q-input>
 
-      <q-input olor="warning" @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="employer.tel"
+      <q-input color="warning" @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="employer.tel"
         type="textarea" autogrow label="Телефон" label-color=dark
         hint="Проверьте контактный номер телефона/при отсутствии введите новый" lazy-rules :rules="[
           (val) =>
@@ -196,6 +196,10 @@ export default defineComponent({
 body {
   background: white;
   color: black;
+}
+
+.q-field__messages {
+  color: #D7A310;
 }
 
 .q-date {
