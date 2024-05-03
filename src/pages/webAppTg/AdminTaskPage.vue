@@ -23,7 +23,7 @@
         outlined use-input hide-selected bottom-slots fill-input dense input-debounce="0" :options="options"
         @filter="filterFn" label="Сотрудник" label-color=dark :behavior="$q.platform.is.ios === true ? 'menu' : 'menu'">
         <template v-slot:hint>
-          <div v-if="!employer.division" class="text-warning">Выберите сотрудника</div>
+          <div v-if="!employer.division">Выберите сотрудника</div>
           <div class="text-warning">{{ employer.division }}</div>
         </template>
         <template v-slot:option="scope">
