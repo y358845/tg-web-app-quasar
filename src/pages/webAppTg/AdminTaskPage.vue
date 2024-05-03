@@ -12,7 +12,7 @@
         </q-item-section>
 
         <q-item-section>
-          <q-item-label>Новая заявка на техподдержку!</q-item-label>
+          <q-item-label>Новая заявка на техподдержку</q-item-label>
         </q-item-section>
 
       </q-item>
@@ -158,14 +158,14 @@ export default defineComponent({
         problem: this.deskription,
         tgid: tgid.toString(),
         tel: this.employer.tel,
-        nameMethod: "tasks/task"
+        nameMethod: "api/tg/createtask"
       };
       this.files.map((f, i) => {
         formDataPostTask[`fileName${i}`] = f.fileName;
         formDataPostTask[`file${i}`] = f.file;
       });
-      console.log(formDataPostTask);
-      this.postQuery(formDataPostTask);
+      // console.log(formDataPostTask);
+      this.saveData(formDataPostTask);
     },
 
     addFile(file) {
