@@ -198,10 +198,6 @@ body {
   color: black;
 }
 
-.q-field__messages {
-  color: #D7A310;
-}
-
 .q-date {
   box-shadow: none;
 }
