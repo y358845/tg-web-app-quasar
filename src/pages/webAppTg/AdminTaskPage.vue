@@ -102,8 +102,8 @@
 import { defineComponent, ref } from "vue";
 import { mapActions, mapState } from "vuex";
 import { addFileInTask } from "../../tg/tg_methods";
-// const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default defineComponent({
   name: "MainLayout",
   components: {},
@@ -129,7 +129,7 @@ export default defineComponent({
   },
 
   async mounted() {
-    // tg.ready();
+    tg.ready();
     this.saveData(this.formData);
   },
   methods: {
@@ -174,14 +174,14 @@ export default defineComponent({
     ...mapState("base", ["userList"])
   },
   created() {
-    // tg.expand();
-    // tg.MainButton.setParams({
-    //   text: "Создать заявку",
-    //   color: "#D7A310",
-    // });
-    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    // tg.MainButton.hide();
-    // this.phone = window?.Telegram?.WebView.initParams.startapp;
+    tg.expand();
+    tg.MainButton.setParams({
+      text: "Создать заявку",
+      color: "#D7A310",
+    });
+    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    tg.MainButton.hide();
+    this.phone = window?.Telegram?.WebView.initParams.startapp;
   }
 });
 </script>
