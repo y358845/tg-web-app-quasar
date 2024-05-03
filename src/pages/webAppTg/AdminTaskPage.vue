@@ -94,7 +94,7 @@
         </q-uploader>
 
       </q-form>
-
+      <q-btn @click="sendRequest()">ok</q-btn>
     </q-card>
 
   </div>
@@ -115,6 +115,7 @@ export default defineComponent({
       files: [],
       employer: ref(""),
       options: ref([]),
+      tgid: ref(''),
 
       formData: {
         nameMethod: "api/tg/getuserlistUIT",
@@ -144,7 +145,6 @@ export default defineComponent({
         return;
       }
       update(() => {
-        console.log(this.userList);
         const needle = val.toLowerCase();
         this.options = this.userList.filter(
           v => v.name.toLowerCase().indexOf(needle) > -1
@@ -164,7 +164,6 @@ export default defineComponent({
         formDataPostTask[`fileName${i}`] = f.fileName;
         formDataPostTask[`file${i}`] = f.file;
       });
-      // console.log(formDataPostTask);
       this.saveData(formDataPostTask);
     },
 
