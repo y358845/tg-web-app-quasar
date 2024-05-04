@@ -18,8 +18,8 @@
     <q-form @reset="onReset" class="q-gutter-md q-pa-sm">
 
 
-      <q-input v-model="deskription" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense
-        label-color=dark outlined label="Описание проблемы" hint="Опишите проблему" hint-color="red" lazy-rules
+      <q-input class="bg-white" v-model="deskription" color="warning" @update:model-value="(val) => checkOfFilling(val)"
+        dense label-color=dark outlined label="Описание проблемы" hint="Опишите проблему" hint-color="red" lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
         <template v-slot:prepend>
           <q-icon name="description" color="warning" />
