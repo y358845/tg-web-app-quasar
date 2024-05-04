@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-bar class="bg-primary text-white q-pa-md">
+    <q-bar class="bg-dark  text-white q-pa-md">
       <q-btn dense flat round icon="confirmation_number" size="8.5px" color="white" />
       <div class="col text-center text-weight-bold">Новый пропуск</div>
     </q-bar>
@@ -10,8 +10,9 @@
     <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
       <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
 
-        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" label="ФИО"
-          hint="Введите ФИО гостя" lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
+        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" color="warning"
+          label="ФИО" hint="Введите ФИО гостя" lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
           <template v-slot:prepend>
             <q-icon name="badge" color="orange" />
           </template>
@@ -22,10 +23,10 @@
 
 
         <div class="row items-center justify-center toggle1">
-          <q-toggle v-model="value1" @update:model-value="(value, evt) => checkTogl1(value, evt)" color="primary"
+          <q-toggle v-model="value1" @update:model-value="(value, evt) => checkTogl1(value, evt)" color="dark"
             keep-color icon="alarm" label="Сегодня" />
 
-          <q-toggle v-model="value2" @update:model-value="(value, evt) => checkTogl2(value, evt)" color="green"
+          <q-toggle v-model="value2" @update:model-value="(value, evt) => checkTogl2(value, evt)" color="warning"
             keep-color icon="alarm" label="Завтра" />
         </div>
         <div class="row  justify-center">
@@ -143,7 +144,7 @@ export default defineComponent({
     tg.expand();
     tg.MainButton.setParams({
       text: 'Отправить пропуск в стол справок',
-      color: '#1976D2',
+      color: "#D7A310",
     })
     tg.onEvent('mainButtonClicked', this.mainButtonClicked);
     tg.MainButton.hide()
