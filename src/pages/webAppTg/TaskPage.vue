@@ -15,12 +15,12 @@
 
     </q-item>
 
-    <q-form @reset="onReset" class="q-gutter-md q-pa-sm q-pt-md">
+    <q-form @reset="onReset" class="q-gutter-md q-pa-sm">
 
 
-      <q-input bg-color="white" v-model="deskription" color="warning" @update:model-value="(val) => checkOfFilling(val)"
-        dense label-color=dark outlined label="Описание проблемы" hint="Опишите проблему" lazy-rules
-        :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
+      <q-input bg-color="white" class="q-pt-md col " v-model="deskription" color="warning"
+        @update:model-value="(val) => checkOfFilling(val)" dense label-color=dark outlined label="Описание проблемы"
+        hint="Опишите проблему" lazy-rules :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
         <template v-slot:prepend>
           <q-icon name="description" color="warning" />
         </template>
