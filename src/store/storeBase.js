@@ -72,6 +72,7 @@ const actions = {
       spinner: QSpinnerGears,
       backgroundColor: "bg"
     })
+    alert(payload.nameMethod)
     try {
       return await $authHost.post(payload.nameMethod, payload)
 
@@ -81,7 +82,7 @@ const actions = {
           } else {
             sendNotify(res.data, 'positive', 'bottom-left')
           }
-          alert(payload.nameMethod)
+
           return res.data;
         });
     } catch (e) {
