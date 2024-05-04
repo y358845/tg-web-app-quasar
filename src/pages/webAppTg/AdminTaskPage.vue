@@ -12,7 +12,7 @@
       </q-item-section>
 
       <q-item-section>
-        <q-item-label>Новая заявка на техподдержку</q-item-label>
+        <q-item-label>Новая заявка на техподдержку!</q-item-label>
       </q-item-section>
 
     </q-item>
