@@ -72,7 +72,6 @@ const actions = {
       spinner: QSpinnerGears,
       backgroundColor: "bg"
     })
-    alert(payload.nameMethod)
     try {
       return await $authHost.post(payload.nameMethod, payload)
 
@@ -87,7 +86,7 @@ const actions = {
           return res.data;
         });
     } catch (e) {
-      alert(e.message)
+      alert(e)
       console.log(e);
     } finally {
       Loading.hide();
