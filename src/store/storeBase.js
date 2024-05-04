@@ -81,6 +81,7 @@ const actions = {
           } else {
             sendNotify(res.data, 'positive', 'bottom-left')
           }
+          alert(res)
           return res.data;
         });
     } catch (e) {

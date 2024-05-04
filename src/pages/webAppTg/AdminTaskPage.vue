@@ -169,7 +169,7 @@ export default defineComponent({
         formDataPostTask[`file${i}`] = f.file;
       });
       this.saveData(formDataPostTask).then((res => {
-        alert(res)
+
         tg.close()
       })
 
