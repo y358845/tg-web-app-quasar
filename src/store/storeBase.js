@@ -77,7 +77,7 @@ const actions = {
       return await $authHost.post(payload.nameMethod, payload)
 
         .then((res) => {
-          alert('да')
+
           if (payload.nameState) {
             commit(payload.nameState, res.data)
           } else {
@@ -87,7 +87,7 @@ const actions = {
           return res.data;
         });
     } catch (e) {
-      alert(e)
+      alert(e.message)
       console.log(e);
     } finally {
       Loading.hide();
