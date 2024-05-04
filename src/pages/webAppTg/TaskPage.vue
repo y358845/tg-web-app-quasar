@@ -12,7 +12,7 @@
         </q-item-section>
 
         <q-item-section>
-          <q-item-label>Новая заявка на техподдержку</q-item-label>
+          <q-item-label>Новая заявка на техподдержку!</q-item-label>
         </q-item-section>
 
       </q-item>
@@ -94,11 +94,11 @@ export default defineComponent({
   mounted() {
     tg.ready();
   },
-  computed: {
-    ...mapState("tasks", ["userList"])
-  },
+  // computed: {
+  //   ...mapState("tasks", ["userList"])
+  // },
   methods: {
-    ...mapActions("tasks", ["postQuery"]),
+    ...mapActions("base", ["saveData"]),
     mainButtonClicked() {
       this.sendRequest()
     },

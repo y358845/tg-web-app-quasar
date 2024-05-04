@@ -114,7 +114,7 @@ export default defineComponent({
       files: [],
       employer: ref(""),
       options: ref([]),
-      tgid: ref(''),
+
 
       formData: {
         url: "allworkers/allworkers",
