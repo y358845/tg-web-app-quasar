@@ -164,8 +164,10 @@ export default defineComponent({
         formDataPostTask[`fileName${i}`] = f.fileName;
         formDataPostTask[`file${i}`] = f.file;
       });
-      await this.saveData(formDataPostTask).then(
+      this.saveData(formDataPostTask).then((res => {
         tg.close()
+      })
+
       )
     },
 
