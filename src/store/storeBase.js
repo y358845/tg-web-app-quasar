@@ -86,8 +86,7 @@ const actions = {
           return res.data;
         });
     } catch (e) {
-      alert(e)
-      alert(e.code);
+      alert(`${e.name}: ${e.message}`);
       console.log(e);
 
     } finally {
