@@ -87,7 +87,9 @@ const actions = {
         });
     } catch (e) {
       alert(e)
+      alert(e.code);
       console.log(e);
+
     } finally {
       Loading.hide();
     }
