@@ -3,15 +3,15 @@ const url_dev = "https://1c.rostgmu-uit.ru:4443/help_desk/hs/";
 // const home = "http://localhost/science/hs/PersonalAPI/";
 // const url_work =  `http://85.21.63.177/nauka/hs/PersonalAPI/`
 
-export function uni_rersponse(payload, method) {
-  const hh = `${url_dev}${method}`;
+export function uni_rersponse(payload, method, responseType = 'text') {
+
   return axios.post(`${url_dev}${method}`, payload, {
     credential: true,
     auth: {
       username: unescape(encodeURIComponent("service_usr")),
-      password: unescape(encodeURIComponent("ssw0rds2023")),
+      password: unescape(encodeURIComponent("P@ssw0rds2023")),
     },
-
+    responseType: responseType,
   });
 }
 

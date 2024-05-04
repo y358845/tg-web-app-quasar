@@ -127,7 +127,7 @@ export default defineComponent({
       try {
         return await uni_rersponse(dataForm, dataForm.nameMethod).then((res) => {
           // this.sendMessageBot(res.data)
-          // console.log(res);
+          console.log(res);
 
         }).then(() => { tg.close() })
       } catch (error) {
