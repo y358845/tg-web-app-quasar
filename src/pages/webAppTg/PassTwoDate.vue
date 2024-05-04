@@ -26,8 +26,8 @@
           <q-toggle v-model="value1" @update:model-value="(value, evt) => checkTogl1(value, evt)" color="primary"
             keep-color icon="alarm" label="Сегодня" />
 
-          <q-toggle v-model="value2" @update:model-value="(value, evt) => checkTogl2(value, evt)" color="green" keep-color
-            icon="alarm" label="Завтра" />
+          <q-toggle v-model="value2" @update:model-value="(value, evt) => checkTogl2(value, evt)" color="green"
+            keep-color icon="alarm" label="Завтра" />
         </div>
 
         <div class="row q-mt-md">
@@ -74,7 +74,7 @@ const dateK = date.formatDate(today, "YYYY/MM/DD");
 
 import { defineComponent, ref } from "vue";
 import { date } from "quasar";
-import { uni_rersponse } from "src/functions/1с_response";
+import { uni_rersponse } from "../../functions/1с_response";
 import axios from "axios";
 import {
   QSpinnerGears,
