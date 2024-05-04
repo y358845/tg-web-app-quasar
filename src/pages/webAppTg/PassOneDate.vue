@@ -30,7 +30,7 @@
             keep-color icon="alarm" label="Завтра" />
         </div>
         <div class="row  justify-center">
-          <q-date color="dark" v-model="date" minimal />
+          <q-date color="warning" v-model="date" minimal />
         </div>
       </q-card>
     </q-form>
