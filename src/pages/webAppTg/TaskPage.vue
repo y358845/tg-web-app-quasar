@@ -128,7 +128,7 @@ export default defineComponent({
     tg.expand();
     tg.MainButton.setParams({
       text: "Создать заявку",
-      color: "#1976D2"
+      color: "#D7A310",
     });
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     tg.MainButton.hide();
