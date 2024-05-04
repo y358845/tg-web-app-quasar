@@ -102,7 +102,7 @@ export default defineComponent({
     mainButtonClicked() {
       this.sendRequest()
     },
-    sendRequest() {
+    async sendRequest() {
       let dataForm = {
         problem: this.deskription,
         tgid: tgid.toString(),
