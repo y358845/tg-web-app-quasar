@@ -107,14 +107,18 @@ export default defineComponent({
         problem: this.deskription,
         tgid: tgid.toString(),
         tel: this.phone,
-        nameMethod: 'tasks/task',
+        url: "tasks/task",
+        nameState: "setTemp",
+        nameMethod: "api/tg/post_request_1C"
       };
       this.files.map((f, i) => {
         dataForm[`fileName${i}`] = f.fileName;
         dataForm[`file${i}`] = f.file;
       });
-      console.log(dataForm);
-      this.postQuery(dataForm);
+      this.saveData(dataForm).then((res => {
+        tg.close()
+      }))
+
     },
     addFile(file) {
       addFileInTask(file, this.files)

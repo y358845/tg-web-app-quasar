@@ -117,7 +117,8 @@ export default defineComponent({
       tgid: ref(''),
 
       formData: {
-        nameMethod: "api/tg/getuserlistUIT",
+        url: "allworkers/allworkers",
+        nameMethod: "api/tg/post_request_1C",
         nameState: "setUserList"
       },
       checkOfFilling(val) {
@@ -157,8 +158,9 @@ export default defineComponent({
         problem: this.deskription,
         tgid: tgid.toString(),
         tel: this.employer.tel,
+        url: "tasks/task",
         nameState: "setTemp",
-        nameMethod: "api/tg/createtask"
+        nameMethod: "api/tg/post_request_1C"
       };
       this.files.map((f, i) => {
         formDataPostTask[`fileName${i}`] = f.fileName;
