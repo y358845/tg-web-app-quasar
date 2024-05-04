@@ -15,11 +15,11 @@
 
     </q-item>
 
-    <q-form @reset="onReset" class="q-gutter-md q-pa-sm">
+    <q-form @reset="onReset" class="q-gutter-md q-pa-sm q-pt-md">
 
 
-      <q-input class="bg-white" v-model="deskription" color="warning" @update:model-value="(val) => checkOfFilling(val)"
-        dense label-color=dark outlined label="Описание проблемы" hint="Опишите проблему" hint-color="red" lazy-rules
+      <q-input bg-color="white" v-model="deskription" color="warning" @update:model-value="(val) => checkOfFilling(val)"
+        dense label-color=dark outlined label="Описание проблемы" hint="Опишите проблему" lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
         <template v-slot:prepend>
           <q-icon name="description" color="warning" />
@@ -29,9 +29,10 @@
 
 
 
-      <q-input v-model="phone" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense outlined
-        label="Телефон" label-color=dark hint="Проверьте контактный номер телефона/при отсутствии введите новый"
-        lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите контактный телефонный номер']">
+      <q-input bg-color="white" v-model="phone" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense
+        outlined label="Телефон" label-color=dark
+        hint="Проверьте контактный номер телефона/при отсутствии введите новый" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Введите контактный телефонный номер']">
         <template v-slot:prepend>
           <q-icon name="call" color="warning" />
         </template>

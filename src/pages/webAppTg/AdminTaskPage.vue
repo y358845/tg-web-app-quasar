@@ -19,9 +19,10 @@
 
     <q-form @reset="onReset" class="q-gutter-md q-pa-sm  ">
 
-      <q-select class="q-pt-md col " color="warning" v-model="employer" option-label="name" option-value="number"
-        outlined use-input hide-selected bottom-slots fill-input dense input-debounce="0" :options="options"
-        @filter="filterFn" label="Сотрудник" label-color=dark :behavior="$q.platform.is.ios === true ? 'menu' : 'menu'">
+      <q-select bg-color="white" class="q-pt-md col " color="warning" v-model="employer" option-label="name"
+        option-value="number" outlined use-input hide-selected bottom-slots fill-input dense input-debounce="0"
+        :options="options" @filter="filterFn" label="Сотрудник" label-color=dark
+        :behavior="$q.platform.is.ios === true ? 'menu' : 'menu'">
         <template v-slot:hint>
           <div v-if="!employer.division">Выберите сотрудника</div>
           <div class="text-warning">{{ employer.division }}</div>
@@ -49,23 +50,24 @@
       </q-select>
 
       <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm hidden" flat bordered>
-        <q-input dense outlined readonly v-model="employer.division" label="Подразделение" hint="Подразделение">
+        <q-input bg-color="white" dense outlined readonly v-model="employer.division" label="Подразделение"
+          hint="Подразделение">
           <template v-slot:prepend>
             <q-icon name="diversity_3" color="warning" />
           </template>
         </q-input>
       </q-card>
 
-      <q-input color="warning" @update:model-value="(val) => checkOfFilling(val)" dense type="textarea" outlined
-        v-model="deskription" label="Описание проблемы" hint="Опишите проблему" lazy-rules label-color=dark
+      <q-input bg-color="white" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense type="textarea"
+        outlined v-model="deskription" label="Описание проблемы" hint="Опишите проблему" lazy-rules label-color=dark
         :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
         <template v-slot:prepend>
           <q-icon name="description" color="warning" />
         </template>
       </q-input>
 
-      <q-input color="warning" @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="employer.tel"
-        type="textarea" autogrow label="Телефон" label-color=dark
+      <q-input bg-color="white" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense outlined
+        v-model="employer.tel" type="textarea" autogrow label="Телефон" label-color=dark
         hint="Проверьте контактный номер телефона/при отсутствии введите новый" lazy-rules :rules="[
           (val) =>
             (val && val.length > 0) || 'Введите контактный телефонный номер',
