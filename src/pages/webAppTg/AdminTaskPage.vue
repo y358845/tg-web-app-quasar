@@ -157,13 +157,16 @@ export default defineComponent({
         problem: this.deskription,
         tgid: tgid.toString(),
         tel: this.employer.tel,
+        nameState: "setTemp",
         nameMethod: "api/tg/createtask"
       };
       this.files.map((f, i) => {
         formDataPostTask[`fileName${i}`] = f.fileName;
         formDataPostTask[`file${i}`] = f.file;
       });
-      this.saveData(formDataPostTask);
+      await this.saveData(formDataPostTask).then(
+        tg.close()
+      )
     },
 
     addFile(file) {

@@ -23,8 +23,12 @@ const state = {
   loggedIn: false,
   userLogin: "",
   userList: [],
+  temp: ''
 };
 const mutations = {
+  setTemp(state, value) {
+    state.temp = value;
+  },
   setLoggedIn(state, value) {
     state.loggedIn = value;
   },
