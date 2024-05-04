@@ -10,8 +10,8 @@
     <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
 
 
-      <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" color="warning"
-        label="ФИО" hint="Введите ФИО гостя" lazy-rules
+      <q-input bg-color="white" @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname"
+        color="warning" label="ФИО" hint="Введите ФИО гостя" lazy-rules
         :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
         <template v-slot:prepend>
           <q-icon name="badge" color="warning" />

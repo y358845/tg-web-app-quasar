@@ -12,8 +12,8 @@
       <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
 
 
-        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined color="warning" v-model="surname"
-          label="ФИО" hint="Введите ФИО гостя" lazy-rules
+        <q-input bg-color="white" @update:model-value="(val) => checkOfFilling(val)" dense outlined color="warning"
+          v-model="surname" label="ФИО" hint="Введите ФИО гостя" lazy-rules
           :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
           <template v-slot:prepend>
             <q-icon name="badge" color="warning" />
