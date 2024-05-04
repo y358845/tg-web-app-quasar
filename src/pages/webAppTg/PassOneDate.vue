@@ -8,16 +8,16 @@
     <typography class="row items-center justify-center q-mt-md">Заполните данные гостя</typography>
 
     <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
-      <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
 
-        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" color="warning"
-          label="ФИО" hint="Введите ФИО гостя" lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
-          <template v-slot:prepend>
-            <q-icon name="badge" color="orange" />
-          </template>
-        </q-input>
-      </q-card>
+
+      <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" color="warning"
+        label="ФИО" hint="Введите ФИО гостя" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
+        <template v-slot:prepend>
+          <q-icon name="badge" color="warning" />
+        </template>
+      </q-input>
+
       <typography class="row items-center justify-center q-mt-md">Заполните даты пропуска</typography>
       <q-card class="my-card q-pl-sm q-pr-sm q-pb-md" flat bordered>
 
