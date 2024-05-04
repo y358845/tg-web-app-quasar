@@ -12,8 +12,9 @@
       <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
 
 
-        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined v-model="surname" label="ФИО"
-          hint="Введите ФИО гостя" lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
+        <q-input @update:model-value="(val) => checkOfFilling(val)" dense outlined color="warning" v-model="surname"
+          label="ФИО" hint="Введите ФИО гостя" lazy-rules
+          :rules="[(val) => (val && val.length > 0) || 'Введите фамилию']">
           <template v-slot:prepend>
             <q-icon name="badge" color="warning" />
           </template>
@@ -31,7 +32,8 @@
         </div>
 
         <div class="row q-mt-md">
-          <q-input dense outlined v-model="date" mask="date" hint="Дата начала действия" class="col q-mr-md">
+          <q-input dense outlined v-model="date" mask="date" hint="Дата начала действия" color="warning"
+            class="col q-mr-md">
             <template v-slot:append>
               <q-icon name="event" class="cursor-pointer" color="warning">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -45,7 +47,8 @@
             </template>
           </q-input>
 
-          <q-input dense outlined v-model="date2" mask="date" hint="Дата окончания действия" class="col">
+          <q-input dense outlined v-model="date2" mask="date" hint="Дата окончания действия" class="col"
+            color="warning">
             <template v-slot:append>
               <q-icon name="event" class="cursor-pointer" color="warning">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
