@@ -17,26 +17,26 @@
 
     <q-form @reset="onReset" class="q-gutter-md q-pa-sm">
 
-      <q-card class="my-card q-pa-sm q-pr-sm q-pb-sm" flat bordered>
-        <q-input v-model="deskription" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense
-          label-color=dark outlined label="Описание проблемы" hint="Опишите проблему" hint-color="red" lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
-          <template v-slot:prepend>
-            <q-icon name="description" color="warning" />
-          </template>
-        </q-input>
-      </q-card>
 
-      <q-card class="my-card q-pa-sm q-pr-sm q-pb-md" flat bordered>
+      <q-input v-model="deskription" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense
+        label-color=dark outlined label="Описание проблемы" hint="Опишите проблему" hint-color="red" lazy-rules
+        :rules="[(val) => (val && val.length > 0) || 'Опишите проблему']">
+        <template v-slot:prepend>
+          <q-icon name="description" color="warning" />
+        </template>
+      </q-input>
 
-        <q-input v-model="phone" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense outlined
-          label="Телефон" label-color=dark hint="Проверьте контактный номер телефона/при отсутствии введите новый"
-          lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите контактный телефонный номер']">
-          <template v-slot:prepend>
-            <q-icon name="call" color="warning" />
-          </template>
-        </q-input>
-      </q-card>
+
+
+
+      <q-input v-model="phone" color="warning" @update:model-value="(val) => checkOfFilling(val)" dense outlined
+        label="Телефон" label-color=dark hint="Проверьте контактный номер телефона/при отсутствии введите новый"
+        lazy-rules :rules="[(val) => (val && val.length > 0) || 'Введите контактный телефонный номер']">
+        <template v-slot:prepend>
+          <q-icon name="call" color="warning" />
+        </template>
+      </q-input>
+
 
       <q-uploader @added="addFile" style="width: 96%" dense flat color="dark" multiple max-files="3" hide-upload-btn
         no-thumbnails>
