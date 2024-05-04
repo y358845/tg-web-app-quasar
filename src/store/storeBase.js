@@ -81,7 +81,7 @@ const actions = {
           } else {
             sendNotify(res.data, 'positive', 'bottom-left')
           }
-          alert(res)
+          alert(payload.nameMethod)
           return res.data;
         });
     } catch (e) {
