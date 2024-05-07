@@ -143,22 +143,22 @@ export default defineComponent({
 
       // mainButtonClicked() {
       //   this.sendInquiry();
-      // },
+    },
 
 
-    },
-    created() {
-      // this.getReport();
-      tg.expand();
-      // tg.MainButton.setParams({
-      //   text: "Сформировать",
-      //   color: "#D7A310"
-      // });
-      // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-      tg.MainButton.hide();
-      // this.test = tg.initDataUnsafe?.query_id.toString()
-    },
-  });
+  },
+  created() {
+    // this.getReport();
+    tg.expand();
+    // tg.MainButton.setParams({
+    //   text: "Сформировать",
+    //   color: "#D7A310"
+    // });
+    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    tg.MainButton.hide();
+    // this.test = tg.initDataUnsafe?.query_id.toString()
+  },
+});
 </script>
 
 <style>
