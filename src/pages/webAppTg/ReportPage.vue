@@ -102,7 +102,7 @@ export default defineComponent({
         queryId: tg.initDataUnsafe?.query_id.toString(),
         message: JSON.stringify(msg)
       }
-      await axios.post('http://192.168.0.103:5000/api/tg/web-data', dataForm
+      await axios.post('http://192.168.0.103:5000/web-data', dataForm
 
       ).then(res =>
         this.test = JSON.stringify(res.data)
@@ -155,7 +155,7 @@ export default defineComponent({
     //   color: "#D7A310"
     // });
     // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    // tg.MainButton.hide();
+    tg.MainButton.hide();
     // this.test = tg.initDataUnsafe?.query_id.toString()
   },
 });
