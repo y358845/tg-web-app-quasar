@@ -95,6 +95,7 @@ export default defineComponent({
     tg.ready();
   },
   methods: {
+
     async sendMessageBot(msg) {
       // this.surname = tg.initDataUnsafe?.query_id.toString()
 
@@ -116,49 +117,48 @@ export default defineComponent({
         });
     },
     async getReport() {
-      Loading.show({
-        spinner: QSpinnerGears,
-        backgroundColor: "bg",
-        message: "Подождите, идет загрузка документа...",
-      });
-      try {
-        await axios
-          .get(
-            "https://hs_reports_it:dE7my3zi@rostgmu-info.ru/Hospital_work/hs/Reports/CallCenter",
-            {
-              responseType: "blob",
-            }
-          )
-          .then((res) => {
-            saveAs(new Blob([res.data], { type: "application/pdf" }), "newReport.pdf");
-            this.sendMessageBot(JSON.stringify('ответ'))
-          });
-      } catch (error) {
-        console.log(error);
-        return error;
-      } finally {
-        Loading.hide();
+      const dataForm = {
+        queryId: tg.initDataUnsafe?.query_id.toString(),
+        nameMethod: `/web-data`
       }
+      this.saveData(dataForm).then((res => {
+        tg.close()
+      }))
+      //   Loading.show({
+      //     spinner: QSpinnerGears,
+      //     backgroundColor: "bg",
+      //     message: "Подождите, идет загрузка документа...",
+      //   });
+      //   try {
+      //     await $host.post(`/web-data`).then((res) =>
+      //       tg.close()
+      //     )
+      //   } catch (error) {
+      //     console.log(error);
+      //     return error;
+      //   } finally {
+      //     Loading.hide();
+      //   }
+      // },
+
+      // mainButtonClicked() {
+      //   this.sendInquiry();
+      // },
+
+
     },
-
-    // mainButtonClicked() {
-    //   this.sendInquiry();
-    // },
-
-
-  },
-  created() {
-    // this.getReport();
-    tg.expand();
-    // tg.MainButton.setParams({
-    //   text: "Сформировать",
-    //   color: "#D7A310"
-    // });
-    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    tg.MainButton.hide();
-    // this.test = tg.initDataUnsafe?.query_id.toString()
-  },
-});
+    created() {
+      // this.getReport();
+      tg.expand();
+      // tg.MainButton.setParams({
+      //   text: "Сформировать",
+      //   color: "#D7A310"
+      // });
+      // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+      tg.MainButton.hide();
+      // this.test = tg.initDataUnsafe?.query_id.toString()
+    },
+  });
 </script>
 
 <style>
