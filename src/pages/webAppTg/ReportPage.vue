@@ -84,9 +84,9 @@ export default defineComponent({
       text: 'Описание:  количество звонков и записаннных по звонку услуг за две недели на текущую дату.',
 
       checkOfFilling(val) {
-        if (val) {
-          tg.MainButton.show();
-        }
+        //   if (val) {
+        //     tg.MainButton.show();
+        //   }
 
       },
     };
@@ -149,7 +149,7 @@ export default defineComponent({
   },
   created() {
     // this.getReport();
-    // tg.expand();
+    tg.expand();
     // tg.MainButton.setParams({
     //   text: "Сформировать",
     //   color: "#D7A310"
