@@ -12,7 +12,7 @@
         </q-item-section>
 
         <q-item-section>
-          <q-item-label>Отчеты</q-item-label>
+          <q-item-label>Отчеты:</q-item-label>
         </q-item-section>
 
       </q-item>
@@ -149,7 +149,7 @@ export default defineComponent({
   },
   created() {
     // this.getReport();
-    tg.expand();
+    // tg.expand();
     // tg.MainButton.setParams({
     //   text: "Сформировать",
     //   color: "#D7A310"
