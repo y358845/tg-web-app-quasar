@@ -95,7 +95,7 @@ export default defineComponent({
     tg.ready();
   },
   methods: {
-
+    ...mapActions("base", ["saveData"]),
     // async sendMessageBot(msg) {
     //   // this.surname = tg.initDataUnsafe?.query_id.toString()
 
