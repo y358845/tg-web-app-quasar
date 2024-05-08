@@ -119,7 +119,7 @@ export default defineComponent({
     async getReport() {
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id.toString(),
-        nameMethod: `/api/tg/reports`
+        nameMethod: `api/tg/reports`
       }
       this.saveData(dataForm).then((res => {
         tg.close()
