@@ -96,30 +96,30 @@ export default defineComponent({
   },
   methods: {
 
-    async sendMessageBot(msg) {
-      // this.surname = tg.initDataUnsafe?.query_id.toString()
+    // async sendMessageBot(msg) {
+    //   // this.surname = tg.initDataUnsafe?.query_id.toString()
 
-      const dataForm = {
-        queryId: tg.initDataUnsafe?.query_id.toString(),
-        message: JSON.stringify(msg)
-      }
-      await axios.post('http://192.168.0.103:5000/web-data', dataForm
+    //   const dataForm = {
+    //     queryId: tg.initDataUnsafe?.query_id.toString(),
+    //     message: JSON.stringify(msg)
+    //   }
+    //   await axios.post('http://192.168.0.103:5000/web-data', dataForm
 
-      ).then(res =>
-        this.test = JSON.stringify(res.data)
+    //   ).then(res =>
+    //     this.test = JSON.stringify(res.data)
 
-        // console.log(JSON.stringify(res.data))
-      )
-        .catch(error => {
-          this.errorMessage = error.message;
-          console.error("There was an error!", error);
-          this.test = error.message
-        });
-    },
+    //     // console.log(JSON.stringify(res.data))
+    //   )
+    //     .catch(error => {
+    //       this.errorMessage = error.message;
+    //       console.error("There was an error!", error);
+    //       this.test = error.message
+    //     });
+    // },
     async getReport() {
       const dataForm = {
         queryId: tg.initDataUnsafe?.query_id.toString(),
-        nameMethod: `/web-data`
+        nameMethod: `/api/tg/reports`
       }
       this.saveData(dataForm).then((res => {
         tg.close()
