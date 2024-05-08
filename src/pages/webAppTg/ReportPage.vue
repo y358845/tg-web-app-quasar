@@ -69,9 +69,7 @@
 
 
 import { defineComponent, ref } from "vue";
-import axios from "axios";
-import { QSpinnerGears, Loading } from "quasar";
-import { saveAs } from 'file-saver';
+import { mapActions, mapState } from "vuex";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 export default defineComponent({
