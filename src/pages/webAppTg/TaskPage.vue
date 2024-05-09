@@ -1,19 +1,7 @@
 <template>
   <div>
 
-    <q-item class="bg-dark text-white " flat>
-
-      <q-item-section avatar>
-        <q-avatar>
-          <img src="../../assets/chief1.png">
-        </q-avatar>
-      </q-item-section>
-
-      <q-item-section>
-        <q-item-label>Новая заявка на техподдержку!</q-item-label>
-      </q-item-section>
-
-    </q-item>
+    <modal-web-heder>Новая заявка на техподдержку</modal-web-heder>
 
     <q-form @reset="onReset" class="q-gutter-md q-pa-sm">
 
@@ -90,9 +78,7 @@ export default defineComponent({
   mounted() {
     tg.ready();
   },
-  // computed: {
-  //   ...mapState("tasks", ["userList"])
-  // },
+
   methods: {
     ...mapActions("base", ["saveData"]),
     mainButtonClicked() {
@@ -130,6 +116,9 @@ export default defineComponent({
     tg.onEvent("mainButtonClicked", this.mainButtonClicked);
     tg.MainButton.hide();
     this.phone = window?.Telegram?.WebView.initParams.startapp
+  },
+  components: {
+    "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
   }
 });
 </script>

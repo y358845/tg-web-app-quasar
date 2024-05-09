@@ -1,21 +1,7 @@
 <template>
   <div>
 
-
-
-    <q-item class="bg-dark text-white " flat>
-
-      <q-item-section avatar>
-        <q-avatar>
-          <img src="../../assets/chief1.png">
-        </q-avatar>
-      </q-item-section>
-
-      <q-item-section>
-        <q-item-label>Новая заявка на техподдержку</q-item-label>
-      </q-item-section>
-
-    </q-item>
+    <modal-web-heder>Новая заявка на техподдержку</modal-web-heder>
 
     <q-form @reset="onReset" class="q-gutter-md q-pa-sm  ">
 
@@ -108,7 +94,9 @@ const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default defineComponent({
   name: "MainLayout",
-  components: {},
+  components: {
+    "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
+  },
   setup() {
     return {
       deskription: ref(""),

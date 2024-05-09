@@ -1,14 +1,8 @@
 <template>
-  <div >
+  <div>
 
-    <q-btn v-if="!noButton"
-      :to="to"
-      flat
-      icon="keyboard_backspace"
-      color="primary"
-      class=""
-      @click="$emit('toggleRightDrawer')"
-      > Назад
+    <q-btn v-if="!noButton" :to="to" flat icon="keyboard_backspace" color="primary" class=""
+      @click="$emit('toggleRightDrawer')"> Назад
     </q-btn>
 
     <div id="q-app">
