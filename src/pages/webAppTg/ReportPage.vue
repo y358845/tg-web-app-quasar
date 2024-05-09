@@ -1,65 +1,61 @@
 <template>
   <div>
 
-    <q-card class="q-ma-md " bordered>
+    <!-- <q-card class="q-ma-md " bordered> -->
 
-      <q-item class="bg-dark text-white " flat>
+    <q-item class="bg-dark text-white " flat>
 
-        <q-item-section avatar>
-          <q-avatar>
-            <img src="../../assets/chief1.png">
-          </q-avatar>
-        </q-item-section>
+      <q-item-section avatar>
+        <q-avatar>
+          <img src="../../assets/chief1.png">
+        </q-avatar>
+      </q-item-section>
 
-        <q-item-section>
-          <q-item-label>Отчеты:</q-item-label>
-        </q-item-section>
+      <q-item-section>
+        <q-item-label>Отчеты:</q-item-label>
+      </q-item-section>
 
-      </q-item>
-
-
-      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md q-pa-sm">
+    </q-item>
 
 
-        <q-list>
+    <q-form @submit="onSubmit" @reset="onReset" class="q-pa-md">
+      <q-input outlined v-model="searchString" label="Поиск" dense bg-color="white" color="warning">
+        <template v-slot:append>
+          <q-icon name="search" color="warning" />
+        </template>
+      </q-input>
+      <q-list>
 
-          <q-expansion-item v-model="expanded" @show="checkOfFilling(expanded)" expand-icon-class='text-warning'
-            expand-separator icon="menu_book" class="bg-dark text-white" clickable v-ripple>
+        <q-expansion-item v-for="item in tasksFiltered" :key="item.title" v-model="item.model"
+          expand-icon-class='text-warning' expand-separator icon="menu_book" class="bg-dark text-white q-mt-sm "
+          clickable v-ripple bordered style="border-radius: 7px">
 
+          <q-card bordered>
 
-            <q-card>
+            <q-card-section class=" text-dark text-subtitle2" q-pb-md>
+              <div class="text-subtitle2">{{ item.description }}</div>
+            </q-card-section>
+            <q-separator dark color="warning"></q-separator>
 
-              <q-card-section class=" text-dark text-subtitle2" q-pb-md>
-                <div class="text-subtitle2">{{ text }}</div>
-              </q-card-section>
-              <q-separator dark color="warning"></q-separator>
+            <q-card-actions class="text-dark ">
+              <q-btn color="dark" @click="getReport()">Сформировать</q-btn>
+            </q-card-actions>
 
-              <q-card-actions class="text-dark ">
-                <q-btn color="dark" @click="getReport()">Сформировать</q-btn>
-              </q-card-actions>
+          </q-card>
 
-            </q-card>
+          <template v-slot:header>
 
-            <template v-slot:header>
+            <q-item-section>
+              <div class="text-h8">{{ item.title }}</div>
+            </q-item-section>
 
-              <q-item-section>
-                <div class="text-h8">Колл-центр количество записей</div>
-              </q-item-section>
+          </template>
 
-            </template>
-          </q-expansion-item>
+        </q-expansion-item>
 
+      </q-list>
 
-
-        </q-list>
-
-      </q-form>
-
-    </q-card>
-
-    <iframe :src="pdfsrc" style="width: 100%;height: 1000px; border: none;">
-      Oops! an error has occurred.
-    </iframe>
+    </q-form>
   </div>
 </template>
 <script>
@@ -68,52 +64,51 @@
 
 
 
-import { defineComponent, ref } from "vue";
 import { mapActions, mapState } from "vuex";
-const tg = window?.Telegram?.WebApp;
-const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
-export default defineComponent({
+import { defineComponent, ref } from "vue";
+
+// const tg = window?.Telegram?.WebApp;
+// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
+export default {
   name: "MainLayout",
-  components: {},
-  setup() {
+
+  data() {
     return {
-      expanded: ref(false),
+      model: ref([
+        {
+          title: "Колл-центр количество записей",
+          description: 'Описание:  количество звонков и записаннных по звонку услуг за две недели на текущую дату.',
+          model: false,
+        },
+        {
+          title: "График отпусков (ДЦРиИТ)",
+          description: 'Описание:  график отпусков Департемента ЦРиИТ, отпуска действующие и прланируемые до конца текущего года.',
+          model: false,
+        },
+        {
+          title: "Задачи сегодня (ДЦРиИТ)",
+          description: 'Описание:  график отпусков Департемента ЦРиИТ, отпуска действующие и прланируемые до конца текущего года.',
+          model: false,
+        },
+        {
+          title: "Задачи за неделю (ДЦРиИТ)",
+          description: 'Описание:  график отпусков Департемента ЦРиИТ, отпуска действующие и прланируемые до конца текущего года.',
+          model: false,
+        },
+
+      ]),
+      modelSorted: [],
+      searchString: '',
       pdfBlob: ref(null),
-      text: 'Описание:  количество звонков и записаннных по звонку услуг за две недели на текущую дату.',
 
-      checkOfFilling(val) {
-        //   if (val) {
-        //     tg.MainButton.show();
-        //   }
-
-      },
     };
   },
   mounted() {
-    tg.ready();
+    // tg.ready();
   },
   methods: {
     ...mapActions("base", ["saveData"]),
-    // async sendMessageBot(msg) {
-    //   // this.surname = tg.initDataUnsafe?.query_id.toString()
 
-    //   const dataForm = {
-    //     queryId: tg.initDataUnsafe?.query_id.toString(),
-    //     message: JSON.stringify(msg)
-    //   }
-    //   await axios.post('http://192.168.0.103:5000/web-data', dataForm
-
-    //   ).then(res =>
-    //     this.test = JSON.stringify(res.data)
-
-    //     // console.log(JSON.stringify(res.data))
-    //   )
-    //     .catch(error => {
-    //       this.errorMessage = error.message;
-    //       console.error("There was an error!", error);
-    //       this.test = error.message
-    //     });
-    // },
     async getReport() {
       const dataForm = {
         queryId: tgid.toString(),
@@ -122,41 +117,24 @@ export default defineComponent({
       this.saveData(dataForm).then((res => {
         tg.close()
       }))
-      //   Loading.show({
-      //     spinner: QSpinnerGears,
-      //     backgroundColor: "bg",
-      //     message: "Подождите, идет загрузка документа...",
-      //   });
-      //   try {
-      //     await $host.post(`/web-data`).then((res) =>
-      //       tg.close()
-      //     )
-      //   } catch (error) {
-      //     console.log(error);
-      //     return error;
-      //   } finally {
-      //     Loading.hide();
-      //   }
-      // },
-
-      // mainButtonClicked() {
-      //   this.sendInquiry();
     },
 
 
   },
-  created() {
-    // this.getReport();
-    tg.expand();
-    // tg.MainButton.setParams({
-    //   text: "Сформировать",
-    //   color: "#D7A310"
-    // });
-    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    tg.MainButton.hide();
-    // this.test = tg.initDataUnsafe?.query_id.toString()
+  computed: {
+
+    tasksFiltered() {
+      return this.model.filter(item => item.title.toLowerCase().includes(this.searchString.toLowerCase()))
+    }
   },
-});
+  created() {
+
+    // tg.expand();
+
+    // tg.MainButton.hide();
+
+  },
+};
 </script>
 
 <style>
