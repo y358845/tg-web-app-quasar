@@ -66,9 +66,8 @@
 
 import { mapActions, mapState } from "vuex";
 import { defineComponent, ref } from "vue";
-
-// const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id
 export default {
   name: "MainLayout",
 
@@ -104,7 +103,7 @@ export default {
     };
   },
   mounted() {
-    // tg.ready();
+    tg.ready();
   },
   methods: {
     ...mapActions("base", ["saveData"]),
@@ -128,11 +127,8 @@ export default {
     }
   },
   created() {
-
-    // tg.expand();
-
-    // tg.MainButton.hide();
-
+    tg.expand();
+    tg.MainButton.hide();
   },
 };
 </script>
