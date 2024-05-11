@@ -58,7 +58,7 @@ export default {
           description:
             "Описание:  график отпусков Департемента ЦРиИТ, отпуска действующие и прланируемые до конца текущего года.",
           model: false,
-          method: `api/tg/post_request_1C`,
+          method: `api/tg/report`,
           url: "vacation/vacation",
           title: 'VacationReport.pdf'
         }
