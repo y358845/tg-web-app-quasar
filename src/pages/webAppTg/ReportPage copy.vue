@@ -19,14 +19,14 @@
             </q-card-section>
             <q-separator dark color="warning"></q-separator>
 
-            <q-card-actions class="text-dark ">
-              <q-btn color="dark" @click="getReport(item.method, item.url, item.title)">Сформировать</q-btn>
+            <q-card-actions class="text-dark">
+              <q-btn color="dark" @click="getReport()">Сформировать</q-btn>
             </q-card-actions>
           </q-card>
 
           <template v-slot:header>
             <q-item-section>
-              <div class="text-h8">{{ item.text }}</div>
+              <div class="text-h8">{{ item.title }}</div>
             </q-item-section>
           </template>
         </q-expansion-item>
@@ -36,8 +36,8 @@
 </template>
 <script>
 import { mapActions, mapState } from "vuex";
-const tg = window?.Telegram?.WebApp;
-const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+// const tg = window?.Telegram?.WebApp;
+// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   name: "Reports",
 
@@ -45,40 +45,44 @@ export default {
     return {
       model: [
         {
-          text: "Колл-центр количество записей",
+          title: "Колл-центр количество записей",
           description:
             "Описание:  количество звонков и записаннных по звонку услуг за две недели на текущую дату.",
-          model: false,
-          method: `api/tg/reports`,
-          url: '',
-          title: ''
+          model: false
         },
         {
-          text: "График отпусков (ДЦРиИТ)",
+          title: "График отпусков (ДЦРиИТ)",
           description:
             "Описание:  график отпусков Департемента ЦРиИТ, отпуска действующие и прланируемые до конца текущего года.",
-          model: false,
-          method: `api/tg/post_request_1C`,
-          url: "vacation/vacation",
-          title: 'VacationReport.pdf'
+          model: false
+        },
+        {
+          title: "Задачи сегодня (ДЦРиИТ)",
+          description:
+            "Описание:  график отпусков Департемента ЦРиИТ, отпуска действующие и прланируемые до конца текущего года.",
+          model: false
+        },
+        {
+          title: "Задачи за неделю (ДЦРиИТ)",
+          description:
+            "Описание:  график отпусков Департемента ЦРиИТ, отпуска действующие и прланируемые до конца текущего года.",
+          model: false
         }
       ],
+      modelSorted: [],
       searchString: ""
     };
   },
   mounted() {
-    tg.ready();
+    // tg.ready();
   },
   methods: {
     ...mapActions("base", ["saveData"]),
 
-    async getReport(method, url, title) {
+    async getReport() {
       const dataForm = {
         queryId: tgid.toString(),
-        nameMethod: method,
-        url: url,
-        title: title,
-        type: 'arraybuffer'
+        nameMethod: `api/tg/reports`
       };
       this.saveData(dataForm).then(res => {
         tg.close();
@@ -93,8 +97,8 @@ export default {
     }
   },
   created() {
-    tg.expand();
-    tg.MainButton.hide();
+    // tg.expand();
+    // tg.MainButton.hide();
   },
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
