@@ -1,15 +1,27 @@
 <template>
   <div class="q-pa-md">
     <modal-web-heder>График отпусков</modal-web-heder>
-    <q-table flat bordered class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns"
-      row-key="name" dense virtual-scroll :rows-per-page-options="[0]" :separator="separator">
-      <template v-slot:top-right>
+    <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-mb-sm searching" dense bg-color="white"
+      color="warning">
+      <template v-slot:append>
+        <q-icon v-if="searchString !== ''" name="close" @click="searchString = ''" class="cursor-pointer" />
+        <q-icon name="search" />
+      </template>
+    </q-input>
+    <!-- <q-input borderless dense v-model="searchString" placeholder="Поиск">
+      <template v-slot:append>
+        <q-icon name="search" />
+      </template>
+</q-input> -->
+    <q-table flat bordered class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns" dense
+      virtual-scroll :rows-per-page-options="[0]" :separator="separator">
+      <!-- <template v-slot:top-right>
         <q-input borderless dense debounce="300" v-model="searchString" placeholder="Поиск">
           <template v-slot:append>
             <q-icon name="search" />
           </template>
         </q-input>
-      </template>
+      </template> -->
     </q-table>
   </div>
 </template>
@@ -100,6 +112,7 @@ export default {
     ...mapState("base", ["vacations"]),
 
     tasksFiltered() {
+
       return this.vacations.filter(item =>
         item.name.toLowerCase().includes(this.searchString.toLowerCase()))
     },
@@ -107,4 +120,18 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+q-table__top,
+
+
+thead tr:first-child th {
+  /* bg color is important for th; just specify one */
+  background-color: #D7A310;
+  color: white;
+  height: 35px;
+}
+
+.searching {
+  width: 60%;
+}
+</style>
