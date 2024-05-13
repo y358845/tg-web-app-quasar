@@ -28,8 +28,12 @@ const routes = [{
     path: '/reports',
     component: () => import('pages/webAppTg/ReportPage.vue')
 
-  },
+  }, ,
+  {
+    path: '/table',
+    component: () => import('pages/webAppTg/Table.vue')
 
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

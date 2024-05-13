@@ -14,6 +14,7 @@ import {
 import axios from "axios";
 const state = {
   structuraList: [],
+  vacations: [],
   portfolioList: [],
   portfolioListElenment: [],
   teamList: [],
@@ -28,6 +29,9 @@ const state = {
 const mutations = {
   setTemp(state, value) {
     state.temp = value;
+  },
+  setVacations(state, vacations) {
+    state.vacations = vacations;
   },
   setLoggedIn(state, value) {
     state.loggedIn = value;
@@ -82,7 +86,7 @@ const actions = {
           } else {
             sendNotify(res.data, 'positive', 'bottom-left')
           }
-
+          // console.log(res.data);
           return res.data;
         });
     } catch (e) {

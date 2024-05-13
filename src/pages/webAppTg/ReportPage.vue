@@ -88,7 +88,7 @@ export default {
   computed: {
     tasksFiltered() {
       return this.model.filter(item =>
-        item.title.toLowerCase().includes(this.searchString.toLowerCase())
+        item.text.toLowerCase().includes(this.searchString.toLowerCase())
       );
     }
   },
