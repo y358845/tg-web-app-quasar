@@ -20,7 +20,8 @@
             <q-separator dark color="warning"></q-separator>
 
             <q-card-actions class="text-dark ">
-              <q-btn color="dark" @click="getReport(item.method, item.url, item.title)">Сформировать</q-btn>
+              <!-- <q-btn color="dark" @click="getReport(item.method, item.url, item.title)">Сформировать</q-btn> -->
+              <q-btn color="dark" @click="alert = true">Сформировать</q-btn>
             </q-card-actions>
           </q-card>
 
@@ -32,10 +33,15 @@
         </q-expansion-item>
       </q-list>
     </q-form>
+    <q-dialog v-model="alert">
+
+      <modal-table-vacation />
+    </q-dialog>
   </div>
 </template>
 <script>
 import { mapActions, mapState } from "vuex";
+import { defineComponent, ref } from "vue";
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
@@ -43,6 +49,7 @@ export default {
 
   data() {
     return {
+      alert: ref(false),
       model: [
         {
           text: "Колл-центр количество записей",
@@ -97,7 +104,8 @@ export default {
     tg.MainButton.hide();
   },
   components: {
-    "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
+    "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default,
+    "modal-table-vacation": require("../webAppTg/modal/Table").default
   }
 };
 </script>
@@ -120,5 +128,14 @@ body {
 
 .q-date {
   box-shadow: none;
+}
+
+.q-dialog__backdrop {
+  background: #3A5553;
+}
+
+body.platform-ios .q-dialog__inner--minimized>div,
+body.platform-android:not(.native-mobile) .q-dialog__inner--minimized>div {
+  max-height: 100%;
 }
 </style>

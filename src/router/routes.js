@@ -31,9 +31,14 @@ const routes = [{
   }, ,
   {
     path: '/table',
-    component: () => import('pages/webAppTg/Table.vue')
+    component: () => import('pages/webAppTg/modal/Table.vue')
 
   },
+  // {
+  //   path: '/table2',
+  //   component: () => import('pages/webAppTg/Table2.vue')
+
+  // },
   // Always leave this as last one,
   // but you can also remove it
   {
