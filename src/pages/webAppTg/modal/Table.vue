@@ -12,7 +12,7 @@
       </q-input>
       <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn" />
     </div>
-    <q-layout view="lHh Lpr lFf" container style="height: 750px" class="shadow-2 rounded-borders">
+    <q-layout view="lHh Lpr lFf" container style="height: 550px" class="shadow-2 rounded-borders">
       <q-page-container>
         <q-page padding>
           <q-table flat class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns" dense
