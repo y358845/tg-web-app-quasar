@@ -1,20 +1,19 @@
 <template>
   <div class="q-pa-md bg-white">
-    <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
-      <img src="../../../assets/images/close.svg" alt="close" />
-    </button>
-    <modal-web-heder class="q-pt-md">График отпусков</modal-web-heder>
-    <div class=" q-gutter-sm row q-mt-sm">
-      <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-mb-sm searching" dense bg-color="white"
-        color="warning">
-        <template v-slot:append>
-          <q-icon v-if="searchString !== ''" name="close" @click="searchString = ''" class="cursor-pointer" />
-          <q-icon name="search" />
-        </template>
-      </q-input>
-      <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn" />
-    </div>
+
+
     <q-layout view="lHh Lpr lFf" container style="height: 750px" class="shadow-2 rounded-borders">
+      <modal-web-heder class="q-pt-md">График отпусков</modal-web-heder>
+      <div class=" q-gutter-sm row q-mt-sm">
+        <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-mb-sm searching" dense bg-color="white"
+          color="warning">
+          <template v-slot:append>
+            <q-icon v-if="searchString !== ''" name="close" @click="searchString = ''" class="cursor-pointer" />
+            <q-icon name="search" />
+          </template>
+        </q-input>
+        <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn" />
+      </div>
       <q-page-container>
         <q-page padding>
           <q-table flat class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns" dense
