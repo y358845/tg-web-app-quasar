@@ -14,31 +14,41 @@
       </q-input>
       <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn" />
     </div>
+    <q-layout view="lHh Lpr lFf" container style="height: 750px" class="shadow-2 rounded-borders">
+      <q-page-container>
+        <q-page padding>
+          <q-table flat class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns" dense
+            virtual-scroll :rows-per-page-options="[0]" :separator="separator">
 
-    <q-table flat class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns" dense virtual-scroll
-      :rows-per-page-options="[0]" :separator="separator">
-
-      <template v-slot:body="props">
-        <!-- строка -->
-        <q-tr :props="props" class="bg-grey-2">
-          <!-- ячейки -->
-          <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Отпуск'"
-            class="bg-red-6 text-white">
-            <div>{{ col.value }}</div>
-          </q-td>
-          <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Работает'"
-            class="bg-grey-2">
-            {{ col.value }}
-          </q-td>
-          <!-- <q-td v-for="col in props.cols" :key="col.name" :props="props"
+            <template v-slot:body="props">
+              <!-- строка -->
+              <q-tr :props="props" class="bg-grey-2">
+                <!-- ячейки -->
+                <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Отпуск'"
+                  class="bg-red-6 text-white">
+                  <div>{{ col.value }}</div>
+                </q-td>
+                <q-td v-for="col in props.cols" :key="col.name" :props="props"
+                  v-show="props.row.vacations === 'Работает'" class="bg-grey-2">
+                  {{ col.value }}
+                </q-td>
+                <!-- <q-td v-for="col in props.cols" :key="col.name" :props="props"
             :class="{ 'text-white bg-red-6': props.row.vacations === 'Отпуск' }">
             {{ col.value }}
           </q-td> -->
-        </q-tr>
+              </q-tr>
 
-      </template>
+            </template>
 
-    </q-table>
+          </q-table>
+          <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
+            <q-btn fab icon="keyboard_arrow_up" color="warning"></q-btn>
+          </q-page-scroller>
+        </q-page>
+      </q-page-container>
+    </q-layout>
+
+
   </div>
 </template>
 

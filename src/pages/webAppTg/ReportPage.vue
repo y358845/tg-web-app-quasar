@@ -37,6 +37,8 @@
 
       <modal-table-vacation />
     </q-dialog>
+
+
   </div>
 </template>
 <script>
