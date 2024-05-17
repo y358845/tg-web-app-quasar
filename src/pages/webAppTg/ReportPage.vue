@@ -75,7 +75,7 @@ export default {
   },
   mounted() {
     tg.ready();
-    tg.isClosingConfirmationEnabled = true;
+
   },
   methods: {
     ...mapActions("base", ["saveData"]),
@@ -102,6 +102,7 @@ export default {
   },
   created() {
     tg.expand();
+    tg.isClosingConfirmationEnabled = true;
     tg.MainButton.hide();
   },
   components: {
