@@ -1,6 +1,8 @@
 <template>
   <div class="q-pa-md bg-white">
-
+    <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
+      <img src="../../../assets/images/close.svg" alt="close" />
+    </button>
     <modal-web-heder class="q-pt-md">График отпусков</modal-web-heder>
     <div class=" q-gutter-sm row q-mt-sm">
       <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-mb-sm searching" dense bg-color="white"
@@ -12,41 +14,25 @@
       </q-input>
       <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn" />
     </div>
-    <q-layout view="lHh Lpr lFf" container style="height: 550px" class="shadow-2 rounded-borders">
-      <q-page-container>
-        <q-page padding>
-          <q-table flat class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns" dense
-            virtual-scroll :rows-per-page-options="[0]" :separator="separator">
 
-            <template v-slot:body="props">
-              <!-- строка -->
-              <q-tr :props="props" class="bg-grey-2">
-                <!-- ячейки -->
-                <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Отпуск'"
-                  class="bg-red-6 text-white">
-                  <div>{{ col.value }}</div>
-                </q-td>
-                <q-td v-for="col in props.cols" :key="col.name" :props="props"
-                  v-show="props.row.vacations === 'Работает'" class="bg-grey-2">
-                  {{ col.value }}
-                </q-td>
-                <!-- <q-td v-for="col in props.cols" :key="col.name" :props="props"
-            :class="{ 'text-white bg-red-6': props.row.vacations === 'Отпуск' }">
+    <q-table flat class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns" dense
+      :rows-per-page-options="[20]" :separator="separator">
+
+      <template v-slot:body="props">
+        <!-- строка -->
+        <q-tr :props="props" class="bg-grey-2">
+          <!-- ячейки -->
+          <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Отпуск'"
+            class="bg-red-6 text-white">
+            <div>{{ col.value }}</div>
+          </q-td>
+          <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Работает'"
+            class="bg-grey-2">
             {{ col.value }}
-          </q-td> -->
-              </q-tr>
-
-            </template>
-
-          </q-table>
-          <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-            <q-btn fab icon="keyboard_arrow_up" color="warning"></q-btn>
-          </q-page-scroller>
-        </q-page>
-      </q-page-container>
-    </q-layout>
-
-
+          </q-td>
+        </q-tr>
+      </template>
+    </q-table>
   </div>
 </template>
 

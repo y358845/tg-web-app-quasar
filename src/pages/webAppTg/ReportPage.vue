@@ -2,7 +2,7 @@
   <div>
     <modal-web-heder>Отчеты:</modal-web-heder>
 
-    <q-form @submit="onSubmit" @reset="onReset" class="q-pa-md">
+    <div @submit="onSubmit" @reset="onReset" class="q-pa-md">
       <q-input outlined v-model="searchString" label="Поиск" dense bg-color="white" color="warning">
         <template v-slot:append>
           <q-icon name="search" color="warning" />
@@ -32,7 +32,7 @@
           </template>
         </q-expansion-item>
       </q-list>
-    </q-form>
+    </div>
     <q-dialog v-model="alert">
 
       <modal-table-vacation />
