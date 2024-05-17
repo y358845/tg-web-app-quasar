@@ -1,8 +1,8 @@
 <template>
   <div class="q-pa-md bg-white">
-    <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
+    <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
       <img src="../../../assets/images/close.svg" alt="close" />
-    </button>
+    </button> -->
     <modal-web-heder class="q-pt-md">График отпусков</modal-web-heder>
     <div class=" q-gutter-sm row q-mt-sm">
       <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-mb-sm searching" dense bg-color="white"
