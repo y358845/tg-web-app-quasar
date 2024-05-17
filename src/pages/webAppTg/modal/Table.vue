@@ -3,7 +3,7 @@
     <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
       <img src="../../../assets/images/close.svg" alt="close" />
     </button> -->
-    <modal-web-heder class="q-pt-md">График отпусков</modal-web-heder>
+    <modal-web-heder class="q-pt-md">График отпусков {{ hh }}</modal-web-heder>
     <div class=" q-gutter-sm row q-mt-sm">
       <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-mb-sm searching" dense bg-color="white"
         color="warning">
@@ -39,6 +39,7 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import { defineComponent, ref } from "vue";
+import { Screen } from 'quasar'
 const columns = [
   {
     name: 'name',
@@ -64,6 +65,7 @@ export default {
   setup() {
     return {
       searchString: ref(''),
+      hh: Screen.height,
       columns,
       rows: [],
       separator: ref('cell'),
@@ -80,6 +82,8 @@ export default {
     }
   },
   async mounted() {
+    console.log(Screen.height);
+    // this.searchString = Screen.height
     await this.saveData(this.formData).then(res => {
       this.rows = this.sortRows(res)
     })

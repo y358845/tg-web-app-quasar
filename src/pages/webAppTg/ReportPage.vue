@@ -44,6 +44,7 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import { defineComponent, ref } from "vue";
+
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
