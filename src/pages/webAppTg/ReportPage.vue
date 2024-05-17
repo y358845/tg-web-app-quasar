@@ -75,6 +75,7 @@ export default {
   },
   mounted() {
     tg.ready();
+    tg.isClosingConfirmationEnabled = true;
   },
   methods: {
     ...mapActions("base", ["saveData"]),
