@@ -101,8 +101,9 @@ export default {
     }
   },
   created() {
-    tg.expand();
+    // tg.expand();
     tg.isClosingConfirmationEnabled = true;
+    tg.onEvent('viewportChanged', () => tg.expand())
     tg.MainButton.hide();
   },
   components: {
