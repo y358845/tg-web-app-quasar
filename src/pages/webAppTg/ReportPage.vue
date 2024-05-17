@@ -44,8 +44,8 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import { defineComponent, ref } from "vue";
-// const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   name: "Reports",
 
@@ -76,7 +76,7 @@ export default {
     };
   },
   mounted() {
-    // tg.ready();
+    tg.ready();
 
   },
   methods: {
@@ -103,10 +103,10 @@ export default {
     }
   },
   created() {
-    // tg.expand();
-    // tg.isClosingConfirmationEnabled = true;
-    // tg.onEvent('viewportChanged', () => tg.expand())
-    // tg.MainButton.hide();
+    tg.expand();
+    tg.isClosingConfirmationEnabled = true;
+    tg.onEvent('viewportChanged', () => tg.expand())
+    tg.MainButton.hide();
   },
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default,
