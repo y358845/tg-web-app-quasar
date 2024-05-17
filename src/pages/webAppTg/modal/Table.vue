@@ -3,7 +3,7 @@
     <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
       <img src="../../../assets/images/close.svg" alt="close" />
     </button> -->
-    <modal-web-heder>График отпусков {{ hh }}</modal-web-heder>
+    <modal-web-heder class="q-pa-xs ">График отпусков {{ hh }}</modal-web-heder>
     <div class=" q-gutter-sm row ">
       <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-sm searching" dense bg-color="white"
         color="warning">
@@ -15,7 +15,7 @@
       <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn" />
     </div>
 
-    <q-table flat class="q-mt-sm my-sticky-header-table q-pl-sm q-pr-sm" :rows="tasksFiltered" :columns="columns" dense
+    <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
       :rows-per-page-options="[12]" :separator="separator">
 
       <template v-slot:body="props">
