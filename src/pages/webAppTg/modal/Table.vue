@@ -1,11 +1,11 @@
 <template>
-  <div class="q-pa-md bg-white">
+  <div class=" bg-white">
     <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
       <img src="../../../assets/images/close.svg" alt="close" />
     </button> -->
-    <modal-web-heder class="q-pt-md">График отпусков {{ hh }}</modal-web-heder>
-    <div class=" q-gutter-sm row q-mt-sm">
-      <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-mb-sm searching" dense bg-color="white"
+    <modal-web-heder>График отпусков {{ hh }}</modal-web-heder>
+    <div class=" q-gutter-sm row ">
+      <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-sm searching" dense bg-color="white"
         color="warning">
         <template v-slot:append>
           <q-icon v-if="searchString !== ''" name="close" @click="searchString = ''" class="cursor-pointer" />
@@ -15,7 +15,7 @@
       <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn" />
     </div>
 
-    <q-table flat class="q-mt-md my-sticky-header-table" :rows="tasksFiltered" :columns="columns" dense
+    <q-table flat class="q-mt-sm my-sticky-header-table q-pl-sm q-pr-sm" :rows="tasksFiltered" :columns="columns" dense
       :rows-per-page-options="[12]" :separator="separator">
 
       <template v-slot:body="props">
