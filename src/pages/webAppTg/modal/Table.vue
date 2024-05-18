@@ -120,7 +120,7 @@ export default {
         this.rppo = 13
       }
       else if (Screen.height > 600 && Screen.height < 900) {
-        this.rppo = 17
+        this.rppo = 16
       }
       return this.rppo
     }
