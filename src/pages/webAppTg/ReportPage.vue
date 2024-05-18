@@ -33,7 +33,7 @@
         </q-expansion-item>
       </q-list>
     </div>
-    <q-dialog v-model="alert">
+    <q-dialog v-model="alert" full-width>
 
       <modal-table-vacation />
     </q-dialog>
@@ -83,9 +83,10 @@ export default {
   methods: {
     ...mapActions("base", ["saveData"]),
 
-    async getReport(title, method, url, title) {
-      if (title = "График отпусков (ДЦРиИТ)") {
+    async getReport(text, method, url, title) {
+      if (text = "График отпусков (ДЦРиИТ)") {
         this.alert = true
+
       } else {
         const dataForm = {
           queryId: tgid.toString(),
