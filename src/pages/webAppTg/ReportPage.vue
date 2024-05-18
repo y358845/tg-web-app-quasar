@@ -20,8 +20,8 @@
             <q-separator dark color="warning"></q-separator>
 
             <q-card-actions class="text-dark ">
-              <!-- <q-btn color="dark" @click="getReport(item.method, item.url, item.title)">Сформировать</q-btn> -->
-              <q-btn color="dark" @click="alert = true">Сформировать</q-btn>
+              <q-btn color="dark" @click="getReport(item.text, item.method, item.url, item.title)">Сформировать</q-btn>
+              <!-- <q-btn color="dark" @click="alert = true">Сформировать</q-btn> -->
             </q-card-actions>
           </q-card>
 
@@ -83,17 +83,21 @@ export default {
   methods: {
     ...mapActions("base", ["saveData"]),
 
-    async getReport(method, url, title) {
-      const dataForm = {
-        queryId: tgid.toString(),
-        nameMethod: method,
-        url: url,
-        title: title,
-        type: 'arraybuffer'
-      };
-      this.saveData(dataForm).then(res => {
-        tg.close();
-      });
+    async getReport(title, method, url, title) {
+      if (title = "График отпусков (ДЦРиИТ)") {
+        this.alert = true
+      } else {
+        const dataForm = {
+          queryId: tgid.toString(),
+          nameMethod: method,
+          url: url,
+          title: title,
+          type: 'arraybuffer'
+        };
+        this.saveData(dataForm).then(res => {
+          tg.close();
+        })
+      }
     }
   },
   computed: {

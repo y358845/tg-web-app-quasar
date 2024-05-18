@@ -16,7 +16,7 @@
     </div>
 
     <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
-      :rows-per-page-options="[12]" :separator="separator">
+      :rows-per-page-options="[setRppo]" :separator="separator">
 
       <template v-slot:body="props">
         <!-- строка -->
@@ -65,7 +65,7 @@ export default {
   setup() {
     return {
       searchString: ref(''),
-      hh: Screen.height,
+      ppo: Screen.height,
       columns,
       rows: [],
       separator: ref('cell'),
@@ -83,7 +83,6 @@ export default {
   },
   async mounted() {
     console.log(Screen.height);
-    // this.searchString = Screen.height
     await this.saveData(this.formData).then(res => {
       this.rows = this.sortRows(res)
     })
@@ -101,7 +100,6 @@ export default {
           dateK: element.dateK
         })
       });
-      // console.log(newRows);
       return newRows
     }
 
@@ -110,10 +108,18 @@ export default {
     ...mapState("base", ["vacations"]),
 
     tasksFiltered() {
-
       return this.vacations.filter(item =>
         item.name.toLowerCase().includes(this.searchString.toLowerCase()))
     },
+    setRppo() {
+      if (Screen.height < 600) {
+        rppo = 12
+      }
+      else {
+        rppo = 14
+      }
+      return rppo
+    }
   },
 }
 </script>
