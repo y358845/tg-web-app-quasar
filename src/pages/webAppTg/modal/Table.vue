@@ -40,6 +40,7 @@
 import { mapActions, mapState } from "vuex";
 import { defineComponent, ref } from "vue";
 import { Screen } from 'quasar'
+
 const columns = [
   {
     name: 'name',
@@ -64,6 +65,7 @@ export default {
   },
   setup() {
     return {
+      hh: ref(''),
       searchString: ref(''),
       ppo: Screen.height,
       columns,
@@ -82,12 +84,14 @@ export default {
     }
   },
   async mounted() {
+    this.hh = Screen.height
     console.log(Screen.height);
     await this.saveData(this.formData).then(res => {
       this.rows = this.sortRows(res)
     })
 
   },
+
   methods: {
     ...mapActions("base", ["saveData"]),
 
@@ -116,7 +120,7 @@ export default {
         this.rppo = 13
       }
       else if (Screen.height > 600 && Screen.height < 900) {
-        this.rppo = 15
+        this.rppo = 17
       }
       return this.rppo
     }
