@@ -3,7 +3,7 @@
     <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
       <img src="../../../assets/images/close.svg" alt="close" />
     </button> -->
-    <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>График отпусков {{ hh }}</modal-web-heder>
+    <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>График отпусков</modal-web-heder>
     <div class=" q-gutter-sm row ">
       <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-xs searching" dense bg-color="white"
         color="warning">
@@ -13,7 +13,8 @@
         </template>
       </q-input>
       <q-space />
-      <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn q-mr-xs" unelevated />
+      <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn q-mr-xs" unelevated
+        @click="getReport()" />
     </div>
 
     <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
@@ -59,7 +60,8 @@ const columns = [
 ]
 
 
-
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
@@ -85,7 +87,8 @@ export default {
     }
   },
   async mounted() {
-    this.hh = Screen.height
+    // tg.ready();
+    // this.hh = Screen.height
     console.log(Screen.height);
     await this.saveData(this.formData).then(res => {
       this.rows = this.sortRows(res)
@@ -106,6 +109,20 @@ export default {
         })
       });
       return newRows
+    },
+    async getReport(text, method, url, title) {
+
+      const dataForm = {
+        queryId: tgid.toString(),
+        nameMethod: `api/tg/report`,
+        url: "vacation/vacation",
+        title: 'VacationReport.pdf',
+        type: 'arraybuffer'
+      };
+      this.saveData(dataForm).then(res => {
+        tg.close();
+      })
+
     }
 
   },
@@ -126,6 +143,7 @@ export default {
       return this.rppo
     }
   },
+
 }
 </script>
 
