@@ -3,16 +3,17 @@
     <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
       <img src="../../../assets/images/close.svg" alt="close" />
     </button> -->
-    <modal-web-heder class="q-pa-xs ">График отпусков {{ hh }}</modal-web-heder>
+    <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>График отпусков {{ hh }}</modal-web-heder>
     <div class=" q-gutter-sm row ">
-      <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-sm searching" dense bg-color="white"
+      <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-xs searching" dense bg-color="white"
         color="warning">
         <template v-slot:append>
           <q-icon v-if="searchString !== ''" name="close" @click="searchString = ''" class="cursor-pointer" />
           <q-icon name="search" />
         </template>
       </q-input>
-      <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn" />
+      <q-space />
+      <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn q-mr-xs" unelevated />
     </div>
 
     <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
