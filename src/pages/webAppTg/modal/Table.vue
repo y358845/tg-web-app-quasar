@@ -16,7 +16,7 @@
     </div>
 
     <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
-      :rows-per-page-options="[13]" :separator="separator">
+      :rows-per-page-options="[12]" :separator="separator">
 
       <template v-slot:body="props">
         <!-- строка -->
