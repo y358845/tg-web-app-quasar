@@ -18,7 +18,7 @@
     </div>
 
     <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
-      :rows-per-page-options="[setRppo]" :separator="separator">
+      :rows-per-page-options="[setRppo]" :separator="separator" no-data-label="График отпусков пуст">
 
       <template v-slot:body="props">
         <!-- строка -->
@@ -110,7 +110,7 @@ export default {
       });
       return newRows
     },
-    async getReport(text, method, url, title) {
+    async getReport() {
 
       const dataForm = {
         queryId: tgid.toString(),
