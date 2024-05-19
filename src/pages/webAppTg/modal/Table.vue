@@ -158,7 +158,9 @@ thead tr:first-child th {
   height: 35px;
 }
 
-
+.searching {
+  width: 50%;
+}
 
 .sell {
   border: 3px solid white;
