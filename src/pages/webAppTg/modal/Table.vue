@@ -22,19 +22,19 @@
 
       <template v-slot:body="props">
         <!-- строка -->
-        <q-tr :props="props" class="bg-grey-2 text-weight-medium ">
+        <q-tr :props="props" class="bg-grey-2  ">
           <!-- ячейки -->
           <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Отпуск'"
-            class="bg-red-3 text-weight-medium ">
+            class="bg-red-3  ">
             <div>{{ col.value }}</div>
           </q-td>
           <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Работает'"
-            class="bg-grey-2 text-weight-medium ">
+            class="bg-grey-2  ">
             {{ col.value }}
 
           </q-td>
           <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Скоро'"
-            class="bg-amber-3 text-weight-medium">
+            class="bg-amber-3 ">
             {{ col.value }}
           </q-td>
         </q-tr>
@@ -62,8 +62,8 @@ const columns = [
   { name: 'dateK', align: 'left', label: 'По', field: 'dateK', sortable: true },
 ]
 
-const tg = window?.Telegram?.WebApp;
-const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+// const tg = window?.Telegram?.WebApp;
+// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
@@ -158,9 +158,7 @@ thead tr:first-child th {
   height: 35px;
 }
 
-.searching {
-  width: 50%;
-}
+
 
 .sell {
   border: 3px solid white;
@@ -187,5 +185,10 @@ thead tr:first-child th {
   cursor: pointer;
 
 
+}
+
+.q-table--dense .q-table th:first-child,
+.q-table--dense .q-table td:first-child {
+  padding-left: 9px;
 }
 </style>
