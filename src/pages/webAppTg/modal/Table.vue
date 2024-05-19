@@ -22,19 +22,20 @@
 
       <template v-slot:body="props">
         <!-- строка -->
-        <q-tr :props="props" class="bg-grey-2">
+        <q-tr :props="props" class="bg-grey-2 text-weight-medium ">
           <!-- ячейки -->
           <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Отпуск'"
-            class="bg-red-6 text-white">
+            class="bg-red-3 text-weight-medium ">
             <div>{{ col.value }}</div>
           </q-td>
           <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Работает'"
-            class="bg-grey-2">
+            class="bg-grey-2 text-weight-medium ">
             {{ col.value }}
-            <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Скоро'"
-              class="bg-yellow-7">
-              {{ col.value }}
-            </q-td>
+
+          </q-td>
+          <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Скоро'"
+            class="bg-amber-3 text-weight-medium">
+            {{ col.value }}
           </q-td>
         </q-tr>
       </template>
