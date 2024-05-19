@@ -57,7 +57,7 @@ export default {
         {
           text: "Колл-центр количество записей",
           description:
-            '<em>I can</em> <span class="text-red">use</span> <strong>HTML</strong>',
+            "Описание:  количество звонков и записаннных по звонку услуг за две недели на текущую дату.",
           model: false,
           method: `api/tg/reports`,
           url: '',
