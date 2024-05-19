@@ -31,6 +31,10 @@
           <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Работает'"
             class="bg-grey-2">
             {{ col.value }}
+            <q-td v-for="col in props.cols" :key="col.name" :props="props" v-show="props.row.vacations === 'Скоро'"
+              class="bg-yellow-7">
+              {{ col.value }}
+            </q-td>
           </q-td>
         </q-tr>
       </template>
@@ -40,7 +44,7 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
-import { defineComponent, ref } from "vue";
+import { ref } from "vue";
 import { Screen } from 'quasar'
 
 const columns = [
@@ -55,10 +59,7 @@ const columns = [
   },
   { name: 'dateN', align: 'left', label: 'C ', field: 'dateN', sortable: true },
   { name: 'dateK', align: 'left', label: 'По', field: 'dateK', sortable: true },
-
-
 ]
-
 
 const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;

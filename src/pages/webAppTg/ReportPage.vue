@@ -21,7 +21,6 @@
 
             <q-card-actions class="text-dark ">
               <q-btn color="dark" @click="getReport(item.text, item.method, item.url, item.title)">Сформировать</q-btn>
-              <!-- <q-btn color="dark" @click="alert = true">Сформировать</q-btn> -->
             </q-card-actions>
           </q-card>
 
@@ -61,7 +60,7 @@ export default {
           model: false,
           method: `api/tg/reports`,
           url: '',
-          title: ''
+          title: '',
         },
         {
           text: "График отпусков (ДЦРиИТ)",
@@ -78,7 +77,6 @@ export default {
   },
   mounted() {
     tg.ready();
-
   },
   methods: {
     ...mapActions("base", ["saveData"]),
@@ -86,8 +84,6 @@ export default {
     async getReport(text, method, url, title) {
       if (text === "График отпусков (ДЦРиИТ)") {
         this.alert = true
-        console.log('nen');
-
       } else {
         const dataForm = {
           queryId: tgid.toString(),
