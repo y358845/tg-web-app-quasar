@@ -33,7 +33,7 @@
               <q-icon color="primary" name="done" />
             </q-item-section>
             <q-item-section>
-              <q-btn color="primary" @click="updateSection(item.method)">{{
+              <q-btn color="primary" @click="updateSection(item.url)">{{
                 item.label }}</q-btn>
             </q-item-section>
           </q-item>
@@ -56,11 +56,26 @@ export default {
       login: ref(null),
       password: ref(null),
       sections: [
-        { label: "Структура", method: '/structura' },
-        { label: "Портфолио", method: '/portfolio' },
-        { label: "Наша команда", method: '/team' },
-        { label: "Новости", method: '/news' },
-        { label: "Контакты", method: '/contacts' },
+        {
+          label: "Структура",
+          url: 'structura',
+        },
+        {
+          label: "Портфолио",
+          url: 'portfolio'
+        },
+        {
+          label: "Наша команда",
+          url: 'team'
+        },
+        {
+          label: "Новости",
+          url: 'news'
+        },
+        {
+          label: "Контакты",
+          url: 'contacts'
+        },
       ],
 
     };
@@ -76,8 +91,9 @@ export default {
     },
 
     /** метод вызывает метод из vuex(saveData) который обновлеет  сецию чье имя аргумент(url), на сервер идет запрос к методу делающему запрос в базу 1С и его результат записывающему в теблицу Postgres*/
+    /* параматр nameMethod - это путь к роуту на сервере,  url это имя роута и оно совпадает с именем сервиса на который роут шлет запрос в 1с(ОНИ ДОЛЖНЫ СОВПАДАТЬ!)        */
     updateSection(url) {
-      this.saveData({ nameMethod: `api/website${url}` })
+      this.saveData({ nameMethod: `api/website/${url}`, url: url })
     },
 
   },
