@@ -62,7 +62,7 @@ const columns = [
   { name: 'dateK', align: 'left', label: 'По', field: 'dateK', sortable: true },
 ]
 
-// const tg = window?.Telegram?.WebApp;
+const tg = window?.Telegram?.WebApp;
 const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   components: {
