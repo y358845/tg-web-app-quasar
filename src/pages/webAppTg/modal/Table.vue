@@ -89,9 +89,9 @@ export default {
     }
   },
   async mounted() {
-    // tg.ready();
-    // this.hh = Screen.height
-    console.log(Screen.height);
+    tg.ready();
+    this.hh = Screen.height
+    // console.log(Screen.height);
     await this.saveData(this.formData).then(res => {
       this.rows = this.sortRows(res)
     })
