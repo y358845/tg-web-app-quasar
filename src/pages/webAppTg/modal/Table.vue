@@ -63,7 +63,7 @@ const columns = [
 ]
 
 // const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
