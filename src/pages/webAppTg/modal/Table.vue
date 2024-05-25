@@ -3,7 +3,7 @@
     <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
       <img src="../../../assets/images/close.svg" alt="close" />
     </button> -->
-    <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>График отпусков</modal-web-heder>
+    <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>График отпусков(факт.)</modal-web-heder>
     <div class=" q-gutter-sm row ">
       <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-xs searching" dense bg-color="white"
         color="warning">
