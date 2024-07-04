@@ -8,7 +8,7 @@
             1С: УИТ
           </q-tooltip></a>
         <img class="position_img box2" src="../assets/images/home/box2.svg" alt="box1" />
-        <img class="position_img circle" src="../assets/images/home/circle.svg" alt="box1" />
+        <!-- <img class="position_img circle" src="../assets/images/home/circle.svg" alt="box1" /> -->
       </div>
       <div class="home_left ">
         <h1 class="title ">

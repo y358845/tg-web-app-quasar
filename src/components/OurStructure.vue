@@ -137,7 +137,7 @@ export default {
   async created() {
     await $host.get(`api/website/structura`).then((res) => {
       this.structuraList = res.data;
-      // console.log(res.data);
+      console.log(res.data);
     });
   },
 };
@@ -167,7 +167,7 @@ export default {
   }
 
   .our_structure_card {
-    height: 516.01px;
+    height: 616.01px;
     display: flex;
     justify-content: space-between;
 
@@ -299,17 +299,17 @@ export default {
           position: absolute;
           top: 120px;
           margin: auto 0;
-          left: -115px;
+          left: -120px;
           z-index: 1;
         }
 
         &::after {
           content: "";
           width: 0;
-          height: 411.85px;
+          height: 656.85px;
           border: 1px solid #09accb;
           position: absolute;
-          top: 0;
+          top: 165px;
           bottom: 0;
           margin: auto 0;
           left: -82px;
@@ -327,7 +327,7 @@ export default {
             &::after {
               content: "";
               width: 50px;
-              left: -88px;
+              left: -78px;
             }
           }
         }
@@ -423,11 +423,11 @@ export default {
       .card_item_container {
         &:last-child {
           &::before {
-            left: -60px;
+            left: -70px;
           }
 
           &::after {
-            left: -39px;
+            left: -44px;
           }
 
           .card_item {
@@ -561,15 +561,15 @@ export default {
           }
 
           &::after {
-            height: 365px;
-            top: -47px;
-            left: 44px;
+            height: 473px;
+            top: -0px;
+            left: 40px;
           }
 
           .card_item {
             max-width: 100%;
             width: 100%;
-            height: 72px;
+            height: 85px;
             align-items: flex-end;
 
             .card_item_in {

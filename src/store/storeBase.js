@@ -24,6 +24,8 @@ const state = {
   loggedIn: false,
   userLogin: "",
   userList: [],
+  equipmentList: [],
+  departList: [],
   temp: ''
 };
 const mutations = {
@@ -38,6 +40,12 @@ const mutations = {
   },
   setUserList(state, userList) {
     state.userList = userList;
+  },
+  setEquipmentList(state, equipmentList) {
+    state.equipmentList = equipmentList;
+  },
+  setDepartList(state, departList) {
+    state.departList = departList;
   },
   setUserLogin(state, userLogin) {
     state.userLogin = userLogin;
@@ -86,7 +94,7 @@ const actions = {
           } else {
             sendNotify(res.data, 'positive', 'bottom-left')
           }
-          // console.log(res.data);
+          console.log(res.data);
           return res.data;
         });
     } catch (e) {

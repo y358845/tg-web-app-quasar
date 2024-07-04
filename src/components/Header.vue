@@ -75,6 +75,12 @@ header {
   padding: 15px 20px;
   transition: 0.3s;
 
+  .logo {
+    img {
+      height: 110px;
+    }
+  }
+
   .nav_link {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(2px);

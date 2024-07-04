@@ -3,7 +3,7 @@
     <div class="main_container">
       <footer>
         <div class="logo">
-          <a href="#"><img src="../assets/images/footer/logo.svg" /></a>
+          <a href="#"><img src="../assets/images/logo.svg" /></a>
         </div>
         <div class="footer_link">
           <img src="../assets/images/footer/location.svg" />
@@ -60,6 +60,12 @@ footer {
   gap: 20px;
   flex-wrap: wrap;
   padding: 30px 0;
+
+  .logo {
+    img {
+      height: 100px;
+    }
+  }
 
   .footer_link {
     display: flex;

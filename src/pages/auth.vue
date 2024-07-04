@@ -89,13 +89,11 @@ export default {
     async onSubmit() {
       this.loginUser({ email: this.login, password: this.password });
     },
-
     /** метод вызывает метод из vuex(saveData) который обновлеет  сецию чье имя аргумент(url), на сервер идет запрос к методу делающему запрос в базу 1С и его результат записывающему в теблицу Postgres*/
     /* параматр nameMethod - это путь к роуту на сервере,  url это имя роута и оно совпадает с именем сервиса на который роут шлет запрос в 1с(ОНИ ДОЛЖНЫ СОВПАДАТЬ!)        */
     updateSection(url) {
       this.saveData({ nameMethod: `api/website/${url}`, url: url })
     },
-
   },
 };
 

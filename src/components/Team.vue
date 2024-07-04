@@ -137,6 +137,10 @@ import { mapActions, mapState } from "vuex";
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { $authHost, $host } from "../http/index.js"
+import {
+  QSpinnerGears,
+  Loading
+} from "quasar";
 
 
 export default {
@@ -203,9 +207,20 @@ export default {
         }
       });
       this.isActive = true
-      await $host.get(`api/website/team_division/${otdel}`).then((res) =>
-        this.teamList = res.data
-      )
+      Loading.show({
+        spinner: QSpinnerGears,
+        backgroundColor: "bg"
+      })
+      try {
+        await $host.get(`api/website/team_division/${otdel}`).then((res) =>
+          this.teamList = res.data
+        )
+      } catch (e) {
+        console.log(e);
+
+      } finally {
+        Loading.hide();
+      }
     },
 
   },
@@ -214,19 +229,31 @@ export default {
     await $host.get(`api/website/team_division/Руководство`).then((res) =>
       this.teamList = res.data
     )
-    await $host.get(`api/website/structura`).then((res) => {
-      this.structura_list = res.data
-      this.level1 = res.data.filter((element) => {
-        return element.level === "1"
-      })
-      this.level2 = res.data.filter((element) => {
-        return element.level === "2"
-      })
-      this.level3 = res.data.filter((element) => {
-        return element.level === "3"
-      })
+    Loading.show({
+      spinner: QSpinnerGears,
+      backgroundColor: "bg"
+    })
+    try {
+      await $host.get(`api/website/structura`).then((res) => {
+        this.structura_list = res.data
+        this.level1 = res.data.filter((element) => {
+          return element.level === "1"
+        })
+        this.level2 = res.data.filter((element) => {
+          return element.level === "2"
+        })
+        this.level3 = res.data.filter((element) => {
+          return element.level === "3"
+        })
+      }
+
+      )
+    } catch (e) {
+      console.log(e);
+
+    } finally {
+      Loading.hide();
     }
-    )
   },
 };
 </script>
@@ -274,12 +301,14 @@ export default {
     .title_wrapper {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: start;
       padding-bottom: 14px;
-      border-bottom: 1px solid #f2f2f2;
+      border-bottom: 2px solid #f2f2f2;
+
 
       .team_title {
         font-family: $Montserrat-Regular;
+        padding-left: 10px;
         font-style: normal;
         font-weight: 600;
         font-size: 20px;
@@ -302,7 +331,7 @@ export default {
     .description_text_wrapper {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: start;
       margin-top: 14px;
 
       .description_text {
@@ -315,6 +344,7 @@ export default {
         max-width: 269px;
         cursor: pointer;
         transition: 0.3s;
+        padding-left: 10px;
 
         &:hover {
           color: #00a9aa;

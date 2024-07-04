@@ -67,6 +67,7 @@ export default {
 .about_container {
   position: relative;
   padding: 153px 0 60px;
+  margin-top: 200px;
 
   .about_bg_img {
     position: absolute;
@@ -148,7 +149,8 @@ export default {
 
 @media (max-width: 992px) {
   .about_container {
-    padding: 108px 0 94px;
+    padding: 80px 0 94px;
+    margin-top: 0px;
 
     .position_images {
       .small_box {

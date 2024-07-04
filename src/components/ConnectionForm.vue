@@ -107,7 +107,7 @@ export default {
     ...mapState("base", ["answer"]),
   },
   methods: {
-    ...mapActions("base", ["postQuery", "addTask"]),
+    ...mapActions("base", ["saveData"]),
 
     async submitForm() {
 
@@ -115,7 +115,8 @@ export default {
         idsotr: "000005859",
         problem: `Имя: ${this.name}; Текст сообщения: ${this.problem}`,
         tel: ` Телефон: ${this.tel} Email: ${this.email}`,
-        nameMethod: "tasks/task/",
+        url: "tasks/task",
+        nameMethod: "api/tg/post_request_1C",
         nameState: "setAnswer",
       }
 
@@ -131,7 +132,7 @@ export default {
           message: "Заполните все поля!",
         })
       } else {
-        this.postQuery(payload).then((answer) => {
+        this.saveData(payload).then((answer) => {
           this.$q.notify({
             message: `Создано обращение №: ${answer}`,
             type: "positive",
