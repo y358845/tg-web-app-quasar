@@ -71,6 +71,16 @@ export default {
           url: "vacation/vacation",
           title: 'VacationReport.pdf'
         }
+        ,
+        {
+          text: "Оснащение подразделения",
+          description:
+            "Описание:  оснащение подразделения компьютерной и оргтехникой.",
+          model: false,
+          method: `api/tg/report`,
+          url: "equipment/equipment",
+          title: 'VacationReport.pdf'
+        }
       ],
       searchString: ""
     };

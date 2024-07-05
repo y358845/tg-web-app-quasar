@@ -1,59 +1,44 @@
 <template>
   <div>
+    <q-layout view="lHh lpr lFf" container style="height: 900px" class="bg-white">
+      <q-header class="bg-white">
+        <modal-web-heder>Оснащение подразделений</modal-web-heder>
+        <q-select bg-color="white" class="q-pl-sm q-pr-sm q-pt-md" color="warning" v-model="employer"
+          option-label="name" option-value="number" @update:model-value="val => getReport(val)" outlined use-input
+          hide-selected bottom-slots fill-input dense input-debounce="0" :options="options" @filter="filterFn"
+          label="Подразделение" label-color=dark :behavior="$q.platform.is.ios === true ? 'menu' : 'menu'">
 
-    <modal-web-heder>Оснащение подразделений</modal-web-heder>
+          <template v-slot:option="scope">
+            <q-item v-bind="scope.itemProps">
+              <q-item-section>
+                <q-item-label>{{ scope.opt.name }}</q-item-label>
+                <q-item-label caption class="text-warning">{{ scope.opt.code }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </template>
 
-    <q-form @reset="onReset" class="q-gutter-md q-pa-sm  ">
+          <template v-slot:prepend>
+            <q-icon name="groups" color="warning" />
+          </template>
+          <template v-slot:no-option>
+            <q-item>
+              <q-item-section class="text-grey">Подразделение не найдено</q-item-section>
+            </q-item>
+          </template>
+          <template v-slot:append>
+            <q-icon name="close" @click.stop="employer = ''" class="cursor-pointer"></q-icon>
+          </template>
+        </q-select>
+      </q-header>
 
-      <q-select bg-color="white" class="q-pt-md col " color="warning" v-model="employer" option-label="name"
-        option-value="number" outlined use-input hide-selected bottom-slots fill-input dense input-debounce="0"
-        :options="options" @filter="filterFn" label="Подразделение" label-color=dark
-        :behavior="$q.platform.is.ios === true ? 'menu' : 'menu'">
-
-        <template v-slot:option="scope">
-          <q-item v-bind="scope.itemProps">
-            <q-item-section>
-              <q-item-label>{{ scope.opt.name }}</q-item-label>
-              <q-item-label caption class="text-warning">{{ scope.opt.code }}</q-item-label>
-            </q-item-section>
-          </q-item>
-        </template>
-
-        <template v-slot:prepend>
-          <q-icon name="groups" color="warning" />
-        </template>
-        <template v-slot:no-option>
-          <q-item>
-            <q-item-section class="text-grey">Подразделение не найдено</q-item-section>
-          </q-item>
-        </template>
-        <template v-slot:append>
-          <q-icon name="close" @click.stop="employer = ''" class="cursor-pointer"></q-icon>
-        </template>
-      </q-select>
-
-      <q-item-label class="q-mt-none">{{ employer.name }}:</q-item-label>
-
-
-      <q-list v-if="equipmentList != []" bordered separator class="bg-white">
+      <q-item-label class="equipmentlist q-pr-none">Оснащение</q-item-label>
+      <q-list v-if="equipmentList != []" bordered separator class="bg-white ">
         <q-item v-for="item in equipmentList" :key="item.code" clickable v-ripple>
           <q-item-section>{{ item.equipment }}</q-item-section>
         </q-item>
-
       </q-list>
 
-
-      <q-separator dark color="warning"></q-separator>
-
-      <q-card-actions class="text-dark ">
-        <q-btn color="dark" @click="getReport(employer)">Сформировать</q-btn>
-      </q-card-actions>
-
-
-    </q-form>
-
-
-
+    </q-layout>
   </div>
 </template>
 <script>
@@ -95,14 +80,16 @@ export default defineComponent({
   },
   methods: {
     ...mapActions("base", ["saveData"]),
-
+    showChannel(val) {
+      console.log(val.code)
+    },
     mainButtonClicked() {
       this.sendRequest();
     },
     getReport(el) {
       console.log(el);
       let formDataPostTask = {
-        department: this.employer.name,
+        department: el.name,
         url: "equipment/equipment",
         nameState: "setEquipmentList",
         nameMethod: "api/tg/post_request_1C"
@@ -165,5 +152,9 @@ body {
 
 .q-uploader__file-header .q-uploader__title {
   color: rgba(0, 0, 0, 0.6);
+}
+
+.equipmentlist {
+  margin-top: 120px;
 }
 </style>
