@@ -4,7 +4,7 @@
     <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>Оснащение техникой</modal-web-heder>
     <div class=" q-gutter-sm row ">
 
-      <q-select bg-color="white" class="q-pl-sm q-pt-sm searching" color="warning" v-model="department"
+      <q-select bg-color="white" class="q-pl-sm q-pr-sm q-pt-sm searching" color="warning" v-model="department"
         option-label="name" option-value="number" @update:model-value="val => getTable(val)" outlined use-input
         hide-selected bottom-slots fill-input dense input-debounce="0" :options="options" @filter="filterFn"
         label="Подразделение" label-color=dark :behavior="$q.platform.is.ios === true ? 'menu' : 'menu'">
