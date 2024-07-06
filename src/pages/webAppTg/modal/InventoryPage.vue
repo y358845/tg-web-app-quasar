@@ -26,7 +26,7 @@
           </q-item>
         </template>
         <template v-slot:append>
-          <q-icon name="close" @click.stop="employer = ''" class="cursor-pointer"></q-icon>
+          <q-icon name="close" @click.stop="department = ''" class="cursor-pointer"></q-icon>
         </template>
       </q-select>
 
