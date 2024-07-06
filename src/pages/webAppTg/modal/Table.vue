@@ -137,10 +137,10 @@ export default {
     },
     setRppo() {
       if (Screen.height < 600) {
-        this.rppo = 10
+        this.rppo = 12
       }
       else if (Screen.height > 600 && Screen.height < 900) {
-        this.rppo = 12
+        this.rppo = 15
       }
       return this.rppo
     }
@@ -158,7 +158,9 @@ thead tr:first-child th {
   height: 35px;
 }
 
-.searching {}
+.searching {
+  width: 50%;
+}
 
 .sell {
   border: 3px solid white;
