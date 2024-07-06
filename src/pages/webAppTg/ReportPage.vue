@@ -92,7 +92,7 @@ export default {
     ...mapActions("base", ["saveData"]),
 
     async getReport(text, method, url, title) {
-      if (text === "График отпусков (ДЦРиИТ)") {
+      if (text === "График отпусков (ДЦРиИТ)" || text === "Оснащение подразделения") {
         this.alert = true
       } else {
         const dataForm = {
