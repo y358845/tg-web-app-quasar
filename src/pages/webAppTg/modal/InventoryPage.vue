@@ -9,14 +9,14 @@
         hide-selected bottom-slots fill-input dense input-debounce="0" :options="options" @filter="filterFn"
         label="Подразделение" label-color=dark :behavior="$q.platform.is.ios === true ? 'menu' : 'menu'">
 
-        <template v-slot:option="scope">
+        <!-- <template v-slot:option="scope">
           <q-item v-bind="scope.itemProps">
             <q-item-section>
               <q-item-label>{{ scope.opt.name }}</q-item-label>
               <q-item-label caption class="text-warning">{{ scope.opt.code }}</q-item-label>
             </q-item-section>
           </q-item>
-        </template>
+        </template> -->
 
         <template v-slot:no-option>
           <q-item>
@@ -33,7 +33,15 @@
 
     <q-table flat class=" my-sticky-header-table q-pl-xs q-pr-xs" :rows="equipmentList" :columns="columns" dense
       wrap-cells :rows-per-page-options="[setRppo]" :separator="separator" no-data-label="Список пуст">
+      <template>
+        <!-- строка -->
+        <q-tr class="bg-grey-2  ">
+          <q-td v-for="col in props.cols" :key="col.name" :props="props" class="bg-red-3  ">
+            <div>{{ col.value }}</div>
+          </q-td>
 
+        </q-tr>
+      </template>
     </q-table>
   </div>
 </template>
@@ -215,5 +223,14 @@ thead tr:first-child th {
 .q-table--dense .q-table th:first-child,
 .q-table--dense .q-table td:first-child {
   padding-left: 9px;
+}
+
+.q-table thead,
+.q-table tr,
+.q-table th,
+.q-table td {
+  border-color: white;
+  border: 2px solid white;
+  background-color: #F5F5F5;
 }
 </style>
