@@ -1,8 +1,6 @@
 <template>
   <div class=" bg-white">
-    <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
-      <img src="../../../assets/images/close.svg" alt="close" />
-    </button> -->
+
     <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>Оснащение техникой</modal-web-heder>
     <div class=" q-gutter-sm row ">
 
@@ -30,12 +28,11 @@
         </template>
       </q-select>
 
-      <!-- <q-space />
-      <q-btn color="dark" icon="cloud_upload" label="" class="dowloadBtn q-mr-sm" unelevated @click="getReport()" /> -->
+
     </div>
 
     <q-table flat class=" my-sticky-header-table q-pl-xs q-pr-xs" :rows="equipmentList" :columns="columns" dense
-      wrap-cells :rows-per-page-options="[setRppo]" :separator="separator" no-data-label="Список пуст">
+      :rows-per-page-options="[setRppo]" :separator="separator" no-data-label="Список пуст">
 
     </q-table>
   </div>
