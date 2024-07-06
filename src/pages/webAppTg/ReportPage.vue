@@ -36,6 +36,10 @@
 
       <modal-table-vacation />
     </q-dialog>
+    <q-dialog v-model="alert_inv" full-width full-height>
+
+      <modal-inventory-vacation />
+    </q-dialog>
 
 
   </div>
@@ -52,6 +56,7 @@ export default {
   data() {
     return {
       alert: ref(false),
+      alert_inv: ref(false),
       model: [
         {
           text: "Колл-центр количество записей",
@@ -79,7 +84,7 @@ export default {
           model: false,
           method: `api/tg/report`,
           url: "equipment/equipment",
-          title: 'VacationReport.pdf'
+          title: ''
         }
       ],
       searchString: ""
@@ -92,9 +97,13 @@ export default {
     ...mapActions("base", ["saveData"]),
 
     async getReport(text, method, url, title) {
-      if (text === "График отпусков (ДЦРиИТ)" || text === "Оснащение подразделения") {
+      if (text === "График отпусков (ДЦРиИТ)") {
         this.alert = true
-      } else {
+      }
+      else if (text === "Оснащение подразделения") {
+        this.alert_inv = true
+      }
+      else {
         const dataForm = {
           queryId: tgid.toString(),
           nameMethod: method,
@@ -123,7 +132,8 @@ export default {
   },
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default,
-    "modal-table-vacation": require("../webAppTg/modal/Table").default
+    "modal-table-vacation": require("../webAppTg/modal/Table").default,
+    "modal-inventory-vacation": require("../webAppTg/modal/InventoryPage").default
   }
 };
 </script>

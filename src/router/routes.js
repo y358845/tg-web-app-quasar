@@ -36,7 +36,7 @@ const routes = [{
   },
   {
     path: '/inventory',
-    component: () => import('pages/webAppTg/InventoryPage.vue')
+    component: () => import('src/pages/webAppTg/modal/InventoryPage.vue')
 
   },
   // Always leave this as last one,
