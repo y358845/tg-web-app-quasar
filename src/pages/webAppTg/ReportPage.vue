@@ -2,7 +2,7 @@
   <div>
     <modal-web-heder>Отчеты:</modal-web-heder>
 
-    <div @submit="onSubmit" @reset="onReset" class="q-pa-md">
+    <div @submit="onSubmit" @reset="onReset" class="q-pa-sm">
       <q-input outlined v-model="searchString" label="Поиск" dense bg-color="white" color="warning">
         <template v-slot:append>
           <q-icon name="search" color="warning" />

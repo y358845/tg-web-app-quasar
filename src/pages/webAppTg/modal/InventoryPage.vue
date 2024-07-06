@@ -32,7 +32,7 @@
     </div>
 
     <q-table flat class=" my-sticky-header-table q-pl-xs q-pr-xs" :rows="equipmentList" :columns="columns" dense
-      :rows-per-page-options="[setRppo]" :separator="separator" no-data-label="Список пуст">
+      wrap-cells :rows-per-page-options="[setRppo]" :separator="separator" no-data-label="Список пуст">
 
     </q-table>
   </div>
@@ -53,8 +53,7 @@ const columns = [
     field: row => row.equipment,
     format: val => `${val}`,
     sortable: true
-  },
-  { name: 'date', align: 'left', label: 'C ', field: 'date', sortable: true },
+  }
 
 ]
 
@@ -121,8 +120,6 @@ export default {
       arr.forEach(element => {
         newRows.push({
           equipment: element.equipment,
-          date: element.date,
-          // dateK: element.dateK
         })
       });
       return newRows
