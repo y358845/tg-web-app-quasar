@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-layout view="lHh lpr lFf" container style="height: 900px" class="bg-white">
+    <q-layout view="lHh lpr lFf" container style="height: 500px" class="bg-white">
       <q-header class="bg-white">
         <modal-web-heder>Оснащение подразделений</modal-web-heder>
         <q-select bg-color="white" class="q-pl-sm q-pr-sm q-pt-md" color="warning" v-model="employer"
@@ -31,9 +31,9 @@
         </q-select>
       </q-header>
 
-      <q-item-label class="equipmentlist q-pr-none">Оснащение</q-item-label>
-      <q-list v-if="equipmentList != []" bordered separator class="bg-white ">
-        <q-item v-for="item in equipmentList" :key="item.code" clickable v-ripple>
+      <q-item-label class="equipmentlist q-pr-none q-pt-sm"></q-item-label>
+      <q-list v-if="equipmentList != []" bordered separator class="bg-white q-ma-sm">
+        <q-item v-for="item in equipmentList" :key="item.code" class="q-ma-sm" clickable v-ripple>
           <q-item-section>{{ item.equipment }}</q-item-section>
         </q-item>
       </q-list>
@@ -44,8 +44,8 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { mapActions, mapState } from "vuex";
-const tg = window?.Telegram?.WebApp;
-const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+// const tg = window?.Telegram?.WebApp;
+// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default defineComponent({
   name: "MainLayout",
   components: {
@@ -75,7 +75,7 @@ export default defineComponent({
   },
 
   async mounted() {
-    tg.ready();
+    // tg.ready();
     this.saveData(this.formData);
   },
   methods: {
@@ -122,14 +122,14 @@ export default defineComponent({
     ...mapState("base", ["departList", "equipmentList"])
   },
   created() {
-    tg.expand();
-    tg.MainButton.setParams({
-      text: "Создать заявку",
-      color: "#D7A310",
-    });
-    tg.onEvent("mainButtonClicked", this.mainButtonClicked);
-    tg.MainButton.hide();
-    this.phone = window?.Telegram?.WebView.initParams.startapp;
+    // tg.expand();
+    // tg.MainButton.setParams({
+    //   text: "Создать заявку",
+    //   color: "#D7A310",
+    // });
+    // tg.onEvent("mainButtonClicked", this.mainButtonClicked);
+    // tg.MainButton.hide();
+    // this.phone = window?.Telegram?.WebView.initParams.startapp;
   }
 });
 </script>
