@@ -32,34 +32,21 @@
     </div>
 
     <q-table flat class=" my-sticky-header-table q-pl-xs q-pr-xs" :rows="equipmentList" :columns="columns" dense
-      wrap-cells :rows-per-page-options="[setRppo]" :separator="separator" no-data-label="Список пуст">
+      :rows-per-page-options="[setRppo]" :separator="separator" no-data-label="Список пуст">
       <template v-slot:body="props">
-
-        <!-- <q-tr :props="props" class="bg-grey-2  ">
-
-          <q-td v-for="col in props.cols" :key="col.in_cod" class="bg-grey-2 ">
-
-
-          </q-td>
-
-        </q-tr> -->
         <q-tr :props="props" class="bg-grey-1  ">
-          <!-- ячейки -->
-          <!-- <div>{{ props.row.ser_cod }}</div> -->
+
           <q-item clickable v-ripple class="sell">
             <q-item-section>
               <q-item-label overline>{{ props.row.equipment }}</q-item-label>
-
-              <q-item-label class="text-orange">s/n: {{ props.row.ser_cod }}</q-item-label>
+              <q-item-label caption class="text-orange">s/n: {{ props.row.ser_cod }}</q-item-label>
             </q-item-section>
           </q-item>
 
         </q-tr>
-      </template>
-      <!-- <template v-slot:body="props">
-        <q-tr class="sell">{{ props.row.equipment }}</q-tr>
 
-      </template> -->
+      </template>
+
     </q-table>
   </div>
 </template>
@@ -184,10 +171,10 @@ export default {
 
     setRppo() {
       if (Screen.height < 600) {
-        this.rppo = 13
+        this.rppo = 6
       }
       else if (Screen.height > 600 && Screen.height < 900) {
-        this.rppo = 15
+        this.rppo = 7
       }
       return this.rppo
     }
