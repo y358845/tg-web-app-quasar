@@ -38,7 +38,7 @@
 
           <q-item clickable v-ripple class="sell">
             <q-item-section>
-              <q-item-label overline lines="1">{{ props.row.equipment }}</q-item-label>
+              <q-item-label overline>{{ props.row.equipment }}</q-item-label>
               <q-item-label caption class="text-orange">s/n: {{ props.row.ser_cod }}</q-item-label>
             </q-item-section>
           </q-item>
