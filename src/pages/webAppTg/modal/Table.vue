@@ -13,8 +13,7 @@
         </template>
       </q-input>
       <q-space />
-      <q-btn color="dark" icon="cloud_upload" label="Скачать" class="dowloadBtn q-mr-xs" unelevated
-        @click="getReport()" />
+      <q-btn color="dark" icon="cloud_upload" class="dowloadBtn q-mr-xs" unelevated @click="getReport()" />
     </div>
 
     <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
