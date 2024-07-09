@@ -12,7 +12,7 @@
           <q-icon name="search" />
         </template>
       </q-input>
-
+      <q-space />
       <q-btn color="dark" icon="cloud_upload" label="" class="dowloadBtn q-mr-xs" unelevated @click="getReport()" />
     </div>
 
