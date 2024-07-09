@@ -5,15 +5,19 @@
     </button> -->
     <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>График отпусков(факт.)</modal-web-heder>
     <div class=" q-gutter-sm row ">
-      <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-xs searching" dense bg-color="white"
+      <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-xs " dense bg-color="white"
         color="warning">
         <template v-slot:append>
           <q-icon v-if="searchString !== ''" name="close" @click="searchString = ''" class="cursor-pointer" />
           <q-icon name="search" />
         </template>
+        <template v-slot:after>
+          <q-btn color="dark" class="dowloadBtn q-mr-xs q-mb-md" unelevated icon="cloud_upload"
+            @click="getReport()"></q-btn>
+        </template>
       </q-input>
-      <q-space />
-      <q-btn color="dark" icon="cloud_upload" class="dowloadBtn q-mr-xs" unelevated @click="getReport()" />
+      <!-- <q-space />
+      <q-btn color="dark" icon="cloud_upload" class="dowloadBtn q-mr-xs" unelevated @click="getReport()" /> -->
     </div>
 
     <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
@@ -61,8 +65,8 @@ const columns = [
   { name: 'dateK', align: 'left', label: 'По', field: 'dateK', sortable: true },
 ]
 
-const tg = window?.Telegram?.WebApp;
-const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+// const tg = window?.Telegram?.WebApp;
+// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
@@ -88,7 +92,7 @@ export default {
     }
   },
   async mounted() {
-    tg.ready();
+    // tg.ready();
     this.hh = Screen.height
     // console.log(Screen.height);
     await this.saveData(this.formData).then(res => {
@@ -121,7 +125,7 @@ export default {
         type: 'arraybuffer'
       };
       this.saveData(dataForm).then(res => {
-        tg.close();
+        // tg.close();
       })
 
     }
