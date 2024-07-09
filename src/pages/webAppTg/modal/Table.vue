@@ -5,14 +5,14 @@
     </button> -->
     <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>График отпусков(факт.)</modal-web-heder>
     <div class=" q-gutter-sm row ">
-      <q-input outlined v-model="searchString" label="Поиск" class="q-mt-md q-pl-xs " dense bg-color="white"
+      <q-input outlined v-model="searchString" label="Поиск" class="searching q-mt-md q-pl-xs " dense bg-color="white"
         color="warning">
         <template v-slot:append>
           <q-icon v-if="searchString !== ''" name="close" @click="searchString = ''" class="cursor-pointer" />
           <q-icon name="search" />
         </template>
         <template v-slot:after>
-          <q-btn color="dark" class="dowloadBtn q-mr-xs q-mb-md" unelevated icon="cloud_upload"
+          <q-btn color="dark" fixed-top-right class="dowloadBtn q-mr-xs q-mb-md" unelevated icon="cloud_upload"
             @click="getReport()"></q-btn>
         </template>
       </q-input>
@@ -162,7 +162,7 @@ thead tr:first-child th {
 }
 
 .searching {
-  width: 50%;
+  width: 100%;
 }
 
 .sell {
