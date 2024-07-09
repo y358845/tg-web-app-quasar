@@ -1,8 +1,5 @@
 <template>
   <div class=" bg-white">
-    <!-- <button class="close_btn" @click="modal = false" v-close-popup="popupValue">
-      <img src="../../../assets/images/close.svg" alt="close" />
-    </button> -->
     <modal-web-heder class="q-pl-xs q-pt-xs q-pr-xs" unelevated>График отпусков(факт.)</modal-web-heder>
     <div class=" q-gutter-sm row ">
       <q-input outlined v-model="searchString" label="Поиск" class="searching q-mt-md q-pl-xs " dense bg-color="white"
@@ -16,8 +13,6 @@
             @click="getReport()"></q-btn>
         </template>
       </q-input>
-      <!-- <q-space />
-      <q-btn color="dark" icon="cloud_upload" class="dowloadBtn q-mr-xs" unelevated @click="getReport()" /> -->
     </div>
 
     <q-table flat class="q-mt-sm my-sticky-header-table q-pl-xs q-pr-xs" :rows="tasksFiltered" :columns="columns" dense
@@ -65,8 +60,8 @@ const columns = [
   { name: 'dateK', align: 'left', label: 'По', field: 'dateK', sortable: true },
 ]
 
-// const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
@@ -92,9 +87,8 @@ export default {
     }
   },
   async mounted() {
-    // tg.ready();
+    tg.ready();
     this.hh = Screen.height
-    // console.log(Screen.height);
     await this.saveData(this.formData).then(res => {
       this.rows = this.sortRows(res)
     })
@@ -125,7 +119,7 @@ export default {
         type: 'arraybuffer'
       };
       this.saveData(dataForm).then(res => {
-        // tg.close();
+        tg.close();
       })
 
     }
@@ -155,7 +149,6 @@ export default {
 <style>
 q-table__top,
 thead tr:first-child th {
-  /* bg color is important for th; just specify one */
   background-color: #D7A310;
   color: white;
   height: 35px;
