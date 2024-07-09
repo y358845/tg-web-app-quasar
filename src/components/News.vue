@@ -30,7 +30,7 @@
             </p>
           </div>
           <div class="slider_item_bottom">
-            <p class="news_date">{{ item.data }}</p>
+            <!-- <p class="news_date">{{ item.data }}</p> -->
             <button class="more_btn" @click="modal(item.id)">Читать</button>
           </div>
         </swiper-slide>

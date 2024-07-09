@@ -158,7 +158,7 @@ thead tr:first-child th {
 }
 
 .searching {
-  width: 75%;
+  width: 70%;
 }
 
 .sell {
