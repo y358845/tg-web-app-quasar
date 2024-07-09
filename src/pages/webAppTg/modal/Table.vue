@@ -61,8 +61,8 @@ const columns = [
   { name: 'dateK', align: 'left', label: 'По', field: 'dateK', sortable: true },
 ]
 
-// const tg = window?.Telegram?.WebApp;
-// const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
+const tg = window?.Telegram?.WebApp;
+const tgid = window?.Telegram?.WebApp.initDataUnsafe.user.id;
 export default {
   components: {
     "modal-web-heder": require("components/UI/ModalWebAppTgHeader.vue").default
@@ -88,7 +88,7 @@ export default {
     }
   },
   async mounted() {
-    // tg.ready();
+    tg.ready();
     this.hh = Screen.height
     // console.log(Screen.height);
     await this.saveData(this.formData).then(res => {
@@ -158,7 +158,7 @@ thead tr:first-child th {
 }
 
 .searching {
-  width: 70%;
+  width: 65%;
 }
 
 .sell {
