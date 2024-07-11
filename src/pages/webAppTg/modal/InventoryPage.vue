@@ -41,16 +41,15 @@
               <q-item-label overline>{{ props.row.equipment }}</q-item-label>
               <div class="row">
                 <q-item-section caption class="text-orange title-caption">{{ props.row.status }}</q-item-section>
-                <q-item-section side caption class="text-blue title-caption" v-if="props.row.ser_cod != ''">s/n: {{
-                  props.row.ser_cod
-                }}</q-item-section>
-              </div>
-              <!-- <q-item-label caption class="text-orange">{{ props.row.status }} | {{ props.row.ser_cod }} -->
-              <!-- </q-item-label> -->
-            </q-item-section>
-            <!-- <q-item-section side top>
+                <q-item-section side caption class="text-blue title-caption" v-if="props.row.ser_cod != ''">s/n:
+                  {{ props.row.ser_cod }}</q-item-section>
 
-              <q-icon name="star" color="yellow" />
+              </div>
+              <!-- <q-item-section caption class="text-blue-13 title-caption">{{ props.row.OS }}</q-item-section> -->
+            </q-item-section>
+            <!-- <q-item-section>
+
+              <q-item-section caption class="text-orange title-caption">{{ props.row.OS }}</q-item-section>
             </q-item-section> -->
           </q-item>
 
