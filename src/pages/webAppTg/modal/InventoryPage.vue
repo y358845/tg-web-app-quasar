@@ -39,7 +39,12 @@
           <q-item clickable v-ripple class="sell">
             <q-item-section>
               <q-item-label overline>{{ props.row.equipment }}</q-item-label>
-              <q-item-label caption class="text-orange">s/n: {{ props.row.ser_cod }}</q-item-label>
+              <q-item-label caption class="text-orange">{{ props.row.status }} | s/n: {{ props.row.ser_cod }}
+              </q-item-label>
+            </q-item-section>
+            <q-item-section side top>
+
+              <q-icon name="star" color="yellow" />
             </q-item-section>
           </q-item>
 
