@@ -39,13 +39,19 @@
           <q-item clickable v-ripple class="sell">
             <q-item-section>
               <q-item-label overline>{{ props.row.equipment }}</q-item-label>
-              <q-item-label caption class="text-orange">{{ props.row.status }} | s/n: {{ props.row.ser_cod }}
-              </q-item-label>
+              <div class="row">
+                <q-item-section caption class="text-orange title-caption">{{ props.row.status }}</q-item-section>
+                <q-item-section side caption class="text-blue title-caption" v-if="props.row.ser_cod != ''">s/n: {{
+                  props.row.ser_cod
+                }}</q-item-section>
+              </div>
+              <!-- <q-item-label caption class="text-orange">{{ props.row.status }} | {{ props.row.ser_cod }} -->
+              <!-- </q-item-label> -->
             </q-item-section>
-            <q-item-section side top>
+            <!-- <q-item-section side top>
 
               <q-icon name="star" color="yellow" />
-            </q-item-section>
+            </q-item-section> -->
           </q-item>
 
         </q-tr>
@@ -182,6 +188,14 @@ export default {
         this.rppo = 7
       }
       return this.rppo
+    },
+    snNumber(strNum) {
+      console.log(strNum);
+      // if (strNum != '') {
+      //     return `s/n: ${strNum}`
+      //   } else {
+      return ''
+      //   }
     }
   },
 
@@ -201,7 +215,9 @@ thead tr:first-child th {
   width: 100%;
 }
 
-
+.title-caption {
+  font-size: 12px;
+}
 
 .sell {
   border: 3px solid white;
