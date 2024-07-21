@@ -41,16 +41,24 @@
               <q-item-label overline>{{ props.row.equipment }}</q-item-label>
               <div class="row">
                 <q-item-section caption class="text-orange title-caption">{{ props.row.status }}</q-item-section>
+                <!-- <q-item-section caption class="text-orange title-caption">{{ props.row.OS }}</q-item-section> -->
                 <q-item-section side caption class="text-blue title-caption" v-if="props.row.ser_cod != ''">s/n:
                   {{ props.row.ser_cod }}</q-item-section>
 
               </div>
-              <!-- <q-item-section caption class="text-blue-13 title-caption">{{ props.row.OS }}</q-item-section> -->
-            </q-item-section>
-            <!-- <q-item-section>
 
-              <q-item-section caption class="text-orange title-caption">{{ props.row.OS }}</q-item-section>
-            </q-item-section> -->
+            </q-item-section>
+            <q-item-section avatar v-if='props.row.OS.includes("Astra Linux 1.7")'>
+
+              <img src="../../../assets/images/astra_linux_logo_color.svg" alt="" />
+
+            </q-item-section>
+            <q-item-section avatar v-if='props.row.OS.includes("Windows")'>
+
+              <img class="os" src="../../../assets/images/windows.png" alt="" />
+
+            </q-item-section>
+
           </q-item>
 
         </q-tr>
@@ -257,5 +265,9 @@ thead tr:first-child th {
   border-color: white;
   border: 2px solid white;
   background-color: #F5F5F5;
+}
+
+.os {
+  height: 20px;
 }
 </style>
