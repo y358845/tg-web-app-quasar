@@ -36,7 +36,7 @@
 
       <modal-table-vacation />
     </q-dialog>
-    <q-dialog v-model="alert_inv" full-width full-height>
+    <q-dialog v-model="alert_inv" full-width full-height :maximized="maximizedToggle">
 
       <modal-inventory-vacation />
     </q-dialog>

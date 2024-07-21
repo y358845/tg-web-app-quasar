@@ -36,7 +36,7 @@
       <template v-slot:body="props">
         <q-tr :props="props" class="bg-grey-1  ">
 
-          <q-item clickable v-ripple class="sell q-pr-xs">
+          <q-item clickable v-ripple class="sell q-pr-xs q-pl-sm q-pt-sm">
             <q-item-section>
               <q-item-label overline>{{ props.row.equipment }}</q-item-label>
               <div class="row">
@@ -196,14 +196,6 @@ export default {
       }
       return this.rppo
     },
-    snNumber(strNum) {
-      console.log(strNum);
-      // if (strNum != '') {
-      //     return `s/n: ${strNum}`
-      //   } else {
-      return ''
-      //   }
-    }
   },
 
 }
@@ -212,7 +204,6 @@ export default {
 <style>
 q-table__top,
 thead tr:first-child th {
-  /* bg color is important for th; just specify one */
   background-color: #D7A310;
   color: white;
   height: 35px;
@@ -249,8 +240,6 @@ thead tr:first-child th {
   background: transparent;
   border: 0;
   cursor: pointer;
-
-
 }
 
 .q-table--dense .q-table th:first-child,
