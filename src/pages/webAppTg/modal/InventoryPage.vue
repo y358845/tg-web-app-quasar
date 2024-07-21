@@ -36,7 +36,7 @@
       <template v-slot:body="props">
         <q-tr :props="props" class="bg-grey-1  ">
 
-          <q-item clickable v-ripple class="sell">
+          <q-item clickable v-ripple class="sell q-pr-xs">
             <q-item-section>
               <q-item-label overline>{{ props.row.equipment }}</q-item-label>
               <div class="row">
@@ -50,7 +50,7 @@
             </q-item-section>
             <q-item-section avatar v-if='props.row.OS.includes("Astra Linux 1.7")'>
 
-              <img src="../../../assets/images/astra_linux_logo_color.svg" alt="" />
+              <img class="astra" src="../../../assets/images/astra_linux_logo_color.svg" alt="" />
 
             </q-item-section>
             <q-item-section avatar v-if='props.row.OS.includes("Windows")'>
@@ -269,5 +269,10 @@ thead tr:first-child th {
 
 .os {
   height: 20px;
+}
+
+.astra {
+  height: 25px;
+  padding-left: 0px;
 }
 </style>
