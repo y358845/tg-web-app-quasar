@@ -56,6 +56,7 @@ export default {
   data() {
     return {
       alert: ref(false),
+      maximizedToggle: ref(true),
       alert_inv: ref(false),
       model: [
         {
